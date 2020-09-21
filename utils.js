@@ -5,7 +5,7 @@ function createResult(error, dbResult) {
       result['status'] = 'error'
       result['error'] = error
     } else {
-      // execution went successfull
+      // execution went successful
       result['status'] = 'success'
       result['data'] = dbResult
     }
