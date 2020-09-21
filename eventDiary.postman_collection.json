@@ -1,0 +1,606 @@
+{
+	"info": {
+		"_postman_id": "8e06a760-c1fc-44fc-b2b7-b34e2e294cae",
+		"name": "eventDiary",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "get Admin details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/admin/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"akash@test.com\",\n    \"password\":\"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/admin/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/user/getAlluser",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"getAlluser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllOrganiser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/organizer/getAllOrganizer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"organizer",
+								"getAllOrganizer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete organizer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/organizer/deleteOrganizer/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"organizer",
+								"deleteOrganizer",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/organizer/deleteOrganizer/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"organizer",
+								"deleteOrganizer",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllevent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFeedback",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "87b8d065-a495-4c21-afec-4c688b34cc7a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4aea5a8-e439-4dec-ba0a-14ea259524e6",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "organizer",
+			"item": [
+				{
+					"name": "Get Organizer Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/org/getOrganizerbyId/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"org",
+								"getOrganizerbyId",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin Organizer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"raj@com\",\n    \"password\":\"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/org/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"org",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " signup organiser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"firstName\":\"raj\",\n    \"lastName\":\"jadhav\",\n    \"email\":\"raj@com\",\n    \"password\":\"test\",\n    \"phone\":\"856312453\",\n    \"city\":\"nagpur\",\n    \"state\":\"maharashtra\",\n    \"gender\":\"male\",\n    \"role\":\"organizer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/org/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"org",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Organiser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\":\"raj\",\n    \"lastName\":\"jadhav\",\n    \"email\":\"raj@com\",\n    \"password\":\"test\",\n    \"phone\":\"875241000\",\n    \"city\":\"nagpur\",\n    \"state\":\"maharashtra\",\n    \"gender\":\"male\",\n    \"role\":\"organizer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/org/editOrganizer/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"org",
+								"editOrganizer",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eventName\":  \"Jumbo circus\" ,\n    \"eventDescription\": \"famous circus\" ,\n   \"eventVenue\": \"shahu maidan\" ,\n   \"eventLocation\":\"kolhapur\",\n    \"eventTime\":\"11:00:00\",\n   \"eventDate\":\"2021-01-17\",\n   \"eventDuration\":\"2:00:00\",\n   \"eventCategoryId\":\"1\",\n   \"eventFee\":\"200\",\n   \"eventOrganizerId\":\"6\"\n}\n\n\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/org/addEvent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"org",
+								"addEvent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete event",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/org/deleteEvent/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"org",
+								"deleteEvent",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update event",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showAllevent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ce63336a-0316-4f40-8bac-8dd3c37ecb2d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c55d1c01-8ecd-46d7-a47f-4a18958fdf3b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "getUserDetails",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/user/getuserbyId/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"user",
+								"getuserbyId",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \n        \"email\": \"mani@test.com\",\n        \"firstName\": \"manish\",\n        \"lastName\": \"raut\",\n        \"phone\": \"8452100\",\n        \"city\": \"rajpur\",\n        \"state\": \"maharashtra\",\n        \"gender\": \"Male\",\n        \"role\": \"user\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/user/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update useraccount",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \n        \"email\": \"sachin@test.com\",\n        \"firstName\": \"sachin\",\n        \"lastName\": \"raut\",\n        \"password\":\"test1\",\n        \"phone\": \"478752462\",\n        \"city\": \"koge\",\n        \"state\": \"maharashtra\",\n        \"gender\": \"Male\",\n        \"role\": \"user\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/user/edituser/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"user",
+								"edituser",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"aditya@test.com\",\n    \"password\":\"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/organizer_user/user/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer_user",
+								"user",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUserAcc",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showRegisteredEvent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createFeedback",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "83b47487-4f4c-4ad9-bec0-2d15bf11f01e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "1a85b7a7-16ec-49d1-9f9c-2b7dc1304881",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "b88eab67-3ab1-4d0a-b8ba-d62516902438",
+			"value": "",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}
