@@ -1,4 +1,4 @@
-function createResult(error, dbResult) {
+function createResult(error, data) {
     const result = { status: '' }
     if (error) {
       // error while performing the statement
@@ -7,7 +7,7 @@ function createResult(error, dbResult) {
     } else {
       // execution went successful
       result['status'] = 'success'
-      result['data'] = dbResult
+      result['data'] = data
     }
   
     return result
