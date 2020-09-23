@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import { AdminOrganiserdataComponent } from './admin-organiserdata/admin-organiserdata.component';
 
 import{RouterModule, Routes} from '@angular/router';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 const routes:Routes=[
@@ -23,6 +24,7 @@ const routes:Routes=[
     AppComponent,
     AdminComponentComponent,
     AdminOrganiserdataComponent,
+    AdminLoginComponent,
 
    
   ],
