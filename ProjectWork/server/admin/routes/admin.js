@@ -4,9 +4,8 @@ const utils = require('../../utils')
 
 const router = express.Router()
 
-router.get('/getuserbyId/:userId', (request, response) => {
-const {userId}=request.params
-    const statement = `select firstName,lastName,role from user where id=${userId}`
+router.get('/profile', (request, response) => {
+    const statement = `select * from user where role ="admin" `
     db.query(statement, (error, admins) => {
       if (error) {
         response.send({status: 'error', error: error})
@@ -54,9 +53,14 @@ router.post('/signin', (request, response) => {
 })
 
 router.post('/signup', (request, response) => {
-  const {firstName,lastName,email,password,phone,city,state,gender,role}=request.body
-  const statement = `insert into user (firstName, lastName, email, password, phone,city,state,gender,role) values(
-    '${firstName}', '${lastName}', '${email}', '${password}', '${phone}','${city}','${state}','${gender}','${role}')`
+  const firstName = request.body.firstName
+  const lastName = request.body.lastName
+  const email = request.body.email
+  const password = request.body.password
+  const phone = request.body.phone
+
+  const statement = `insert into user (firstName, lastName, email, password, phone) values(
+    '${firstName}', '${lastName}', '${email}', '${password}', '${phone}')`
   
   db.query(statement, (error, dbResult) => {
     response.send(utils.createResult(error, dbResult))
@@ -64,16 +68,9 @@ router.post('/signup', (request, response) => {
   
 })
 
-router.put('/edituser/:userId', (request, response) => {
-  const { firstName,lastName, email,password,phone,city, state,gender,role } = request.body
-  const { userId } = request.params
-  const statement = `update user set firstName = '${firstName}',lastName = '${lastName}',email = '${email}', password = '${password}',phone = '${phone}',city = '${city}',state = '${state}', gender = '${gender}' where id = ${userId}`
- 
- db.query(statement, (error, data) => {
-  response.send(utils.createResult(error, data))
+router.put('/', (request, response) => {
+  response.send()
 })
-})
-
 
 router.delete('/', (request, response) => {
   response.send()

@@ -1,3 +1,4 @@
+const { request, response } = require('express')
 const express = require('express')
 const db = require('../../db')
 const utils = require('../../utils')
@@ -67,15 +68,16 @@ router.post('/signup', (request, response) => {
 
 // update organiserdetails
 router.put('/editOrganizer/:organizerId', (request, response) => {
-  const { firstName,lastName, email,password,phone,city, state,gender } = request.body
+  const { firstName,lastName, email,password,phone,city, state,gender,active,role } = request.body
   const { organizerId } = request.params
-  const statement = `update user set firstName = '${firstName}',lastName = '${lastName}',email = '${email}', password = '${password}',phone = '${phone}',city = '${city}',state = '${state}', gender = '${gender}' where id = ${organizerId}`
+  const statement = `update user set firstName = '${firstName}',lastName = '${lastName}',email = '${email}', password = '${password}',phone = '${phone}',city = '${city}',state = '${state}', gender = '${gender}',active='${active}',role='${role}' where id = ${organizerId}`
  
  db.query(statement, (error, data) => {
   response.send(utils.createResult(error, data))
 })
 })
 
+//==========================================EVENT operations By organizer=====================================
 ///Add event by organiser
 router.post('/addEvent', (request, response) => 
 {
@@ -89,6 +91,46 @@ router.post('/addEvent', (request, response) =>
   })
 })
 
+//update event by organizer
+router.put('/editevent/:eventId',(request,response)=>
+{
+  const { eventId } = request.params
+
+  const { eventName, eventDescription, eventVenue,
+     eventLocation,eventDate, eventTime,
+     eventDuration,eventCategoryId,eventFee,
+     eventOrganizerId} = request.body
+
+  const statement = `update event set eventName = '${eventName}',
+  eventDescription = '${eventDescription}',
+  eventVenue = '${eventVenue}', 
+  eventLocation = '${eventLocation}',
+  eventDate = '${eventDate}',
+  eventTime = '${eventTime}',
+  eventDuration= '${eventDuration}', 
+  eventCategoryId = '${eventCategoryId}',
+  eventFee='${eventFee}',
+  eventOrganizerId='${eventOrganizerId}'
+   where eventId = '${eventId}'
+`
+db.query(statement, (error, data) => {
+  response.send(utils.createResult(error, data))
+})
+})
+
+//showAllevent
+router.get('/showAllevent', (request, response) => 
+{   const statement = `select * from event `
+  db.query(statement, (error, admins) => {
+  if (error) {       response.send({status: 'error', error: error})
+     } else {
+         response.send(utils.createResult(error, admins))
+      }
+   })
+ },
+
+
+
 // delete event by organiser
 
 router.delete('/deleteEvent/:eventId', (request, response) => {
@@ -97,14 +139,30 @@ router.delete('/deleteEvent/:eventId', (request, response) => {
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
+}),
+)
+
+// delete organizer Account
+
+
+router.delete('/deleteOrganizer/:id', (request, response) => {
+  const {id} = request.params
+  const statement = `update user set active =0 where id =${id}`
+  db.query(statement, (error, data) => {
+    response.send(utils.createResult(error, data))
+  })
 })
 
+// router.delete('/deleteOrganizer/:id',(request,response)=>
+// {
+//   const {id}=request.params
+//   const statement =`delete from user where id=${id}`
+//   db.query(statement,(error,data)=>
+//   {
+//     response.send(utils.createResult(error,data))
+//   })
+// })------FK issue
 
 
-
-router.delete('/', (request, response) => {
-
-  response.send()
-})
 
 module.exports = router
