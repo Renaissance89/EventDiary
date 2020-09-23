@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Diary | Add Event</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  <style>
+    h1 {
+      text-align: center;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Add Event</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="eventname">Event Name</label>
+          <input type="text" class="form-control" id="eventname"placeholder="Enter Event Name">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <!-- automatic yenar login kelay tya account ni ani disabled asnar -->
+          <label for="eventorganizer">Organizer</label>
+          <input type="text" class="form-control" id="eventorganizer" placeholder="Enter Event Organizer">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="eventfee">Fee</label>
+          <input type="number" class="form-control" id="eventfee" placeholder="Enter Event Fee">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select class="form-control" name="category" id="category">
+            <option value="1">Comedy</option>
+            <option value="2">Education</option>
+            <option value="3">Music</option>
+            <option value="4">Tech Expo</option>
+            <option value="5">Social</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="eventvenue">Venue</label>
+          <!-- <input type="text" class="form-control" id="eventvenue" placeholder="Enter Event Venue"> -->
+          <input type="text" class="form-control" id="eventvenue" placeholder="e.g. Balewadi Stadium">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="eventlocation">Location</label>
+          <!-- <input type="text" class="form-control" id="eventlocation" placeholder="Enter Event Location"> -->
+          <input type="text" class="form-control" id="eventlocation" placeholder="e.g. Mumbai">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="eventdate">Date</label>
+          <input type="date" class="form-control" id="eventdate" placeholder="Enter Event Date">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="eventtime">Start Time</label>
+          <input type="time" class="form-control" id="eventtime" placeholder="Enter Event Time">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="eventduration">Duration</label>
+          <input type="time" class="form-control" id="eventduration" placeholder="Enter Event Duration">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" name="description" id="description" rows="5" style="resize:none"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-12">
+        <div class="form-check">
+          <input required type="checkbox" class="form-check-input" id="addsponser"> 
+          <b><label for="addsponser">Do you have sponser ?</label></b>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="checkbox == true" class="row"> -->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="sponserfnmae">Sponser First Name</label>
+          <input type="text" class="form-control" id="sponserfnmae" placeholder="Sponser First Name">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="sponserlnmae">Sponser Last Name</label>
+          <input type="text" class="form-control" id="sponserlnmae" placeholder="Sponser Last Name">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="phone" class="form-control" id="sponserphone" placeholder="Sponser Phone">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <div>
+            <label for="gender">Gender</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="gender" checked>
+            <label class="form-check-label">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="gender">
+            <label class="form-check-label">Female</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+      <div class="col-md-4"></div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-12">
+        <div class="form-check">
+          <input required type="checkbox" class="form-check-input" id="confirmaddevent"> 
+          <label for="confirmaddevent">Are you sure that you want to create event ?</label> 
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div style="text-align: center;" class="col-md-4">
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="reset" class="btn btn-danger">Cancel</button>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+
+</div>
+
+</body>
+</html>
