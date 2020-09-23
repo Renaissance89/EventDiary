@@ -1,13 +1,13 @@
-function createResult(error, data) {
+function createResult(error, dbResult) {
     const result = { status: '' }
     if (error) {
       // error while performing the statement
       result['status'] = 'error'
       result['error'] = error
     } else {
-      // execution went successful
+      // execution went successfull
       result['status'] = 'success'
-      result['data'] = data
+      result['data'] = dbResult
     }
   
     return result
