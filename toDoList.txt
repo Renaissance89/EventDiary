@@ -1,0 +1,68 @@
+
+	organizer routes
+1] * get profile :done
+2] *(signin signup): done (activation link) : waichal ===   
+3] *edit :done
+4] *add event: done
+5] *delete event 	: adwait
+6] *update event		: adwait
+7] *show all event	: pranjal patil
+8] show feedback	: akash awalkar ===
+9] forget password (emails OTP) ===
+10] *delete account(active = 0)
+11] reactivate account (optional) ===
+
+
+		user
+1] *get profile :done
+2] *(signin signup): done (activation link)  : waichal===  okkk
+3] *delete user		: adwait
+4] *update user		: adwait
+5] registerevent (payment) (get tickets after registering on email) ===
+6] show all event (payment history)===
+7] create feedback ===
+8] forget password (emails OTP) ===
+9] 
+
+
+
+
+
+
+
+-------------------------------------------------------------------------
+		admin
+1] *show all events		: done
+1.1] active/inactive event
+
+
+2] *show all user/organizers	: done
+
+pending--- sponser ///
+3] show feedbacks	: done  ///
+
+4] paymnet history
+
+
+6] *sign in only		: done
+7] *delete user 		: akash awalkar
+8] *delete organizer 	: akash awalkar
+
+
+
+
+		test
+1] sponser
+2] feedback 
+3] category
+
+
+
+
+
+
+
+
+
+
+
