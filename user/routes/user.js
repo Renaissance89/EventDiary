@@ -62,7 +62,7 @@ router.get('/forgot-password/:email', (request, response) => {
 // ---------------------------------------
 
 router.post('/signup', (request, response) => {
-  const {firstName, lastName, email, password} = request.body
+  const {firstName, lastName, email,role, password} = request.body
   
   const activationToken = uuid.v4()
   const activationLink = `http://localhost:4000/user/activate/${activationToken}`
@@ -72,12 +72,12 @@ router.post('/signup', (request, response) => {
   body = body.replace('firstName', firstName)
   body = body.replace('activationLink', activationLink)
 
-  const statement = `insert into user (firstName, lastName, email, password, activationToken) values (
-    '${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}', '${activationToken}'
+  const statement = `insert into user (firstName, lastName, email, password,role, activationToken) values (
+    '${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}','${role}', '${activationToken}'
   )`
   db.query(statement, (error, data) => {
 
-    mailer.sendEmail(email, 'Welcome to mystore', body,  (error, info) => {
+    mailer.sendEmail(email, 'Welcome to Eventdiary', body,  (error, info) => {
       console.log(error)
       console.log(info)
       response.send(utils.createResult(error, data))
