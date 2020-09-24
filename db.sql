@@ -33,8 +33,8 @@ CREATE TABLE user
 
 INSERT INTO user 
 (firstName, lastName, email, password, phone, city, state, gender, role) values
-('akash', 'awalkar', 'akash@test.com', 'test', 123456789, 'pune', 'maharashtra', 'Male', 'admin'),
-('aditya', 'awalkar', 'aditya@test.com', 'test', 478752462, 'pune', 'maharashtra', 'Male', 'user'),
+('event', 'diary', 'admin@test.com', 'admin', 123456789, 'pune', 'maharashtra', 'Male', 'admin'),
+('akash', 'awalkar', 'akash@test.com', 'test', 614662689, 'pune', 'maharashtra', 'Male', 'user'),
 ('akash', 'waichal', 'akashwaichal@test.com', 'test', 121546545, 'karad', 'maharashtra', 'Male', 'organizer'),
 ('pranjal', 'patil', 'pranjal@test.com', 'test', 564198456, 'kolhapur', 'maharashtra', 'Male', 'organizer'),
 ('adwait', 'patil', 'adwait@test.com', 'test', 614543532, 'sangli', 'maharashtra', 'Male', 'user');
@@ -118,7 +118,7 @@ CREATE TABLE feedback
 );
 
 INSERT INTO feedback (userId, eventId, subject, message) values 
-('5','1','Management', 'It was a great time. very nice show . Nice management');
+('5','1','Management', 'It was a great time. very nice show. Nice management');
 
 ===================================================================================================================================
 
@@ -159,7 +159,7 @@ CREATE TABLE sponser
   CONSTRAINT FK_SPONSER_USER_ID FOREIGN KEY (userId) references user(id)
 )
 INSERT INTO sponser (userId, firstName, lastName, email, phone) values
-('3','nidaan', 'gaddpawar', 'nidaan@test.com', 979166196);
+('3','nidaan', 'gaddpawar', 'nidaan@test.com', 979166196, 'Male');
 
 ===================================================================================================================================
 
