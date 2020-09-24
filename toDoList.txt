@@ -2,49 +2,44 @@
 				organizer
 
 1] * get profile :done
-2] *(signin signup): done (activation link) : waichal ===   
-3] *edit :done
-4] *add event: done
-5] *delete event 	: adwait
-6] *update event		: adwait
-7] *show all event	: pranjal patil
-8] show feedback	: akash awalkar ===
-9] forget password (emails OTP) ===
+2] *(signin signup) (activation link) 
+3] *edit
 10] *delete account(active = 0)
-11] reactivate account (optional) ===
+9] forget password (emails OTP)
+
+4] *add event: done
+5] *delete event (active = 0)	
+6] *update event 	
+7] *show all event	
+
+8] show feedback	
+11] reactivate account (optional) 
 
 -------------------------------------------------------------------------
 				user
 
 1] *get profile :done
-2] *(signin signup): done (activation link)  : waichal===  okkk
-3] *delete user		: adwait
-4] *update user		: adwait
-5] registerevent (payment) (get tickets after registering on email) ===
-6] show all event (payment history)===
-7] create feedback ===
-8] forget password (emails OTP) ===
-9] 
+2] *(signin signup): done (activation link) 
+3] *delete user	
+4] *update user	
+5] registerevent (payment) (get tickets after registering on email) 
+6] show all event (payment history)
+7] create feedback 
+8] forget password (emails OTP) 
 
 -------------------------------------------------------------------------
 
-				admin
+				admin (completed)
 
-1] *show all events		: done
-1.1] active/inactive event( i.e completed make active 0)
-
-2] *show all user/organizers	: done
-2.2] active / inactive user
-2.3] active / inactive organizer
-
-3] show feedbacks		: done  ///
-
-4] paymnet history
-6] *sign in only		: done
-7] *delete user( i.e suspend make active 0)	: akash awalkar
-8] *delete organizer( i.e suspend make active 0): akash awalkar
-
-9] get All sponsers 
+1] show all events					: done		= 1 routes
+2] active / inactive event( i.e completed = active 0)	: done		= 1 routes
+3] show all user/organizers/sponser			: done		= 3 routes
+4] active / inactive user and organizer			: done		= 2 routes
+5] show all feedbacks					: done 		= 1 routes
+6] sign in admin					: done		= 1 routes
+7] show admin profile  					: done		= 1 routes
+8] paymnet history							= 1 routes
+			
 
 
 
