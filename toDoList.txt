@@ -1,5 +1,6 @@
 
-	organizer routes
+				organizer
+
 1] * get profile :done
 2] *(signin signup): done (activation link) : waichal ===   
 3] *edit :done
@@ -12,8 +13,9 @@
 10] *delete account(active = 0)
 11] reactivate account (optional) ===
 
+-------------------------------------------------------------------------
+				user
 
-		user
 1] *get profile :done
 2] *(signin signup): done (activation link)  : waichal===  okkk
 3] *delete user		: adwait
@@ -24,39 +26,25 @@
 8] forget password (emails OTP) ===
 9] 
 
-
-
-
-
-
-
 -------------------------------------------------------------------------
-		admin
-1] *show all events		: done
-1.1] active/inactive event
 
+				admin
+
+1] *show all events		: done
+1.1] active/inactive event( i.e completed make active 0)
 
 2] *show all user/organizers	: done
+2.2] active / inactive user
+2.3] active / inactive organizer
 
-pending--- sponser ///
-3] show feedbacks	: done  ///
+3] show feedbacks		: done  ///
 
 4] paymnet history
-
-
 6] *sign in only		: done
-7] *delete user 		: akash awalkar
-8] *delete organizer 	: akash awalkar
+7] *delete user( i.e suspend make active 0)	: akash awalkar
+8] *delete organizer( i.e suspend make active 0): akash awalkar
 
-
-
-
-		test
-1] sponser
-2] feedback 
-3] category
-
-
+9] get All sponsers 
 
 
 
