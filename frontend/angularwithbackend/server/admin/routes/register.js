@@ -1,1 +1,0 @@
-//show all registerd people

@@ -2,9 +2,9 @@
 
 Total Tables = 7
 
-1] User
-2] Category
-3] Sponser
+1] User      -1
+2] Category  -2
+3] Sponser   -3
 4] Event
 5] Register
 6] Feedback
@@ -76,7 +76,7 @@ CREATE TABLE event (
   CONSTRAINT FK_EVENT_SPONSER_ID FOREIGN KEY (eventSponserId) references sponser(sponserId)
 );
 
-INSERT INTO event (eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId) values 
+INSERT INTO event (eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId, active) values 
 ('Akash ki Comedy','Nice Comedy Event','Rajaram Stadium,Ichalkaranji', 'Ichalkaranji,Maharashtra','2020-09-20', '15:00:00','2:00:00','1', '500', '3', '1', '1');
 
 ===================================================================================================================================
@@ -158,7 +158,7 @@ CREATE TABLE sponser
   createdOn timestamp default current_timestamp,
   CONSTRAINT FK_SPONSER_USER_ID FOREIGN KEY (userId) references user(id)
 )
-INSERT INTO sponser (userId, firstName, lastName, email, phone) values
+INSERT INTO sponser (userId, firstName, lastName, email, phone,gender) values
 ('3','nidaan', 'gaddpawar', 'nidaan@test.com', 979166196, 'Male');
 
 ===================================================================================================================================
