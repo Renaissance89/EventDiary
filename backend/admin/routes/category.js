@@ -4,10 +4,12 @@ const utils = require('../../utils')
 
 const router = express.Router()
 
-// --------------------------------------------------------
-//                            GET
-// --------------------------------------------------------
 
+// ------------------------------------------------------------
+//                            GET
+// ------------------------------------------------------------
+
+// Show All Category
 router.get('/getAllCategory', (request, response) => {
   const statement = `select * from category`
   db.query(statement, (error, data) => {
@@ -15,10 +17,11 @@ router.get('/getAllCategory', (request, response) => {
   })
 })
 
-// --------------------------------------------------------
+// ------------------------------------------------------------
 //                            POST
-// --------------------------------------------------------
+// ------------------------------------------------------------
 
+// Add New Category
 router.post('/addCategory', (request, response) => {
   const { categoryName } = request.body
   const statement = `insert into category (categoryName) values ('${categoryName}')`
@@ -27,26 +30,28 @@ router.post('/addCategory', (request, response) => {
   })
 })
 
-// --------------------------------------------------------
+// ------------------------------------------------------------
 //                            PUT
-// --------------------------------------------------------
+// ------------------------------------------------------------
 
+// Update Category Name
 router.put('/updateCategory/:id', (request, response) => {
   const { id } = request.params
   const { categoryName } = request.body
-  const statement = `update category set categoryName = '${categoryName}' where id = '${id}'`
+  const statement = `update category set categoryName = '${categoryName}' where categoryId = '${id}'`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
 })
 
-// --------------------------------------------------------
+// ------------------------------------------------------------
 //                            DELETE
-// --------------------------------------------------------
+// ------------------------------------------------------------
 
+// Delete Category
 router.delete('/deleteCategory/:id', (request, response) => {
   const { id } = request.params
-  const statement = `delete from category where id = ${id}`
+  const statement = `delete from category where categoryId = ${id}`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
