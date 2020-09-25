@@ -1,19 +1,19 @@
 const express = require('express')
+const crypto = require('crypto-js')
+const jwt = require('jsonwebtoken')
+const uuid = require('uuid')
+const path = require('path')
+const fs = require('fs')
 const db = require('../../db')
 const config = require('../../config')
 const utils = require('../../utils')
-const crypto = require('crypto-js')
 const mailer = require('../../mailer')
-const uuid = require('uuid')
-const fs = require('fs')
-const path = require('path')
-const jwt = require('jsonwebtoken')
 
 const router = express.Router()
 
-// ---------------------------------------
-//                  GET
-// ---------------------------------------
+// ------------------------------------------------------------
+//                            GET
+// ------------------------------------------------------------
 
 router.get('/activate/:token', (request, response) => {
   const {token} = request.params
@@ -28,12 +28,11 @@ router.get('/activate/:token', (request, response) => {
     response.header('Content-Type', 'text/html')
     response.send(body)
   })
-
 })
 
 router.get('/forgot-password/:email', (request, response) => {
   const {email} = request.params
-  const statement = `select id, firstName, lastName from user where email = '${email}'`
+  const statement = `select id, firstName, lastName from user where email = '${email}' and role = 'user'`
   db.query(statement, (error, users) => {
     if (error) {
       response.send(utils.createError(error))
@@ -56,13 +55,12 @@ router.get('/forgot-password/:email', (request, response) => {
   })
 })
 
-
-// ---------------------------------------
-//                  POST
-// ---------------------------------------
+// ------------------------------------------------------------
+//                            POST
+// ------------------------------------------------------------
 
 router.post('/signup', (request, response) => {
-  const {firstName, lastName, email,role, password} = request.body
+  const {firstName, lastName, email, password, phone, city, state, role, gender} = request.body
   
   const activationToken = uuid.v4()
   const activationLink = `http://localhost:4000/user/activate/${activationToken}`
@@ -72,17 +70,15 @@ router.post('/signup', (request, response) => {
   body = body.replace('firstName', firstName)
   body = body.replace('activationLink', activationLink)
 
-  const statement = `insert into user (firstName, lastName, email, password,role, activationToken) values (
-    '${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}','${role}', '${activationToken}'
-  )`
+  const statement = `insert into user (firstName, lastName, email, password, phone, city, state, role, gender) values 
+  ('${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}', '${phone}', '${city}', '${state}', '${role}', 
+  '${gender}', '${activationToken}')`
   db.query(statement, (error, data) => {
-
     mailer.sendEmail(email, 'Welcome to Eventdiary', body,  (error, info) => {
       console.log(error)
       console.log(info)
       response.send(utils.createResult(error, data))
     })
-
   })
 })
 
@@ -106,25 +102,46 @@ router.post('/signin', (request, response) => {
         }))
       } else {
         // user is a suspended user
-        response.send({status: 'error', error: 'your account is not active. please contact administrator'})
+        response.send({status: 'error', error: 'Your account is not active. Please contact administrator'})
       }
     }
   })
 })
 
+// ------------------------------------------------------------
+//                            PUT
+// ------------------------------------------------------------
+
+router.put('/update-info/:id', (request, response) => {
+  const { id } = request.params
+  const {firstName, lastName, email, password, phone, city, state, gender } = request.body
+  const statement = `update user set firstName = '${firstName}', lastName = '${lastName}', 
+          email = '${email}', password = '${password}', phone = '${phone}', city = '${city}', 
+          state = '${state}', gender = '${gender}' where id = ${id} and role = 'user'`
+  db.query(statement, (error, data) => {
+    if(error) {
+      response.send(utils.createResult(error,data))
+    } else {
+      response.send(utils.createResult(error,data))
+    }
+  })
+})
 
 
-// ---------------------------------------
-//                  PUT
-// ---------------------------------------
+// ------------------------------------------------------------
+//                            DELETE
+// ------------------------------------------------------------
 
-
-
-
-// ---------------------------------------
-//                  DELETE
-// ---------------------------------------
-
-
+router.delete('/delete-account/:id', (request, response) => {
+  const { id } = request.params
+  const statement = `update user set active = 0 where id = ${id} and role = 'user'`
+  db.query(statement, (error, data) => {
+    if(error) {
+      response.send(utils.createResult(error,data))
+    } else {
+      response.send(utils.createResult(error,data))
+    }
+  })
+})
 
 module.exports = router
