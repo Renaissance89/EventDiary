@@ -1,10 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken')
-const config = require('./config')
-
-// morgan: for logging
 const morgan = require('morgan')
+const cors = require('cors')
+const config = require('./config')
 
 // swagger: for api documentation
 const swaggerJSDoc = require('swagger-jsdoc')
@@ -13,18 +12,18 @@ const swaggerUi = require('swagger-ui-express')
 // routers
 const userRouter = require('./user/routes/user')
 
-
 const app = express()
+app.use(cors('*'))
 app.use(bodyParser.json())
-app.use(morgan('combined'))
+app.use(morgan('tiny'))
 
 // swagger init
 const swaggerOptions = {
   definition: {
     info: {
-      title: 'Amazon Server (User Front)',
+      title: 'Event Diary (User Front)',
       version: '1.0.0',
-      description: 'This is a Express server for amazon application'
+      description: 'This is a Express server for event diary application'
     }
   },
   apis: ['./user/routes/*.js']
@@ -73,7 +72,7 @@ app.use('/user', userRouter)
 
 // default route
 app.get('/', (request, response) => {
-  response.send('welcome to my application')
+  response.send('Welcome to EventDiary')
 })
 
 app.listen(4000, '0.0.0.0', () => {

@@ -89,7 +89,7 @@ router.post('/signin', (request, response) => {
     if (error) {
       response.send({status: 'error', error: error})
     } else if (users.length == 0) {
-      response.send({status: 'error', error: 'user does not exist'})
+      response.send({status: 'error', error: 'User does not exist'})
     } else {
       const user = users[0]
       if (user['active'] == 1) {
@@ -112,7 +112,7 @@ router.post('/signin', (request, response) => {
 //                            PUT
 // ------------------------------------------------------------
 
-router.put('/update-info/:id', (request, response) => {
+router.put('/update-profile/:id', (request, response) => {
   const { id } = request.params
   const {firstName, lastName, email, password, phone, city, state, gender } = request.body
   const statement = `update user set firstName = '${firstName}', lastName = '${lastName}', 
