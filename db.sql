@@ -157,7 +157,7 @@ CREATE TABLE sponser
   gender varchar(10),
   createdOn timestamp default current_timestamp,
   CONSTRAINT FK_SPONSER_USER_ID FOREIGN KEY (userId) references user(id)
-)
+);
 INSERT INTO sponser (userId, firstName, lastName, email, phone,gender) values
 ('3','nidaan', 'gaddpawar', 'nidaan@test.com', 979166196, 'Male');
 
