@@ -15,7 +15,7 @@ const userRouter = require('./user/routes/user')
 
 // organizer routers  -------------------------
 const organizerRouter = require('./organizer/routes/organizer')
-// const eventRouter = require('./organizer/routes/event')
+const eventRouter = require('./organizer/routes/event')
 
 
 const app = express()
@@ -29,7 +29,7 @@ const swaggerOptions = {
     info: {
       title: 'Event Diary (User Front)',
       version: '1.0.0',
-      description: 'This is a Express server for event diary application'
+      description: 'This is a Express server for Event Diary application'
     }
   },
   apis: ['./user/routes/*.js']
@@ -64,7 +64,7 @@ function getUserId(request, response, next) {
       response.status(401)
       response.send({status: 'error', error: 'protected api'})
     }
-    
+
   }
 }
 
@@ -79,7 +79,7 @@ app.use('/user', userRouter)
 
 // add the organizer routes
 app.use('/organizer', organizerRouter)
-// app.use('/event', eventRouter)
+app.use('/organizer/event', eventRouter)
 
 
 // default route
