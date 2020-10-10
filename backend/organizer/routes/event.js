@@ -29,10 +29,24 @@ router.get('/getAllEvent/:id', (request, response) => {
 router.post('/addEvent', (request, response) => {
   const { eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId } = request.body
 
-  const statement = `insert into event ( eventName,eventDescription, eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId ) values 
-  ( '${eventName}', '${eventDescription}', '${eventVenue}', '${eventLocation}', '${eventDate}', '${eventTime}', '${eventDuration}', '${eventCategoryId}', '${eventFee}', '${eventOrganizerId}', '${eventSponserId}')`
+  const statement = 
+DELIMITER //
+	 CREATE PROCEDURE insert_into_twoTables(eventName,eventDescription, eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage,firstName,lastName,phone,gender)
 
-  db.query(statement, (error, event) => {
+BEGIN
+   INSERT INTO event (eventName,eventDescription,          eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage ) values 
+  ( eventName,eventDescription,eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage );
+
+INSERT INTO sponser (firstName, lastName,phone,gender) values
+(firstName, lastName,phone,gender);
+
+END 
+//
+
+CALL insert_into_twoTables(
+'${eventName}', '${eventDescription}', '${eventVenue}', '${eventLocation}', '${eventDate}', '${eventTime}', '${eventDuration}', '${eventCategoryId}', '${eventFee}', '${eventOrganizerId}', '${eventSponserId}','${eventImage}''${firstName}','${lastName}','${phone}','${gender}')
+
+ db.query(statement, (error, event) => {
     if (error) {
       response.send({status: 'error', error: error})
     } else {
