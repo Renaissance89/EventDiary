@@ -38,7 +38,7 @@ router.get('/getAllEvent', (request, response) => {
 router.put('/toggle-active/:id', (request, response) => {
   const { id } = request.params
   const { status } = request.body
-  const statement = `update event set active = '${status}' where eventId = '${id}'`
+  const statement = `update event set Active = '${status}' where eventId = ${id}`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
