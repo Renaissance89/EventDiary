@@ -60,9 +60,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Organizer",
@@ -120,9 +118,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Category",
@@ -179,7 +175,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"categoryName\" : \"Political\"\n}",
+									"raw": "{\n    \"categoryName\" : \"Social\",\n    \"categoryDescription\" : \"Blood Donation, Swacchata Abhiyan, Food Donation\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -219,9 +215,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Event",
@@ -272,9 +266,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Admin",
@@ -336,9 +328,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Feedback",
@@ -361,16 +351,119 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
+				},
+				{
+					"name": "Sponser",
+					"item": [
+						{
+							"name": "get All Sponsers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/sponser/getAllSponser",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sponser",
+										"getAllSponser"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DashBoard",
+					"item": [
+						{
+							"name": "Get User Count",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/dashboard/getUserCount",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"getUserCount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Organizer Count",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dashboard/getOrganizerCount",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"getOrganizerCount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Sponser Count",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dashboard/getSponserCount",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"getSponserCount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Active Event Count ",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dashboard/getActiveEventCount",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"getActiveEventCount"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			],
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0fc8b609-c386-4190-93a4-8e4e2155cfcc",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -380,15 +473,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8fc4df6c-8a01-43c3-99f4-ba38b15f97d4",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "user",
@@ -539,8 +630,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "organizer",
@@ -549,32 +639,38 @@
 					"name": "Get Organizer Profile",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:4000/organizer_user/org/getOrganizerbyId/6",
+							"raw": "http://localhost:4000/organizer/profile/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"organizer_user",
-								"org",
-								"getOrganizerbyId",
-								"6"
+								"organizer",
+								"profile",
+								"10"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "signin Organizer",
+					"name": "Signin Organizer",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"raj@com\",\n    \"password\":\"test\"\n}",
+							"raw": "{\n    \"email\":\"prasad@test.com\",\n    \"password\":\"test\",\n    \"role\" : \"organizer\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -582,15 +678,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/organizer_user/org/signin",
+							"raw": "http://localhost:4000/organizer/signin",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"organizer_user",
-								"org",
+								"organizer",
 								"signin"
 							]
 						}
@@ -598,13 +693,13 @@
 					"response": []
 				},
 				{
-					"name": " signup organiser",
+					"name": "Signup Organiser",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\n{\n    \"firstName\":\"raj\",\n    \"lastName\":\"jadhav\",\n    \"email\":\"raj@com\",\n    \"password\":\"test\",\n    \"phone\":\"856312453\",\n    \"city\":\"nagpur\",\n    \"state\":\"maharashtra\",\n    \"gender\":\"male\",\n    \"role\":\"organizer\"\n}",
+							"raw": "\n{\n    \"firstName\":\"prasad\",\n    \"lastName\":\"patil\",\n    \"email\":\"prasad@test.com\",\n    \"password\":\"test\",\n    \"phone\":\"856312453\",\n    \"city\":\"ichalkaranji\",\n    \"state\":\"maharashtra\",\n    \"gender\":\"male\",\n    \"role\":\"organizer\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -612,15 +707,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/organizer_user/org/signup",
+							"raw": "http://localhost:4000/organizer/signup",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"organizer_user",
-								"org",
+								"organizer",
 								"signup"
 							]
 						}
@@ -628,10 +722,17 @@
 					"response": []
 				},
 				{
-					"name": "Edit Organiser",
+					"name": "Edit/Update Organiser",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"firstName\":\"raj\",\n    \"lastName\":\"jadhav\",\n    \"email\":\"raj@com\",\n    \"password\":\"test\",\n    \"phone\":\"875241000\",\n    \"city\":\"nagpur\",\n    \"state\":\"maharashtra\",\n    \"gender\":\"male\",\n    \"role\":\"organizer\"\n}",
@@ -642,17 +743,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/organizer_user/org/editOrganizer/6",
+							"raw": "http://localhost:4000/organizer/updateProfile/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"organizer_user",
-								"org",
-								"editOrganizer",
-								"6"
+								"organizer",
+								"updateProfile",
+								"10"
 							]
 						}
 					},
@@ -662,10 +762,17 @@
 					"name": "Add event",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"eventName\":  \"Jumbo circus\" ,\n    \"eventDescription\": \"famous circus\" ,\n   \"eventVenue\": \"shahu maidan\" ,\n   \"eventLocation\":\"kolhapur\",\n    \"eventTime\":\"11:00:00\",\n   \"eventDate\":\"2021-01-17\",\n   \"eventDuration\":\"2:00:00\",\n   \"eventCategoryId\":\"1\",\n   \"eventFee\":\"200\",\n   \"eventOrganizerId\":\"6\"\n}\n\n\n\n",
+							"raw": "{\n    \"eventName\": \"Russian circus\" ,\n    \"eventDescription\": \"Nice circus\" ,\n    \"eventVenue\": \"Namdev maidan\" ,\n    \"eventLocation\":\"Ichalkaranji\",\n    \"eventTime\":\"11:00:00\",\n    \"eventDate\":\"2021-01-17\",\n    \"eventDuration\":\"2:00:00\",\n    \"eventCategoryId\":\"1\",\n    \"eventFee\":\"200\",\n    \"eventOrganizerId\":\"4\",\n    \"eventSponserId\":\"1\"\n}\n\n\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -673,15 +780,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/organizer_user/org/addEvent",
+							"raw": "http://localhost:4000/organizer/event/addEvent",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"organizer_user",
-								"org",
+								"organizer",
+								"event",
 								"addEvent"
 							]
 						}
@@ -689,26 +796,32 @@
 					"response": []
 				},
 				{
-					"name": "delete event",
+					"name": "Delete Organizer",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:4000/organizer_user/org/deleteEvent/2",
+							"raw": "http://localhost:4000/organizer/deleteAccount/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"organizer_user",
-								"org",
-								"deleteEvent",
-								"2"
+								"organizer",
+								"deleteAccount",
+								"10"
 							]
 						}
 					},
@@ -729,9 +842,56 @@
 					"name": "showAllevent",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:4000/organizer/event/getAllEvent/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer",
+								"event",
+								"getAllEvent",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwMTc4ODkwN30.uv3NMIW4ImkbFNUpYMx74jVDRJPfGRow4vsiQrZJaFU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/organizer/event/deleteEvent/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"organizer",
+								"event",
+								"deleteEvent",
+								"2"
+							]
 						}
 					},
 					"response": []
@@ -741,7 +901,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "93e452e2-6007-4245-852f-4a2aa4fe7e7e",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -751,22 +910,19 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c8a74bf8-c525-4cd9-9379-27461e3306ea",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "1fa04b0e-508b-4644-a8a1-5a9dc9099553",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -776,7 +932,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "2f4e746c-7b13-4ba0-b285-dc60cba6d263",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -786,15 +941,12 @@
 	],
 	"variable": [
 		{
-			"id": "e7f6d457-e553-482d-9ac3-7fd8c0031b1f",
 			"key": "url",
 			"value": "http://localhost:3000"
 		},
 		{
-			"id": "42a80cba-92f2-41e1-b9ce-f328dae7136b",
 			"key": "token",
 			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAwOTQ0MDUwfQ.yNZEJaOcbad12p5t93b85Jga4kB9rAl8VsPN40ku6_s"
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
