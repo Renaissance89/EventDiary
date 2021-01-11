@@ -26,34 +26,34 @@ router.get('/getAllEvent/:id', (request, response) => {
 //                            POST
 // ------------------------------------------------------------
 
-router.post('/addEvent', (request, response) => {
-  const { eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId } = request.body
+// router.post('/addEvent', (request, response) => {
+//   const { eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId } = request.body
 
-  const statement = 
-DELIMITER //
-	 CREATE PROCEDURE insert_into_twoTables(eventName,eventDescription, eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage,firstName,lastName,phone,gender)
+//   const statement = 
+// DELIMITER //
+// 	 CREATE PROCEDURE insert_into_twoTables(eventName,eventDescription, eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage,firstName,lastName,phone,gender)
 
-BEGIN
-   INSERT INTO event (eventName,eventDescription,          eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage ) values 
-  ( eventName,eventDescription,eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage );
+// BEGIN
+//    INSERT INTO event (eventName,eventDescription,          eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage ) values 
+//   ( eventName,eventDescription,eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage );
 
-INSERT INTO sponser (firstName, lastName,phone,gender) values
-(firstName, lastName,phone,gender);
+// INSERT INTO sponser (firstName, lastName,phone,gender) values
+// (firstName, lastName,phone,gender);
 
-END 
-//
+// END 
+// //
 
-CALL insert_into_twoTables(
-'${eventName}', '${eventDescription}', '${eventVenue}', '${eventLocation}', '${eventDate}', '${eventTime}', '${eventDuration}', '${eventCategoryId}', '${eventFee}', '${eventOrganizerId}', '${eventSponserId}','${eventImage}''${firstName}','${lastName}','${phone}','${gender}')
+// CALL insert_into_twoTables(
+// '${eventName}', '${eventDescription}', '${eventVenue}', '${eventLocation}', '${eventDate}', '${eventTime}', '${eventDuration}', '${eventCategoryId}', '${eventFee}', '${eventOrganizerId}', '${eventSponserId}','${eventImage}''${firstName}','${lastName}','${phone}','${gender}')
 
- db.query(statement, (error, event) => {
-    if (error) {
-      response.send({status: 'error', error: error})
-    } else {
-      response.send(utils.createResult(error, event))
-    }
-  })
-})
+//  db.query(statement, (error, event) => {
+//     if (error) {
+//       response.send({status: 'error', error: error})
+//     } else {
+//       response.send(utils.createResult(error, event))
+//     }
+//   })
+// })
 
 // ------------------------------------------------------------
 //                            PUT
