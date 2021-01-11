@@ -37,8 +37,9 @@ router.post('/addCategory', (request, response) => {
 // Update Category Name
 router.put('/updateCategory/:id', (request, response) => {
   const { id } = request.params
-  const { categoryName } = request.body
-  const statement = `update category set categoryName = '${categoryName}' where categoryId = '${id}'`
+  const { categoryName, categoryDescription } = request.body
+  const statement = `update category set categoryName = '${categoryName}', 
+                    categoryDescription = '${categoryDescription}' where categoryId = '${id}'`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
