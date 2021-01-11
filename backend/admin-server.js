@@ -11,8 +11,9 @@ const routerUser = require('./admin/routes/user')
 const routerOrganizer = require('./admin/routes/organizer')
 const routerCategory = require('./admin/routes/category')
 const routerEvent = require('./admin/routes/event')
-const routerFeedback= require('./admin/routes/feedback')
-const routerSponser= require('./admin/routes/sponser')
+const routerFeedback = require('./admin/routes/feedback')
+const routerSponser = require('./admin/routes/sponser')
+const routerDashboard = require('./admin/routes/dashboard')
 
 const app = express()
 app.use(cors('*'))
@@ -27,6 +28,7 @@ app.use('/category', routerCategory)
 app.use('/event', routerEvent)
 app.use('/feedback', routerFeedback)
 app.use('/sponser', routerSponser)
+app.use('/dashboard', routerDashboard)
 
 // default route
 app.get('/', (request, response) => {

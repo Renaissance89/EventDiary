@@ -10,8 +10,8 @@ const router = express.Router()
 
 // Show all User Only
 router.get('/getAllUser', (request, response) => {
-  const statement = `select id, firstName,lastName, email, phone, city, state, gender, role, active 
-            from user where role = "user" `
+  const statement = `select id, firstName,lastName, email, phone, city, state, gender, role,
+                    active from user where role = "user" `
   db.query(statement, (error, users) => {
     if (error) {
       response.send({status: 'error', error: error})
