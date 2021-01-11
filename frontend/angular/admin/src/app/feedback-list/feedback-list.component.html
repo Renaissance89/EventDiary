@@ -1,0 +1,37 @@
+
+
+<div class="card">
+    <div class="card-header ">
+        <h3>List of Feedbacks</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr.no</th>
+                    <th>FeedbackId</th>
+                    <th>User_FirstName</th>
+                    <th>User_LastName</th>
+                    <th>Event_name</th>
+                    <th>Venue</th>
+                    <th>Venue</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr *ngFor="let feedback of feedbacks; let i= index ">
+                    <td>{{i+1}}</td>
+                    <td>{{feedback['feedbackId']}}</td>
+                    <td>{{feedback['User_FirstName']}}</td>
+                    <td>{{feedback['User_LastName']}}</td>
+                    <td>{{feedback['Event_name']}}</td>
+                    <td>{{feedback['Venue']}}</td>
+                    <td>{{feedback['Subject']}}</td>
+                    <td>{{feedback['Feedback']}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
