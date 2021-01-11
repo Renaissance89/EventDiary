@@ -44,7 +44,7 @@ CREATE TABLE user
 
 INSERT INTO user 
 (firstName, lastName, email, password, phone, city, state, gender, role, active) values
-('Event', 'Diary', 'admin@test.com', 'admin', 123456789, 'pune', 'maharashtra', 'Male', 'admin', '0'),
+('Event', 'Diary', 'admin', 'admin', 123456789, 'pune', 'maharashtra', 'Male', 'admin', '1'),
 ('akash', 'awalkar', 'akash@test.com', 'test', 614662689, 'pune', 'maharashtra', 'Male', 'user', '0'),
 ('akash', 'waichal', 'akashwaichal@test.com', 'test', 121546545, 'karad', 'maharashtra', 'Male', 'organizer', '0'),
 ('pranjal', 'patil', 'pranjal@test.com', 'test', 564198456, 'kolhapur', 'maharashtra', 'Male', 'organizer', '0'),
@@ -127,8 +127,8 @@ CREATE TABLE register (
   paymentStatus integer DEFAULT 0,
   registeredOn timestamp DEFAULT current_timestamp,
   CONSTRAINT FK_REGISTER_USER_ID FOREIGN KEY (userId) references user(userId) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT FK_REGISTER_EVENT_ID FOREIGN KEY (eventId) references event(eventId)
-) ON DELETE CASCADE ON UPDATE CASCADE;
+  CONSTRAINT FK_REGISTER_EVENT_ID FOREIGN KEY (eventId) references event(eventId) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 INSERT INTO register (userId, eventId, quantity, paymentType, paymentAmount, paymentStatus) values 
 ('5','1','1', 'Credit Card','500', '1');
@@ -150,8 +150,8 @@ CREATE TABLE feedback
   message varchar(5000),
   createdOn timestamp default current_timestamp,
   CONSTRAINT FK_FEEDBACK_USER_ID FOREIGN KEY (userId) references user(userId) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT FK_FEEDBACK_EVENT_ID FOREIGN KEY (eventId) references event(eventId)
-) ON DELETE CASCADE ON UPDATE CASCADE;
+  CONSTRAINT FK_FEEDBACK_EVENT_ID FOREIGN KEY (eventId) references event(eventId) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 INSERT INTO feedback (userId, eventId, subject, message) values 
 ('5','1','Management', 'It was a great time. very nice show. Nice management'),
