@@ -16,7 +16,7 @@ const userRouter = require('./user/routes/user')
 // organizer routers  -------------------------
 const organizerRouter = require('./organizer/routes/organizer')
 const eventRouter = require('./organizer/routes/event')
-
+const dashboardRouter = require('./organizer/routes/dashboard')
 
 const app = express()
 app.use(cors('*'))
@@ -80,7 +80,7 @@ app.use('/user', userRouter)
 // add the organizer routes
 app.use('/organizer', organizerRouter)
 app.use('/organizer/event', eventRouter)
-
+app.use('/organizer/dashboard', dashboardRouter)
 
 // default route
 app.get('/', (request, response) => {

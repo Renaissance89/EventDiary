@@ -6,7 +6,6 @@ const db = require('../../db')
 const utils = require('../../utils')
 const config = require('../../config')
 
-
 const router = express.Router()
 
 // ------------------------------------------------------------
@@ -15,14 +14,13 @@ const router = express.Router()
 
 router.get('/profile/:id', (request, response) => {
   const { id } = request.params
-
-  const statement = `select firstName, lastName, email, phone, city, state, gender from user where id = '${id}' and role = "organizer" `
-
+  const statement = `select firstName, lastName, email, phone, city, state, gender from user 
+                    where userId = '${id}' and role = "organizer" `
   db.query(statement, (error, organizer) => {
     if (error) {
       response.send({status: 'error', error: error})
     } else {
-        response.send(utils.createResult(error, organizer))
+      response.send(utils.createResult(error, organizer))
     }
   })
 })
@@ -36,8 +34,10 @@ router.post('/signup', (request, response) => {
   
   const activationToken = uuid.v4()
   
-  const statement = `insert into user (firstName, lastName, email, password, phone, city, state, gender, role, activationToken) values 
-  ('${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}','${phone}', '${city}', '${state}', '${gender}', '${role}','${activationToken}')`
+  const statement = `insert into user (firstName, lastName, email, password, phone, city, state, 
+              gender, role, activationToken) values ('${firstName}', '${lastName}', '${email}', 
+              '${crypto.SHA256(password)}','${phone}', '${city}', '${state}', '${gender}', '${role}',
+              '${activationToken}')`
 
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
@@ -48,7 +48,8 @@ router.post('/signup', (request, response) => {
 router.post('/signin', (request, response) => {
   const { email, password, role } = request.body
 
-  const statement = `select id, firstName, lastName, email, role from user where email = '${email}' and password = '${crypto.SHA256(password)}' and role = '${role}';`
+  const statement = `select userId, firstName, lastName, email, role from user where email = '${email}' 
+                  and password = '${crypto.SHA256(password)}' and role = '${role}';`
 
   db.query(statement, (error, organizers) => {
     if(error) {
@@ -81,9 +82,9 @@ router.post('/signin', (request, response) => {
 router.put('/updateProfile/:id', (request, response) => {
   const { id } = request.params
   const { firstName, lastName , email, password, phone } = request.body
-
-  const statement = `update user set firstName = '${firstName}', lastName = '${lastName}', email = '${email}', 
-        password = '${crypto.SHA256(password)}', phone = '${phone}' where id = '${id}' and role = "organizer"`
+  const statement = `update user set firstName = '${firstName}', lastName = '${lastName}', 
+        email = '${email}', password = '${crypto.SHA256(password)}', phone = '${phone}' 
+        where userId = '${id}' and role = "organizer"`
 
   db.query(statement, (error, organizer) => {
     if (error) {
@@ -100,9 +101,7 @@ router.put('/updateProfile/:id', (request, response) => {
 
 router.delete('/deleteAccount/:id', (request, response) => {
   const { id } = request.params
-
-  const statement = `update user set active = 0 where id = '${id}' and role = "organizer"`
-
+  const statement = `update user set active = 0 where userId = '${id}' and role = "organizer"`
   db.query(statement, (error, organizer) => {
     if (error) {
       response.send({status: 'error', error: error})

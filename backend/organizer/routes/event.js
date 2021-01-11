@@ -11,7 +11,9 @@ const router = express.Router()
 router.get('/getAllEvent/:id', (request, response) => {
   const { id } = request.params
 
-  const statement = `select eventName,eventDescription, eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId from event where eventOrganizerId = '${id}'` 
+  const statement = `select eventName, eventDescription, eventVenue, eventLocation, eventDate, 
+            eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId 
+            from event where eventOrganizerId = '${id}'` 
 
   db.query(statement, (error, event) => {
     if (error) {
@@ -27,24 +29,30 @@ router.get('/getAllEvent/:id', (request, response) => {
 // ------------------------------------------------------------
 
 // router.post('/addEvent', (request, response) => {
-//   const { eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId } = request.body
+//   const { eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, 
+//     eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId } = request.body
 
 //   const statement = 
-// DELIMITER //
-// 	 CREATE PROCEDURE insert_into_twoTables(eventName,eventDescription, eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage,firstName,lastName,phone,gender)
+// DELIMITER $$
+//    CREATE PROCEDURE sp_add_event(eventName, eventDescription, eventVenue, eventLocation, eventDate,
+//               eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,
+//               eventImage, firstName, lastName, email, phone, gender)
 
 // BEGIN
-//    INSERT INTO event (eventName,eventDescription,          eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage ) values 
-//   ( eventName,eventDescription,eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId,eventImage );
 
-// INSERT INTO sponser (firstName, lastName,phone,gender) values
-// (firstName, lastName,phone,gender);
+//     INSERT INTO event (eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId, eventImage) values 
+//     (eventName,eventDescription,eventVenue,eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId, eventImage );
+
+//     INSERT INTO sponser (firstName, lastName, email, phone, gender) values (firstName, lastName, email, phone, gender);
 
 // END 
-// //
 
-// CALL insert_into_twoTables(
-// '${eventName}', '${eventDescription}', '${eventVenue}', '${eventLocation}', '${eventDate}', '${eventTime}', '${eventDuration}', '${eventCategoryId}', '${eventFee}', '${eventOrganizerId}', '${eventSponserId}','${eventImage}''${firstName}','${lastName}','${phone}','${gender}')
+// DELIMITER ;
+
+// CALL sp_add_event('${eventName}', '${eventDescription}', '${eventVenue}', '${eventLocation}', 
+//                   '${eventDate}', '${eventTime}', '${eventDuration}', '${eventCategoryId}', 
+//                   '${eventFee}', '${eventOrganizerId}', '${eventSponserId}','${eventImage}', 
+//                   '${firstName}','${lastName}', '${email}' , '${phone}','${gender}');
 
 //  db.query(statement, (error, event) => {
 //     if (error) {
@@ -63,10 +71,11 @@ router.put('/updateEvent/:id', (request, response) => {
   const { id } = request.params
   const { eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId } = request.body
 
-  const statement = `update event set eventName = '${eventName}', eventDescription = '${eventDescription}', eventVenue = '${eventVenue}',
-          eventLocation = '${eventLocation}', eventDate = '${eventDate}', eventTime = '${eventTime}', eventDuration = '${eventDuration}', 
-          eventCategoryId = '${eventCategoryId}', eventFee = '${eventFee}', eventOrganizerId = '${eventOrganizerId}', eventSponserId = '${eventSponserId}' 
-          where eventId = '${id}'`
+  const statement = `update event set eventName = '${eventName}', eventDescription = '${eventDescription}', 
+    eventVenue = '${eventVenue}', eventLocation = '${eventLocation}', eventDate = '${eventDate}', 
+    eventTime = '${eventTime}', eventDuration = '${eventDuration}', eventCategoryId = '${eventCategoryId}', 
+    eventFee = '${eventFee}', eventOrganizerId = '${eventOrganizerId}', eventSponserId = '${eventSponserId}' 
+    where eventId = '${id}'`
 
   db.query(statement, (error, event) => {
     if (error) {
@@ -94,5 +103,6 @@ router.delete('/deleteEvent/:id', (request, response) => {
     }
   })
 })
+
 
 module.exports = router
