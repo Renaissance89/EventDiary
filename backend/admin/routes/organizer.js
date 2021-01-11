@@ -10,7 +10,7 @@ const router = express.Router()
 
 // Show all Organizer's Only
 router.get('/getAllOrganizer', (request, response) => {
-  const statement = `select id, firstName,lastName, email, phone, city, state, gender, role, 
+  const statement = `select userId, firstName,lastName, email, phone, city, state, gender, role, 
                     active from user where role = "organizer" `
   db.query(statement, (error, users) => {
     if (error) {
@@ -34,7 +34,7 @@ router.get('/getAllOrganizer', (request, response) => {
 router.put('/toggle-active/:id', (request, response) => {
   const { id } = request.params
   const { status } = request.body
-  const statement = `update user set active = ${status} where id = ${id} and role = 'organizer'`
+  const statement = `update user set active = ${status} where userId = ${id} and role = 'organizer'`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })

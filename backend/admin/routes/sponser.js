@@ -12,7 +12,7 @@ const router = express.Router()
 router.get('/getAllSponser', (request, response) => {
   const statement = `select s.sponserId, s.firstName, s.lastName, s.email, s.phone, s.gender, 
             u.firstName as Organizer_FirstName, u.lastName as Organizer_LastName from sponser s
-            INNER JOIN user u ON s.userId = u.id`
+            INNER JOIN user u ON s.userId = u.userId`
   db.query(statement, (error, users) => {
     if (error) {
       response.send({status: 'error', error: error})

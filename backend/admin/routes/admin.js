@@ -32,7 +32,7 @@ router.get('/profile', (request, response) => {
 
 router.post('/signin', (request, response) => {
   const { email, password } = request.body
-  const statement = `select id, firstName, lastName, email, role from user where email = '${email}' and password = '${password}';`
+  const statement = `select userId, firstName, lastName, email, role from user where email = '${email}' and password = '${password}';`
   db.query(statement, (error, admins) => {
     if(error) {
       response.send({status: 'error', error: error})

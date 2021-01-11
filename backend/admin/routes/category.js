@@ -23,8 +23,9 @@ router.get('/getAllCategory', (request, response) => {
 
 // Add New Category
 router.post('/addCategory', (request, response) => {
-  const { categoryName } = request.body
-  const statement = `insert into category (categoryName) values ('${categoryName}')`
+  const { categoryName, categoryDescription } = request.body
+  const statement = `insert into category (categoryName,categoryDescription) 
+                    values ('${categoryName}', '${categoryDescription}')`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
