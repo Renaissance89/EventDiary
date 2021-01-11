@@ -10,7 +10,7 @@ const router = express.Router()
 
 //show all user's count
 router.get('/getUserCount', (request, response) => {
-  const statement = `select count(usertId) as User_Count from user where role = "user"`
+  const statement = `select count(userId) as User_Count from user where role = "user"`
   db.query(statement, (error, data) => {
     if (error) {
       response.send({status: 'error', error: error})
@@ -22,7 +22,7 @@ router.get('/getUserCount', (request, response) => {
 
 //show all organizer's count
 router.get('/getOrganizerCount', (request, response) => {
-  const statement = `select count(usertId) as Organizer_Count from user where role = "organizer"`
+  const statement = `select count(userId) as Organizer_Count from user where role = "organizer"`
   db.query(statement, (error, data) => {
     if (error) {
       response.send({status: 'error', error: error})

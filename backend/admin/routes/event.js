@@ -16,7 +16,7 @@ router.get('/getAllEvent', (request, response) => {
       u.firstName as Organizer_FirstName, u.lastName as Organizer_LastName, u.phone as OrganizerPhone, 
       s.firstName as Event_Sponser_FirstName, s.lastName as Event_Sponser_LastName, s.phone as SponserPhone, 
       e.eventFee as Registration_Fee, e.active as Active FROM event e
-      INNER JOIN user u ON e.eventOrganizerId = u.id
+      INNER JOIN user u ON e.eventOrganizerId = u.UserId
       INNER JOIN sponser s ON e.eventSponserId = s.sponserId
       INNER JOIN category c ON e.eventCategoryId = c.categoryId`
   db.query(statement, (error, data) => {
