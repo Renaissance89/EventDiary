@@ -6,10 +6,10 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Sr.no</th>
+                    <th>No</th>
                     <th>Id</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>City</th>
@@ -20,7 +20,7 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-        
+
             <tbody>
                 <tr *ngFor="let user of users; let i= index ">
                     <td>{{i+1}}</td>
@@ -35,17 +35,13 @@
                     <td>{{user['role']}}</td>
                     <td>{{user['active']}}</td>
                     <td>
-                        
-                        <button 
-                        (click)="toggleActive(user)"
-                        [class.btn-success]="user['active']!=1"
-                        [class.btn-danger]="user['active']==1"
-                        class="btn btn-sm">{{user['active']==1?'Suspend':'Activate'}}</button>
-                     
+                        <button (click)="toggleActive(user)"
+                            [class.btn-success]="user['active']!=1"
+                            [class.btn-danger]="user['active']==1"
+                            class="btn btn-sm">{{user['active']==1?'Suspend':'Activate'}}</button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-
 </div>

@@ -35,17 +35,13 @@
                     <td>{{organizer['role']}}</td>
                     <td>{{organizer['active']}}</td>
                     <td>
-                        
-                        <button 
-                        (click)="toggleActive(organizer)"
-                        [class.btn-success]="organizer['active']!=1"
-                        [class.btn-danger]="organizer['active']==1"
-                        class="btn btn-sm">{{organizer['active']==1?'Suspend':'Activate'}}</button>
-                     
+                        <button (click)="toggleActive(organizer)"
+                            [class.btn-success]="organizer['active']!=1"
+                            [class.btn-danger]="organizer['active']==1"
+                            class="btn btn-sm">{{organizer['active']==1?'Suspend':'Activate'}}</button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-
 </div>

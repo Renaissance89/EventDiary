@@ -1,55 +1,51 @@
+<h3>List of events</h3>
+<div>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>E_Id</th>
+                <th>E_Name</th>
+                <th>Description</th>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Category</th>
+                <th>O_Name</th>
+                <th>O_Phone</th>
+                <th>S_Name</th>
+                <th>S_Phone</th>
+                <th>Fee</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
-        <h3>List of events</h3>
-   <div>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Sr.no</th>
-                    <th>Event_Id</th>
-                    <th>Event_Name</th>
-                    <th>Description</th>
-                    <th>Venue</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Duration</th>
-                    <th>Category</th>
-                    <th>OName</th>
-                    <th>OrganizerPhone</th>
-                    <th>EName</th>
-                    <th>SponserPhone</th>
-                    <th>Registration_Fee</th>
-                    <th>Active</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-        
-            <tbody>
-                <tr *ngFor="let event of events; let i= index ">
-                    <td>{{i+1}}</td>
-                    <td>{{event['eventId']}}</td>
-                    <td>{{event['Event_Name']}}</td>
-                    <td>{{event['Description']}}</td>
-                    <td>{{event['Venue']}} {{event['Location']}}</td>
-                    <td>{{event['Date']}}</td>
-                    <td>{{event['Time']}}</td>
-                    <td>{{event['Duration']}}</td>
-                    <td>{{event['Category']}}</td>
-                    <td>{{event['Organizer_FirstName']}} {{event['Organizer_LastName']}}</td>
-                    <td>{{event['OrganizerPhone']}}</td>
-                    <td>{{event['Event_Sponser_FirstName']}} {{event['Event_Sponser_LastName']}}</td>
-                    <td>{{event['SponserPhone']}}</td>
-                    <td>{{event['Registration_Fee']}}</td>
-                    <td>{{event['active']}}</td>
-                    <td>
-                        
-                        <button 
-                        (click)="toggleActive(event)"
+        <tbody>
+            <tr *ngFor="let event of events; let i= index ">
+                <td>{{i+1}}</td>
+                <td>{{event['eventId']}}</td>
+                <td>{{event['Event_Name']}}</td>
+                <td>{{event['Description']}}</td>
+                <td>{{event['Venue']}} {{event['Location']}}</td>
+                <td>{{event['Date']}}</td>
+                <td>{{event['Time']}}</td>
+                <td>{{event['Duration']}}</td>
+                <td>{{event['Category']}}</td>
+                <td>{{event['Organizer_FirstName']}} {{event['Organizer_LastName']}}</td>
+                <td>{{event['OrganizerPhone']}}</td>
+                <td>{{event['Event_Sponser_FirstName']}} {{event['Event_Sponser_LastName']}}</td>
+                <td>{{event['SponserPhone']}}</td>
+                <td>{{event['Registration_Fee']}}</td>
+                <td>{{event['active']}}</td>
+                <td>
+                    <button (click)="toggleActive(event)"
                         [class.btn-success]="event['active']!=1"
                         [class.btn-danger]="event['active']==1"
                         class="btn btn-sm">{{event['active']==1?'Suspend':'Activate'}}</button>
-                     
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

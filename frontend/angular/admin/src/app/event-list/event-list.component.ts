@@ -40,7 +40,7 @@ export class EventListComponent implements OnInit {
       {
         if(response['status']=='success')
         {
-          this.loadevents
+          this.loadevents()
         }
         else{
           console.log(response['error'])

@@ -1,19 +1,19 @@
 <nav style="margin-top: 10px;" class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Admin-Panel</a>
+  <a class="navbar-brand" href="/dashboard">Event Diary</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active"><a routerLink="/dashboard" class="nav-link" >Dashboard</a></li>
-      <li class="nav-item active"><a routerLink="/user-list" class="nav-link" >User</a></li>
-      <li class="nav-item active"><a routerLink="/organizer-list" class="nav-link" >Organizer</a></li>
-      <li class="nav-item active"><a routerLink="/sponser-list" class="nav-link" >Sponser</a></li>
-      <li class="nav-item active"><a routerLink="/event-list" class="nav-link" >Event</a></li>
-      <li class="nav-item active"><a routerLink="/event-category" class="nav-link" >EventCategory</a></li>
-      <li class="nav-item active"><a routerLink="/feedback-list" class="nav-link" >Feedback</a></li>
-      <li (click)="onLogout()" class="nav-item active "><a routerLink='/login'  class="nav-link" >Logout</a></li>
-      </ul>
+      <li class="nav-item"><a routerLink="/dashboard" class="nav-link">Dashboard</a></li>
+      <li class="nav-item"><a routerLink="/user-list" class="nav-link">User</a></li>
+      <li class="nav-item"><a routerLink="/organizer-list" class="nav-link">Organizer</a></li>
+      <li class="nav-item"><a routerLink="/sponser-list" class="nav-link">Sponser</a></li>
+      <li class="nav-item"><a routerLink="/event-list" class="nav-link">Event</a></li>
+      <li class="nav-item"><a routerLink="/event-category" class="nav-link">Category</a></li>
+      <li class="nav-item"><a routerLink="/feedback-list" class="nav-link">Feedback</a></li>
+      <li (click)="onLogout()" class="nav-item"><a routerLink='/login' class="nav-link btn btn-warning">Logout</a></li>
+    </ul>
   </div>
-  </nav>
+</nav>
 
-  <div class="container" style="margin-top: 15px;">
-    <router-outlet></router-outlet>
-  </div>
+<div class="container" style="margin-top: 15px;">
+  <router-outlet></router-outlet>
+</div>
