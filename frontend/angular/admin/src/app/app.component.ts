@@ -10,17 +10,14 @@ export class AppComponent {
   
   constructor(
     private router:Router)
-    {
-
-    }
+    { }
   
   onLogout()
   {
     sessionStorage.removeItem('token')
     sessionStorage.removeItem('firstName')
     sessionStorage.removeItem('lastName')
-
-  this.router.navigate['/login']
+    this.router.navigate['/login']
   }
 
 }

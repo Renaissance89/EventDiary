@@ -17,6 +17,15 @@ router.get('/getAllCategory', (request, response) => {
   })
 })
 
+// Show Category By Id
+router.get('/getCategorybyId/:id', (request, response) => {
+  const {id} = request.params
+  const statement = `select * from category where categoryId = '${id}'`
+  db.query(statement, (error, data) => {
+    response.send(utils.createResult(error, data))
+  })
+})
+
 // ------------------------------------------------------------
 //                            POST
 // ------------------------------------------------------------

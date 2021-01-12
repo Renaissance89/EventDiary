@@ -1,19 +1,25 @@
-
 <div class="card">
+
     <div class="card-header">
-        <h4>Add/Upadte Category</h4>
+        <h4>{{category ? 'Update' : 'Add'}} Category</h4>
     </div>
     <div class="card-body">
         <div class="form">
             <div class="form-group">
-             <label for="">Category Name</label>
-             <input [(ngModel)]="categoryName" type="text" class="form-control">
+                <label for="">Category Name</label>
+                <input [(ngModel)]="categoryName" type="text" class="form-control">
             </div>
-            <div>
-                <button class="btn btn-success">Save</button>
-                <a routerLink="/event-category" style="margin-left: 15px;" class="btn btn-danger">Cancel</a>
 
+            <div class="form-group">
+                <label for="">Category Description</label>
+                <textarea [(ngModel)]="categoryDescription" type="text" class="form-control" style="resize: none;" rows=10 cols="25"></textarea>
+            </div>
+
+            <div>
+                <button (click)="onUpdate()" class="btn btn-success">{{category ? 'Update' : 'Add'}}</button>
+                <a routerLink="/event-category" style="margin-left: 15px;" class="btn btn-danger">Cancel</a>
             </div>
         </div>
     </div>
+    
 </div>

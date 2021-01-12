@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 export class EventCategoryComponent implements OnInit {
 
   categories = []
+
   constructor(
     private router:Router,
-    private eventcategoryservice: EventCategoryService
-  ) { }
+    private eventcategoryservice: EventCategoryService) { }
 
   ngOnInit(): void {
     this.loadCategory()
@@ -21,32 +21,41 @@ export class EventCategoryComponent implements OnInit {
 
   loadCategory() {
     this.eventcategoryservice
-    .getAllCategory()
-    .subscribe(response=>
+      .getAllCategory()
+      .subscribe(response=>
       {
         if(response['status']=='success')
         {
           this.categories=response['data']
         }
-        else{
+        else {
           console.log(response['error'])
         }
       })
-    }
-
-    addCategory()
-    {
-      
-
-    }
-    onEditCategory(category)
-    {
-this.router.navigate(['/category-add'],{queryParams:{categoryId:category['categoryId']}})
-    }
-
-
-
   }
 
+  addCategory() {
+    this.router.navigate(['/category-add'])
+  }
 
+  editCategory(category)
+  {
+    this.router.navigate(['/category-add'],{queryParams:{categoryId:category['categoryId']}})
+  }
 
+  deleteCategory(category)
+  {
+    this.eventcategoryservice
+      .removeCategory(category['categoryId'])
+      .subscribe(response => {
+        if(response['status']=='success')
+        {
+          this.categories=response['data']
+          this.loadCategory()
+        }
+        // else {
+        //   console.log(response['error'])
+        // }
+      })
+  }
+}
