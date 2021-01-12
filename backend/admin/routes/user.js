@@ -31,10 +31,10 @@ router.get('/getAllUser', (request, response) => {
 // ------------------------------------------------------------
 
 // Suspend User and ReActivate User
-router.put('/toggle-active/:id', (request, response) => {
-  const { id } = request.params
+router.put('/toggle-active/:userId', (request, response) => {
+  const { userId } = request.params
   const { status } = request.body
-  const statement = `update user set active = ${status} where userId = ${id} and role = 'user'`
+  const statement = `update user set active = ${status} where userId = ${userId} and role = 'user'`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })

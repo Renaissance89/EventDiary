@@ -36,6 +36,7 @@ export class EventCategoryComponent implements OnInit {
 
     addCategory()
     {
+      
 
     }
     onEditCategory(category)

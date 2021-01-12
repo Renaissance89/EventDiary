@@ -34,7 +34,7 @@ router.get('/getAllOrganizer', (request, response) => {
 router.put('/toggle-active/:id', (request, response) => {
   const { id } = request.params
   const { status } = request.body
-  const statement = `update user set active = ${status} where userId = ${id} and role = 'organizer'`
+  const statement = `update user set active = ${status} where userId = ${id} and role = "organizer"`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })

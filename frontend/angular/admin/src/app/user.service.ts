@@ -30,7 +30,7 @@ toggleActiveStatus(user)
     status:user['active']==1?0:1
 
   }
-  return this.httpclient.put(this.url+"/toggle-active/"+ user['id'],body,httpOptions)
+  return this.httpclient.put(this.url+"/toggle-active/"+ user['userId'],body,httpOptions)
 }
 
 }

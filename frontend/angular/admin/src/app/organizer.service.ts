@@ -30,7 +30,7 @@ toggleActiveStatus(organizer)
     status:organizer['active']==1?0:1
 
   }
-  return this.httpclient.put(this.url+"/toggle-active/"+ organizer['id'],body,httpOptions)
+  return this.httpclient.put(this.url+"/toggle-active/"+ organizer['userId'],body,httpOptions)
 }
 
 }

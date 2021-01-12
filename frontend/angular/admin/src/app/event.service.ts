@@ -26,7 +26,7 @@ export class EventService {
       })
     };
     const body={
-      status:event['Active']==1?0:1
+      status:event['active']==1?0:1
   
     }
     return this.httpclient.put(this.url+"/toggle-active/"+ event['eventId'],body,httpOptions)

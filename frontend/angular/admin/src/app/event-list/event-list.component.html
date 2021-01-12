@@ -26,7 +26,7 @@
             <tbody>
                 <tr *ngFor="let event of events; let i= index ">
                     <td>{{i+1}}</td>
-                    <td>{{event['Event_Id']}}</td>
+                    <td>{{event['eventId']}}</td>
                     <td>{{event['Event_Name']}}</td>
                     <td>{{event['Description']}}</td>
                     <td>{{event['Venue']}} {{event['Location']}}</td>
@@ -39,13 +39,13 @@
                     <td>{{event['Event_Sponser_FirstName']}} {{event['Event_Sponser_LastName']}}</td>
                     <td>{{event['SponserPhone']}}</td>
                     <td>{{event['Registration_Fee']}}</td>
-                    <td>{{event['Active']}}</td>
+                    <td>{{event['active']}}</td>
                     <td>
                         
                         <button 
                         (click)="toggleActive(event)"
-                        [class.btn-success]="event['Active']!=1"
-                        [class.btn-danger]="event['Active']==1"
+                        [class.btn-success]="event['active']!=1"
+                        [class.btn-danger]="event['active']==1"
                         class="btn btn-sm">{{event['active']==1?'Suspend':'Activate'}}</button>
                      
                     </td>
