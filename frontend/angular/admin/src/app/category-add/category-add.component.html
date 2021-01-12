@@ -1,6 +1,7 @@
 <div class="card">
 
     <div class="card-header">
+<<<<<<< Updated upstream
         <h4>{{category ? 'Update' : 'Add'}} Category</h4>
     </div>
     <div class="card-body">
@@ -17,6 +18,31 @@
 
             <div>
                 <button (click)="onUpdate()" class="btn btn-success">{{category ? 'Update' : 'Add'}}</button>
+=======
+        <h4>{{event ? 'Update' : 'Add'}} Category</h4>
+    </div>
+    <div class="card-body">
+        <div class="form">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Category Name</label>
+                        <input [(ngModel)]="categoryName" type="text" class="form-control">
+                     </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Category Description</label>
+                        <input [(ngModel)]="categoryDescription" type="text" class="form-control">
+                       </div>
+                </div>
+ 
+
+
+                <button (click)=" onEditCategory()"class="btn btn-success">{{event ? 'Update' : 'Add'}}</button>
+>>>>>>> Stashed changes
                 <a routerLink="/event-category" style="margin-left: 15px;" class="btn btn-danger">Cancel</a>
             </div>
         </div>
