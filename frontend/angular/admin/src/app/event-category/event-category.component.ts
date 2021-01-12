@@ -14,15 +14,8 @@ export class EventCategoryComponent implements OnInit {
 
   constructor(
     private router:Router,
-<<<<<<< Updated upstream
     private eventcategoryservice: EventCategoryService) { }
 
-=======
-    private eventcategoryservice: EventCategoryService,
-    private httpClient:HttpClient
-  ) { }
-  url='http://localhost:3000/category'
->>>>>>> Stashed changes
   ngOnInit(): void {
     this.loadCategory()
   }
@@ -40,30 +33,10 @@ export class EventCategoryComponent implements OnInit {
           console.log(response['error'])
         }
       })
-<<<<<<< Updated upstream
-=======
-    }
-
-    addCategory()
-    {
-      this.router.navigate(['/category-add'])
-
-    }
-    onEditCategory(category)
-    {
-this.router.navigate(['/category-add'],{queryParams:{categoryId:category['categoryId']}})
-    }
-
-    onDeleteCategory(id){
-      this.router.
-  
-    }
-
-
->>>>>>> Stashed changes
   }
 
-  addCategory() {
+  addCategory() 
+  {
     this.router.navigate(['/category-add'])
   }
 
