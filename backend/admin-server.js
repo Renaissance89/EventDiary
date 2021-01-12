@@ -19,7 +19,7 @@ const routerDashboard = require('./admin/routes/dashboard')
 const app = express()
 app.use(cors('*'))
 app.use(bodyParser.json())
-app.use(morgan('combined'))
+app.use(morgan('tiny'))
 
 // add the routes to the application
 app.use('/admin', routerAdmin)
