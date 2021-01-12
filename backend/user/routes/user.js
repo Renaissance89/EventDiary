@@ -70,9 +70,10 @@ router.post('/signup', (request, response) => {
   body = body.replace('firstName', firstName)
   body = body.replace('activationLink', activationLink)
 
-  const statement = `insert into user (firstName, lastName, email, password, phone, city, state, role, gender) values 
-  ('${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}', '${phone}', '${city}', '${state}', '${role}', 
-  '${gender}', '${activationToken}')`
+  const statement = `insert into user (firstName, lastName, email, password, phone, city, state, role, gender, activationToken)
+    values ('${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}', '${phone}', '${city}', '${state}', 
+    '${role}', '${gender}', '${activationToken}')`
+    
   db.query(statement, (error, data) => {
     mailer.sendEmail(email, 'Welcome to Eventdiary', body,  (error, info) => {
       console.log(error)
@@ -84,7 +85,7 @@ router.post('/signup', (request, response) => {
 
 router.post('/signin', (request, response) => {
   const {email, password} = request.body
-  const statement = `select id, firstName, lastName, active from user where email = '${email}' and password = '${crypto.SHA256(password)}'`
+  const statement = `select userId, firstName, lastName, active from user where email = '${email}' and password = '${crypto.SHA256(password)}'`
   db.query(statement, (error, users) => {
     if (error) {
       response.send({status: 'error', error: error})
@@ -94,7 +95,7 @@ router.post('/signin', (request, response) => {
       const user = users[0]
       if (user['active'] == 1) {
         // user is an active user
-        const token = jwt.sign({id: user['id']}, config.secret)
+        const token = jwt.sign({id: user['userId']}, config.secret)
         response.send(utils.createResult(error, {
           firstName: user['firstName'],
           lastName: user['lastName'],
