@@ -81,8 +81,8 @@ app.use(express.static('images/'))
 
 // add the user routes
 app.use('/user', userRouter)
-app.use('/registerevent', registerRouter)
-app.use('/event',eventRouter1)
+app.use('/user/register', registerRouter)
+app.use('/user/event',eventRouter1)
 
 // add the organizer routes
 app.use('/organizer', organizerRouter)

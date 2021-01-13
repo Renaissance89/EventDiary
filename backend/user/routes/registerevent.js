@@ -4,45 +4,49 @@ const utils = require('../../utils')
 
 const router = express.Router()
 
-//------------------------------------------------
-//get
-router.get('/register', (request, response) => {
-  const statement = `
-  select  c.registrationId, e.eventName, c.quantity, c.paymentAmount
-  from register c, event e
-  where c.registrationId = e.eventId and c.userId = ${request.userId}
-  `
-  db.query(statement, (error, data) => {
-    response.send(utils.createResult(error, data))
-  })
-})
-
 // ------------------------------------------------------------
 //                            POST
 // ------------------------------------------------------------
 
-router.post('/register', (request, response) => {
-  //const {userId} = request.params
-  const {eventId, quantity, paymentType, paymentAmount} = request.body
+router.post('/register-event/:userId', (request, response) => {
+  const { userId } = request.params
+  const { eventId, quantity, paymentType, amount } = request.body
+  // here eventFee = amount
+  const paymentStatus = 1
+  const paymentAmount = quantity * amount;
 
-  const statement = `INSERT INTO register (userId, eventId, quantity,paymentType, paymentAmount)
-                    values ('${request.userId}', '${eventId}', '${quantity}', '${paymentType}',
-                    '${paymentAmount}')`
+  if(quantity > 0 && paymentAmount > 0) {
+    const statement = `INSERT INTO register (userId, eventId, quantity, amount, paymentType, 
+          paymentStatus, paymentAmount) values ('${userId}', '${eventId}', '${quantity}', '${amount}', 
+          '${paymentType}', '${paymentStatus}', '${paymentAmount}')`
+    
+    db.query(statement, (error, data) => {
+      if(error) {
+        response.send(utils.createResult(error,data))
+      } else {
+        response.send(utils.createResult(error,data))
+      }
+    })
+  }
+  else {
+    const statement = `INSERT INTO register (userId, eventId, quantity, amount, paymentType, paymentAmount)
+      values ('${userId}', '${eventId}', '${quantity}', '${amount}', '${paymentType}', '${paymentAmount}')`
 
-  db.query(statement, (error, data) => {
-    if(error) {
-      response.send(utils.createResult(error,data))
-    } else {
-      response.send(utils.createResult(error,data))
-    }
-  })
+    db.query(statement, (error, data) => {
+      if(error) {
+        response.send(utils.createResult(error,data))
+      } else {
+        response.send(utils.createResult(error,data))
+      }
+    })
+  }
 })
 
 // ------------------------------------------------------------
 //                            DELETE
 // ------------------------------------------------------------
 
-router.delete('/unRegisterEvent/:uId/:eId', (request, response) => {
+router.delete('/unregister-event/:uId/:eId', (request, response) => {
   const {uId, eId} = request.params
   const statement = `DELETE FROM register WHERE userId = ${uId} and eventId = ${eId}`
 
