@@ -24,6 +24,20 @@ router.get('/getAllEvent/:id', (request, response) => {
   })
 })
 
+router.get('/getMySponsers/:eventOrganizerId', (request, response) => {
+  const { eventOrganizerId } = request.params
+  
+  const statement = `SELECT * FROM sponser WHERE userId = '${eventOrganizerId}'`
+
+  db.query(statement, (error, event) => {
+    if (error) {
+      response.send({status: 'error', error: error})
+    } else {
+      response.send(utils.createResult(error, event))
+    }
+  })
+})
+
 // ------------------------------------------------------------
 //                            POST
 // ------------------------------------------------------------
@@ -47,6 +61,42 @@ router.get('/getAllEvent/:id', (request, response) => {
 //     }
 //   })
 // })
+
+router.post('/addSponser/:eventOrganizerId', (request, response) => {
+  const { eventOrganizerId } = request.params
+  const { firstName, lastName, email, phone, gender } = request.body
+
+  const statement = `INSERT INTO sponser (userId, firstName, lastName, email, phone, gender) values 
+				  '${eventOrganizerId}', '${firstName}','${lastName}', '${email}', '${phone}', '${gender}')`
+
+  db.query(statement, (error, event) => {
+    if (error) {
+      response.send({status: 'error', error: error})
+    } else {
+      response.send(utils.createResult(error, event))
+    }
+  })
+})
+
+router.post('/addEvent/:eventOrganizerId', (request, response) => {
+  const { eventOrganizerId } = request.params
+  const { eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, 
+          eventCategoryId, eventFee, eventImage } = request.body
+
+  const statement = `INSERT INTO event(eventName, eventDescription, eventVenue, eventLocation, eventDate,
+    eventTime, eventDuration, eventCategoryId, eventOrganizerId, eventFee, eventImage) 
+    values ('${eventName}','${eventDescription}','${eventVenue}','${eventLocation}', '${eventDate}', 
+    '${eventTime}', '${eventDuration}', '${eventCategoryId}', '${eventOrganizerId}', '${eventFee}',
+    '${eventImage}')`
+
+ db.query(statement, (error, event) => {
+    if (error) {
+      response.send({status: 'error', error: error})
+    } else {
+      response.send(utils.createResult(error, event))
+    }
+  })
+})
 
 // ------------------------------------------------------------
 //                            PUT
