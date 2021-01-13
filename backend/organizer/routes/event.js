@@ -60,16 +60,6 @@ router.post('/upload-image/:eventId', upload.single('eventImage'), (request, res
   })
 })
 
-// router.post('/upload-image/:id', upload.single('eventImage'), (request, response) => {
-//   const {id} = request.params
-//   const fileName = request.file.filename
-
-//   const statement = `update sk set image = '${fileName}' where id = ${id}`
-//   db.query(statement, (error, data) => {
-//     response.send(utils.createResult(error, data))
-//   })
-// })
-
 // router.post('/addEvent/:eventOrganizerId', (request, response) => {
 //   const { eventOrganizerId } = request.params
 //   const { eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, 
@@ -138,8 +128,8 @@ router.put('/updateEvent/:id', (request, response) => {
   const statement = `update event set eventName = '${eventName}', eventDescription = '${eventDescription}', 
     eventVenue = '${eventVenue}', eventLocation = '${eventLocation}', eventDate = '${eventDate}', 
     eventTime = '${eventTime}', eventDuration = '${eventDuration}', eventCategoryId = '${eventCategoryId}', 
-    eventFee = '${eventFee}', eventOrganizerId = '${eventOrganizerId}', eventSponserId = '${eventSponserId}' 
-    where eventId = '${id}'`
+    eventFee = '${eventFee}', eventSponserId = '${eventSponserId}' 
+    where eventId = '${id}' and eventOrganizerId = '${eventOrganizerId}'`
 
   db.query(statement, (error, event) => {
     if (error) {
@@ -156,17 +146,23 @@ router.put('/updateEvent/:id', (request, response) => {
 
 router.delete('/deleteEvent/:id', (request, response) => {
   const { id } = request.params
+  const { eventOrganizerId } = request.body
+  const active = 0
 
-  const statement = `delete from event where eventId = '${id}'`
+  if(active == 0) {
+    response.send('You cannot delete this event because it is already active. Please contact administrator!!!')
+  } else {
+    const statement = `delete from event where eventId = '${id}' and active = '${active}' 
+                      and eventOrganizerId = '${eventOrganizerId}'`
 
-  db.query(statement, (error, event) => {
-    if (error) {
-      response.send({status: 'error', error: error})
-    } else {
-      response.send(utils.createResult(error, event))
-    }
-  })
+    db.query(statement, (error, event) => {
+      if (error) {
+        response.send({status: 'error', error: error})
+      } else {
+        response.send(utils.createResult(error, event))
+      }
+    })
+  }
 })
-
 
 module.exports = router
