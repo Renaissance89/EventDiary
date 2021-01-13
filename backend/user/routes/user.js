@@ -37,19 +37,24 @@ router.get('/forgot-password/:email', (request, response) => {
     if (error) {
       response.send(utils.createError(error))
     } else if (users.length == 0) {
-      response.send(utils.createError('user does not exist'))
+      response.send(utils.createError('User does not exist'))
     } else {
       const user = users[0]
       const otp = utils.generateOTP()
-      const body = `Your otp = ${otp}` 
+      const body = `Your OTP = ${otp}` 
 
-      mailer.sendEmail(email, 'Reset your password', body,  (error, info) => {
-        response.send(
-          utils.createResult(error, {
-            otp: otp,
-            email: email
-          })
-        )
+      const otpStatement = `update user set activationToken = '${otp}' where email = '${email}' and role = 'user'`
+
+      db.query(otpStatement, (error, data) => {
+          if (error) {
+              response.send(utils.createError(error))
+          } else {
+            mailer.sendEmail(email, 'Reset your password', body, (error, info) => {
+                console.log(error)
+                console.log(info)
+                response.send(utils.createResult(error, { otp: otp, email: email, data: data }))
+            })
+          }
       })
     }
   })
@@ -85,7 +90,9 @@ router.post('/signup', (request, response) => {
 
 router.post('/signin', (request, response) => {
   const {email, password} = request.body
-  const statement = `select userId, firstName, lastName, active from user where email = '${email}' and password = '${crypto.SHA256(password)}'`
+  const statement = `select userId, firstName, lastName, active from user where email = '${email}' 
+                    and password = '${crypto.SHA256(password)}'`
+
   db.query(statement, (error, users) => {
     if (error) {
       response.send({status: 'error', error: error})
@@ -118,7 +125,7 @@ router.put('/update-profile/:id', (request, response) => {
   const {firstName, lastName, email, password, phone, city, state, gender } = request.body
   const statement = `update user set firstName = '${firstName}', lastName = '${lastName}', 
           email = '${email}', password = '${password}', phone = '${phone}', city = '${city}', 
-          state = '${state}', gender = '${gender}' where id = ${id} and role = 'user'`
+          state = '${state}', gender = '${gender}' where userId = ${id} and role = 'user'`
   db.query(statement, (error, data) => {
     if(error) {
       response.send(utils.createResult(error,data))
@@ -128,6 +135,28 @@ router.put('/update-profile/:id', (request, response) => {
   })
 })
 
+router.put('/reset-password', (request, response) => {
+  const { otp, email, password } = request.body
+  const checkStatement = `select userId from user where activationToken = '${otp}' and email = '${email}'`
+  
+  db.query(checkStatement, (error, user) => {
+    if (user.length == 0) {
+      // check if otp is valid or not
+      response.send({ status: 'error', error: 'Invalid OTP' })
+    } else if (error) {
+      response.send({ status: 'error', error: error })
+    } else {
+      // activate the user
+      // reset the activation token
+      const statement = `update user set password = '${crypto.SHA256(password)}', activationToken = '' 
+                        where activationToken = '${otp}' and email = '${email}'`
+      
+      db.query(statement, (error, data) => {
+          response.send(utils.createResult(error, data))
+      })
+    }
+  })
+})
 
 // ------------------------------------------------------------
 //                            DELETE
@@ -135,7 +164,7 @@ router.put('/update-profile/:id', (request, response) => {
 
 router.delete('/delete-account/:id', (request, response) => {
   const { id } = request.params
-  const statement = `update user set active = 0 where id = ${id} and role = 'user'`
+  const statement = `update user set active = 0 where userId = ${id} and role = 'user'`
   db.query(statement, (error, data) => {
     if(error) {
       response.send(utils.createResult(error,data))

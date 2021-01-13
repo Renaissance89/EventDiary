@@ -22,14 +22,13 @@ router.get('/register', (request, response) => {
 // ------------------------------------------------------------
 
 router.post('/register', (request, response) => {
-  //const {uId} = request.params
-  const {eventId,quantity, paymentAmount} = request.body
+  //const {userId} = request.params
+  const {eventId, quantity, paymentType, paymentAmount} = request.body
 
-  const statement = `INSERT INTO register
-                    (userId, eventId, quantity, paymentAmount)
-                     values (  ${eventId}, ${quantity}, ${paymentAmount}
-                   )`
-//${request.userId}
+  const statement = `INSERT INTO register (userId, eventId, quantity,paymentType, paymentAmount)
+                    values ('${request.userId}', '${eventId}', '${quantity}', '${paymentType}',
+                    '${paymentAmount}')`
+
   db.query(statement, (error, data) => {
     if(error) {
       response.send(utils.createResult(error,data))
@@ -38,8 +37,6 @@ router.post('/register', (request, response) => {
     }
   })
 })
-
-
 
 // ------------------------------------------------------------
 //                            DELETE
