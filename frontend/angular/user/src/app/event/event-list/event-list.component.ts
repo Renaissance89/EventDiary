@@ -30,4 +30,9 @@ export class EventListComponent implements OnInit {
         }
       })
   }
+
+  // addToCart(event){
+  //   this.
+  // }
+
 }

@@ -4,6 +4,19 @@ const utils = require('../../utils')
 
 const router = express.Router()
 
+//------------------------------------------------
+//get
+router.get('/register', (request, response) => {
+  const statement = `
+  select  c.registrationId, c.quantity, c.paymentAmount, e.eventName
+  from register c, event e
+  where c.registrationId = e.eventId and c.userId = ${request.userId}
+  `
+  db.query(statement, (error, data) => {
+    response.send(utils.createResult(error, data))
+  })
+})
+
 // ------------------------------------------------------------
 //                            POST
 // ------------------------------------------------------------
@@ -25,6 +38,8 @@ router.post('/registerEvent/:uId/:eId', (request, response) => {
     }
   })
 })
+
+
 
 // ------------------------------------------------------------
 //                            DELETE

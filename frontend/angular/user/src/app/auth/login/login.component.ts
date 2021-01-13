@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService } from './../admin.service';
+import { AuthService } from './../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +13,13 @@ export class LoginComponent implements OnInit {
   password=''
 
   constructor(private router:Router,
-    private adminService:AdminService) { }
+    private authService: AuthService) { }
 
   ngOnInit(): void {
   }
  onLogin()
  {
-   this.adminService
+   this.authService
    .login(this.email,this.password)
    .subscribe(response=>
     {
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
           sessionStorage['lastName'] = data['lastName']
       
 
-          this.router.navigate(['/dashboard'])
+          this.router.navigate(['/home'])
       }else
       {
         alert('invalid email or password')
@@ -41,4 +41,5 @@ export class LoginComponent implements OnInit {
     })
 
  }
+
 }

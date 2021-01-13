@@ -1,38 +1,32 @@
-
-import { AdminService } from './admin.service';
+//import { ToastrModule } from 'ngx-toastr';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { EventService} from './event.service';
-
-import { FormsModule } from '@angular/forms';
+//import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { EventListComponent } from './event-list/event-list.component';
-import { from } from 'rxjs';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+//import { EventListComponent } from './event-list/event-list.component';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    DashboardComponent,
-    EventListComponent,
- 
+    HomeComponent,
+   // EventListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule
+    //ToastrModule.forRoot()
   ],
-  providers: [
-    AdminService,
-    EventService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

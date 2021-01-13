@@ -44,6 +44,7 @@ function getUserId(request, response, next) {
 
   if (request.url == '/user/signin' 
       || request.url == '/user/signup'
+      || request.url == '/registerevent/register'
       || request.url == '/event/all'
       || request.url.startsWith('/user/activate')
       || request.url == '/organizer/signin' 
@@ -77,7 +78,7 @@ app.use(express.static('images/'))
 
 // add the user routes
 app.use('/user', userRouter)
-app.use('/user', registerRouter)
+app.use('/registerevent', registerRouter)
 app.use('/event',eventRouter1)
 
 // add the organizer routes
