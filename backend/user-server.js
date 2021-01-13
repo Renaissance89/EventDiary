@@ -45,6 +45,7 @@ function getUserId(request, response, next) {
   if (request.url == '/user/signin' 
       || request.url == '/user/signup'
       || request.url == '/registerevent/register'
+      || request.url == '/registerevent/registerEvent'
       || request.url == '/event/all'
       || request.url.startsWith('/user/activate')
       || request.url == '/organizer/signin' 

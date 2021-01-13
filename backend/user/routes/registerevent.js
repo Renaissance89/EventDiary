@@ -8,7 +8,7 @@ const router = express.Router()
 //get
 router.get('/register', (request, response) => {
   const statement = `
-  select  c.registrationId, c.quantity, c.paymentAmount, e.eventName
+  select  c.registrationId, e.eventName, c.quantity, c.paymentAmount
   from register c, event e
   where c.registrationId = e.eventId and c.userId = ${request.userId}
   `
@@ -21,15 +21,15 @@ router.get('/register', (request, response) => {
 //                            POST
 // ------------------------------------------------------------
 
-router.post('/registerEvent/:uId/:eId', (request, response) => {
-  const {uId, eId} = request.params
-  const {quantity, paymentType, paymentAmount, paymentStatus} = request.body
+router.post('/register', (request, response) => {
+  //const {uId} = request.params
+  const {eventId,quantity, paymentAmount} = request.body
 
   const statement = `INSERT INTO register
-                    (userId, eventId, quantity, paymentType, paymentAmount, paymentStatus)
-                    values ('${uId}', '${eId}', '${quantity}', '${paymentType}', '${paymentAmount}',
-                    '${paymentStatus}')`
-
+                    (userId, eventId, quantity, paymentAmount)
+                     values (  ${eventId}, ${quantity}, ${paymentAmount}
+                   )`
+//${request.userId}
   db.query(statement, (error, data) => {
     if(error) {
       response.send(utils.createResult(error,data))

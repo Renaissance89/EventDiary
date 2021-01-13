@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from './../event.service';
+import { CartService } from './../cart.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CartComponent } from '../cart/cart.component';
+
+
+
 
 @Component({
   selector: 'app-event-list',
@@ -9,12 +15,18 @@ import { EventService } from './../event.service';
 export class EventListComponent implements OnInit {
 
   events=[]
-  constructor(private eventservice:EventService) { }
+  constructor(private eventservice:EventService,
+    private cartService: CartService,
+    private modalService: NgbModal,
+    ) { }
 
   ngOnInit(): void {
     this.loadevents()
   }
-   
+
+  loadCart() {
+    this.modalService.open(CartComponent, { size: 'lg'})
+  }
   loadevents()
   {
     this.eventservice
@@ -31,8 +43,17 @@ export class EventListComponent implements OnInit {
       })
   }
 
-  // addToCart(event){
-  //   this.
-  // }
+  addToCart(event){
+    this.cartService
+    .addCartItems(event['eventId'],event['paymentAmount'],1)
+    .subscribe(Response => {
+      if (Response['status'] == 'success') {
+        console.log("success")
+        console.log("fail")
+        //this.toastr.success('added your product to cart')
+      }
+
+    })
+  }
 
 }
