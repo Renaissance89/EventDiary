@@ -1,13 +1,22 @@
 const express = require('express')
 const db = require('../../db')
 const utils = require('../../utils')
+const fs = require('fs')
+
+// multer: used for uploading document
+const multer = require('multer')
+const upload = multer({ dest: 'images/' })
 
 const router = express.Router()
 
 // ------------------------------------------------------------
 //                            GET
 // ------------------------------------------------------------
-
+router.get('/image/:filename', (request, response) => {
+  const {filename} = request.params
+  const file = fs.readFileSync(__dirname + '/../../images/' + filename)
+  response.send(file)
+})
 router.get('/getAllEvent/:id', (request, response) => {
   const { id } = request.params
 
@@ -41,6 +50,25 @@ router.get('/getMySponsers/:eventOrganizerId', (request, response) => {
 // ------------------------------------------------------------
 //                            POST
 // ------------------------------------------------------------
+router.post('/upload-image/:eventId', upload.single('eventImage'), (request, response) => {
+  const {eventId} = request.params
+  const fileName = request.file.filename
+
+  const statement = `update event set eventImage = '${fileName}' where eventId = ${eventId}`
+  db.query(statement, (error, data) => {
+    response.send(utils.createResult(error, data))
+  })
+})
+
+// router.post('/upload-image/:id', upload.single('eventImage'), (request, response) => {
+//   const {id} = request.params
+//   const fileName = request.file.filename
+
+//   const statement = `update sk set image = '${fileName}' where id = ${id}`
+//   db.query(statement, (error, data) => {
+//     response.send(utils.createResult(error, data))
+//   })
+// })
 
 // router.post('/addEvent/:eventOrganizerId', (request, response) => {
 //   const { eventOrganizerId } = request.params
