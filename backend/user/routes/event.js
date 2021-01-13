@@ -10,7 +10,7 @@ const router = express.Router()
 
 // Show all User Only
 router.get('/all', (request, response) => {
-    const statement = `select * from event `
+    const statement = `select eventName,eventDescription,eventLocation,EventDate,EventTime,eventDuration,eventFee,active from event `
     db.query(statement, (error, users) => {
       if (error) {
         response.send({status: 'error', error: error})
