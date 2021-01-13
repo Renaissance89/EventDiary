@@ -22,40 +22,6 @@ router.get('/user', (request, response) => {
 //                            POST
 // ------------------------------------------------------------
 
-router.post('/register-event/:userId', (request, response) => {
-  const { userId } = request.params
-  const { eventId, quantity, paymentType, amount } = request.body
-  // here eventFee = amount
-  const paymentStatus = 1
-  const paymentAmount = quantity * amount;
-
-  if(quantity > 0 && paymentAmount > 0) {
-    const statement = `INSERT INTO register (userId, eventId, quantity, amount, paymentType, 
-          paymentStatus, paymentAmount) values ('${userId}', '${eventId}', '${quantity}', '${amount}', 
-          '${paymentType}', '${paymentStatus}', '${paymentAmount}')`
-    
-    db.query(statement, (error, data) => {
-      if(error) {
-        response.send(utils.createResult(error,data))
-      } else {
-        response.send(utils.createResult(error,data))
-      }
-    })
-  }
-  else {
-    const statement = `INSERT INTO register (userId, eventId, quantity, amount, paymentType, paymentAmount)
-      values ('${userId}', '${eventId}', '${quantity}', '${amount}', '${paymentType}', '${paymentAmount}')`
-
-    db.query(statement, (error, data) => {
-      if(error) {
-        response.send(utils.createResult(error,data))
-      } else {
-        response.send(utils.createResult(error,data))
-      }
-    })
-  }
-})
- 
 router.post('/user', (request, response) => {
   //const {uId} = request.params
   const {eventId,quantity, paymentAmount} = request.body
@@ -75,11 +41,13 @@ router.post('/user', (request, response) => {
   })
 })
 
+
+
 // ------------------------------------------------------------
 //                            DELETE
 // ------------------------------------------------------------
 
-router.delete('/unregister-event/:uId/:eId', (request, response) => {
+router.delete('/unRegisterEvent/:uId/:eId', (request, response) => {
   const {uId, eId} = request.params
   const statement = `DELETE FROM register WHERE userId = ${uId} and eventId = ${eId}`
 

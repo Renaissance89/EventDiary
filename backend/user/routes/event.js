@@ -19,20 +19,4 @@ router.get('/all', (request, response) => {
       }
     })
   })
-
-
-// Show all events User Only
-router.get('/getAllEvents', (request, response) => {
-  const statement = `select eventName, eventDescription, eventLocation, eventDate, eventTime,
-                    eventDuration,eventFee,active from event`
-  
-  db.query(statement, (error, users) => {
-    if (error) {
-      response.send({status: 'error', error: error})
-    } else {
-      response.send(utils.createResult(error, users))
-    }
-  })
-})
-
-module.exports = router
+  module.exports = router
