@@ -20,4 +20,19 @@ export class EventService {
     }
     return this.httpclient.get(this.url+'/all',httpOptions)
   }
+  addCartItems(eventId,eventFee,quantity){
+    // add the token in the request header
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: sessionStorage['token']
+      })
+    };
+
+    const body = {
+      eventId: eventId,
+      eventFee : eventFee,
+      quantity : quantity
+    }
+    return this.httpclient.post(this.url + "/register", body, httpOptions)
+}
 }

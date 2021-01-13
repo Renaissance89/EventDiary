@@ -22,7 +22,7 @@ const dashboardRouter = require('./organizer/routes/dashboard')
 const app = express()
 app.use(cors('*'))
 app.use(bodyParser.json())
-app.use(morgan('tiny'))
+app.use(morgan('combined'))
 
 // swagger init
 const swaggerOptions = {
@@ -45,8 +45,8 @@ function getUserId(request, response, next) {
   if (request.url == '/user/signin' 
       || request.url == '/user/signup'
       || request.url == '/registerevent/register'
-      || request.url == '/registerevent/registerEvent'
-      || request.url == '/event/all'
+ //     || request.url == '/registerevent/registerEvent'
+//      || request.url == '/event/all'
      // || request.url.startsWith('/organizer/event/upload-image/')
       || request.url.startsWith('/user/activate')
       || request.url == '/organizer/signin' 

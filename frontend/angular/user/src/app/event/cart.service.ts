@@ -19,10 +19,10 @@ export class CartService {
       })
     };
     
-    return this.httpClient.get(this.url + "/register", httpOptions)
+    return this.httpClient.get(this.url + "/user", httpOptions)
   }
 
-  addCartItems(eventId,paymentAmount,quantity){
+  addCartItems(eventId,eventFee,quantity){
         // add the token in the request header
         const httpOptions = {
           headers: new HttpHeaders({
@@ -32,10 +32,10 @@ export class CartService {
 
         const body = {
           eventId: eventId,
-          paymentAmount : paymentAmount,
+          paymentAmount : eventFee,
           quantity : quantity
         }
-        return this.httpClient.post(this.url + "/register", body, httpOptions)
+        return this.httpClient.post(this.url + "/user", body, httpOptions)
   }
 
 }

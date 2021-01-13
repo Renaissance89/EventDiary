@@ -131,8 +131,8 @@ CREATE TABLE register (
   CONSTRAINT FK_REGISTER_EVENT_ID FOREIGN KEY (eventId) references event(eventId) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO register (userId, eventId, quantity, amount, paymentType, paymentAmount, paymentStatus) values 
-('5','1','1','500','Credit Card','500', '1');
+INSERT INTO register (userId, eventId, quantity, paymentType, paymentAmount, paymentStatus) values 
+(12,1,1, 'Credit Card',500, 1);
 
 
 -- Query --

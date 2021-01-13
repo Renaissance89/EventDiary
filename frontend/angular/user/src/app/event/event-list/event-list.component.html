@@ -10,13 +10,14 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>E_Name</th>
+                <th>eventId</th>
+                <th>eventName</th>
                 <th>Description</th>
                 <th>Location</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Duration</th>
-                <th>Fee</th>
+                <th>eventFee</th>
                 <th>Active</th>
                 <th>Actions</th>
             </tr>
@@ -25,11 +26,12 @@
         <tbody>
             <tr *ngFor="let event of events; let i= index ">
                 <td>{{i+1}}</td>
+                <td>{{event['eventId']}}</td>
                 <td>{{event['eventName']}}</td>
                 <td>{{event['eventDescription']}}</td>
                 <td> {{event['eventLocation']}}</td>
-                <td>{{event['EventDate']}}</td>
-                <td>{{event['EventTime']}}</td>
+                <td>{{event['eventDate']}}</td>
+                <td>{{event['eventTime']}}</td>
                 <td>{{event['eventDuration']}}</td>
                 <td>{{event['eventFee']}}</td>
                 <td>{{event['active']}}</td>

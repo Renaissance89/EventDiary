@@ -14,7 +14,7 @@ import { CartComponent } from '../cart/cart.component';
 })
 export class EventListComponent implements OnInit {
 
-  events=[]
+  events =[]
   constructor(private eventservice:EventService,
     private cartService: CartService,
     private modalService: NgbModal,
@@ -45,10 +45,10 @@ export class EventListComponent implements OnInit {
 
   addToCart(event){
     this.cartService
-    .addCartItems(event['eventId'],event['paymentAmount'],1)
+    .addCartItems(event['eventId'],event['eventFee'],1)
     .subscribe(Response => {
       if (Response['status'] == 'success') {
-        console.log("success")
+        console.log(`success`)
         console.log("fail")
         //this.toastr.success('added your product to cart')
       }
