@@ -50,9 +50,9 @@ export class EventListComponent implements OnInit {
     .addCartItems(event['eventId'],event['eventFee'],1)
     .subscribe(Response => {
       if (Response['status'] == 'success') {
-        console.log(`success`)
-        console.log("fail")
-        this.toastr.success('added your product to cart')
+        console.log('success')
+        console.log('fail')
+        this.toastr.success('Product added to cart')
       }
 
     })

@@ -1,5 +1,5 @@
 module.exports = {
   secret: '1234567890abcdefghijklmnopqrstuvwxyz',
-  emailUser: 'bountyppak@gmail.com',
-  emailPassword: 'ppll@8983'
+  emailUser: 'akashawalkar2000@gmail.com',
+  emailPassword: 'uniquedeveloper'
 }

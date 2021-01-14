@@ -19,7 +19,6 @@
                 <th>Time</th>
                 <th>Duration</th>
                 <th>eventFee</th>
-                <th>Active</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -36,9 +35,8 @@
                 <td>{{event['eventTime']}}</td>
                 <td>{{event['eventDuration']}}</td>
                 <td>{{event['eventFee']}}</td>
-                <td>{{event['active']}}</td>
                 <td>
-                    <button style="margin-top: 10px;" (click)="addToCart(event)" class="btn btn-success btn-sm">Register</button>
+                    <button style="margin-top: 10px;" (click)="addToCart(event)" class="btn btn-info btn-sm">Register</button>
                 </td>
             </tr>
         </tbody>

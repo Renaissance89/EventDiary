@@ -48,7 +48,7 @@ export class CartComponent implements OnInit {
         .deleteCartItem(item['registrationId'])
         .subscribe(response => {
           if (response['status'] == 'success') {
-            this.toastr.warning('deleted cart item')
+            this.toastr.warning('Deleted cart item')
             this.loadCartItems()
           }
         })
@@ -63,7 +63,7 @@ export class CartComponent implements OnInit {
           .updateCartItem(item['registrationId'], newQuantity, item['paymentAmount'])
           .subscribe(response => {
             if (response['status'] == 'success') {
-              this.toastr.success('updated quantity')
+              this.toastr.success('Quantity Updated ')
               this.loadCartItems()
             }
           })

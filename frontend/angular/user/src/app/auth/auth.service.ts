@@ -13,10 +13,11 @@ export class AuthService {
     private router: Router,
     private httpClient: HttpClient) { }
   
-  login(email: string, password: string) {
+  login(email: string, password: string, role: string) {
     const body = {
       email: email,
-      password: password
+      password: password,
+      role: role
     }
 
     return this.httpClient.post(this.url + '/signin', body)
@@ -35,5 +36,22 @@ export class AuthService {
     // user has not logged in yet
     // stop launching the component
     return false 
+  }
+
+  signup(firstName: string, lastName: string , email: string, password: string, phone: string, 
+    city: string, state: string, gender: string, role: string) {
+    const body = {
+      firstName: firstName, 
+      lastName: lastName,
+      email: email,
+      password: password,
+      phone: phone, 
+      city: city, 
+      state: state, 
+      gender: gender, 
+      role: role
+    }
+
+    return this.httpClient.post(this.url + '/signup', body)
   }
 }

@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
@@ -11,19 +12,22 @@ export class LoginComponent implements OnInit {
 
   email=''
   password=''
+  role=''
 
   constructor(private router:Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
- onLogin()
- {
+  
+  onLogin()
+  {
    this.authService
-   .login(this.email,this.password)
+   .login(this.email,this.password, this.role)
    .subscribe(response=>
     {
-      if(response['status']=='success')
+      if(response['status']=='success' && this.role == 'user')
       {
         const data = response['data']
           console.log(data)
@@ -32,14 +36,23 @@ export class LoginComponent implements OnInit {
           sessionStorage['firstName'] = data['firstName']
           sessionStorage['lastName'] = data['lastName']
       
-
           this.router.navigate(['/home'])
-      }else
-      {
-        alert('invalid email or password')
+          this.toastr.success('Welcome ' + data['firstName'])
+      } 
+      else if(response['status']=='success' && this.role == 'organizer') {
+        const data = response['data']
+          console.log(data)
+
+          sessionStorage['token'] = data['token']
+          sessionStorage['firstName'] = data['firstName']
+          sessionStorage['lastName'] = data['lastName']
+      
+          this.router.navigate(['/home'])
+          this.toastr.success('Welcome ' + data['firstName'])
+      } 
+      else {
+        alert('Invalid Email or Password')
       }
     })
-
- }
-
+  }
 }
