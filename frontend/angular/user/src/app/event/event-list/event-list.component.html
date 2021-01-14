@@ -10,7 +10,8 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>eventId</th>
+                <!-- <th>eventId</th> -->
+                <th>Image</th>
                 <th>eventName</th>
                 <th>Description</th>
                 <th>Location</th>
@@ -26,7 +27,8 @@
         <tbody>
             <tr *ngFor="let event of events; let i= index ">
                 <td>{{i+1}}</td>
-                <td>{{event['eventId']}}</td>
+                <!-- <td>{{event['eventId']}}</td> -->
+                <td>{{event['eventImage']}}"</td>
                 <td>{{event['eventName']}}</td>
                 <td>{{event['eventDescription']}}</td>
                 <td> {{event['eventLocation']}}</td>

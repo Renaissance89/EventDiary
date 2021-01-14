@@ -3,6 +3,7 @@ import { EventService } from './../event.service';
 import { CartService } from './../cart.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from '../cart/cart.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -18,6 +19,7 @@ export class EventListComponent implements OnInit {
   constructor(private eventservice:EventService,
     private cartService: CartService,
     private modalService: NgbModal,
+    private toastr: ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -50,7 +52,7 @@ export class EventListComponent implements OnInit {
       if (Response['status'] == 'success') {
         console.log(`success`)
         console.log("fail")
-        //this.toastr.success('added your product to cart')
+        this.toastr.success('added your product to cart')
       }
 
     })

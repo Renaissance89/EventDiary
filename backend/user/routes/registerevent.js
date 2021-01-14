@@ -8,7 +8,7 @@ const router = express.Router()
 //get
 router.get('/user', (request, response) => {
   const statement = `
-  select  c.registrationId, e.eventName, c.quantity, c.paymentAmount
+  select  c.registrationId, e.eventName, c.quantity, c.paymentAmount, c.totalAmount
   from register c, event e
   where c.eventId = e.eventId and c.userId = ${request.userId}
   `
@@ -40,17 +40,34 @@ router.post('/user', (request, response) => {
     }
   })
 })
+// ------------------------------------------------------------
+//                            PUT
+// ------------------------------------------------------------
+router.put('/:registrationId', (request, response) => {
+  const {registrationId} = request.params
+  const {quantity, paymentAmount} = request.body
+  const totalAmount = paymentAmount * quantity
+  const statement = `
+      update register set quantity = ${quantity}, totalAmount = ${totalAmount}
+      where registrationId = ${registrationId}
 
-
+  `
+  console.log("")
+  console.log(statement)
+  db.query(statement, (error, data) => {
+    response.send(utils.createResult(error, data))
+  })
+})
 
 // ------------------------------------------------------------
 //                            DELETE
 // ------------------------------------------------------------
 
-router.delete('/unRegisterEvent/:uId/:eId', (request, response) => {
-  const {uId, eId} = request.params
-  const statement = `DELETE FROM register WHERE userId = ${uId} and eventId = ${eId}`
-
+router.delete('/:id', (request, response) => {
+  const { id} = request.params
+  const statement = `DELETE FROM register WHERE  registrationId= ${id}`
+  console.log("")
+  console.log(statement)
   db.query(statement, (error, data) => {
     if(error) {
       response.send(utils.createResult(error,data))
@@ -59,5 +76,6 @@ router.delete('/unRegisterEvent/:uId/:eId', (request, response) => {
     }
   })
 })
+
 
 module.exports = router

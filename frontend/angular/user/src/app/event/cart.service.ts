@@ -38,4 +38,30 @@ export class CartService {
         return this.httpClient.post(this.url + "/user", body, httpOptions)
   }
 
+  deleteCartItem(registrationId) {
+    // add the token in the request header
+    const httpOptions = {
+     headers: new HttpHeaders({
+       token: sessionStorage['token']
+     })
+   };
+   
+   return this.httpClient.delete(this.url + "/" + registrationId, httpOptions)
+ }
+  
+ updateCartItem(id, quantity, paymentAmount) {
+  // add the token in the request header
+  const httpOptions = {
+   headers: new HttpHeaders({
+     token: sessionStorage['token']
+   })
+ };
+
+ const body = {
+  paymentAmount: paymentAmount, 
+   quantity: quantity
+ }
+ 
+ return this.httpClient.put(this.url + "/" + id, body, httpOptions)
+ }
 }
