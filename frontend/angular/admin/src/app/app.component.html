@@ -1,4 +1,5 @@
-<nav style="margin-top: 10px;" class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav *ngIf="isPresent" style="margin-top: 10px;" class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav style="margin-top: 10px;" class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/dashboard">Event Diary</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -12,8 +13,61 @@
       <li (click)="onLogout()" class="nav-item"><a routerLink='/login' class="nav-link btn btn-warning">Logout</a></li>
     </ul>
   </div>
+</nav> -->
+
+<aside class="sidebar">
+  <div class="toggle">
+    <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+          <span></span>
+        </a>
+  </div>
+
+
+
+  <div class="side-inner">
+
+    <div class="profile">
+      <img src="assets/logo.png" alt="Image" class="img-fluid">
+      <h3 class="name">Event Diary</h3>
+      <span class="country">Admin</span>
+    </div>
+    
+    <div class="nav-menu">
+      <ul>
+        <li class="active"><a routerLink="/dashboard" class="nav-link"><span class="icon-home mr-3"></span>Dashboard</a></li>
+        <li class="nav-item"><a routerLink="/event-list" class="nav-link"><span class="icon-calendar mr-3"></span>Event</a></li>
+        <li class="nav-item"><a routerLink="/user-list" class="nav-link"><span class="icon-user mr-3"></span>Users</a></li>
+        <li class="nav-item"><a href="#"><span class="icon-location-arrow mr-3"></span>Organizers</a></li>
+        <li class="nav-item"><a href="#"><span class="icon-pie-chart mr-3"></span>Sponsers</a></li>
+        <li class="nav-item"><a href="#"><span class="icon-menu mr-3"></span>Category</a></li>
+        <li class="nav-item"><a href="#"><span class="icon-message mr-3"></span>Feedback</a></li>
+        <li (click)="onLogout()" class="nav-item"><a routerLink='/login' class="nav-link"><span class="icon-sign-out mr-3"></span>Logout</a></li>
+        <!-- <li><a href="#"><span class="icon-notifications mr-3"></span>Notifications</a></li> -->
+        <!-- <li><a href="#"><span class="icon-search2 mr-3"></span>Search</a></li> -->
+      </ul>
+    </div>
+  </div>
+</aside>
+
+<nav style="margin-top: 10px; margin-left: 880px;" class="navbar navbar-expand-lg navbar-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a routerLink="/dashboard" class="nav-link">Dashboard</a></li>
+      <li class="nav-item"><a routerLink="/event-list" class="nav-link">Event</a></li>
+      <li class="nav-item"><a routerLink="/event-category" class="nav-link">Category</a></li>
+      <li (click)="onLogout()" class="nav-item"><a routerLink='/login' class="nav-link btn btn-warning">Logout</a></li>
+    </ul>
+  </div>
 </nav>
 
-<div class="container" style="margin-top: 15px;">
+<main>
+  <div class="site-section">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>  
+</main>
+
+<!-- <div class="container" style="margin-top: 15px;">
   <router-outlet></router-outlet>
-</div>
+</div> -->

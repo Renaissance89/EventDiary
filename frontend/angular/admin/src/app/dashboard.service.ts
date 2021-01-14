@@ -8,46 +8,46 @@ export class DashboardService {
 
   url='http://localhost:3000/dashboard'
   constructor(
-    private httpClient:HttpClient  )
-     { }
+    private httpClient:HttpClient)
+  { }
 
-     getOrganizer()
-     {
-       const httpOptions={
-         headers:new HttpHeaders({
-           token:sessionStorage['token']
-         })
-       }
-   return this.httpClient.get(this.url+'/getOrganizerCount',httpOptions)
-     }
+  getOrganizer()
+    {
+      const httpOptions={
+        headers:new HttpHeaders({
+        token:sessionStorage['token']
+      })
+    }
+    return this.httpClient.get(this.url+'/getOrganizerCount',httpOptions)
+  }
      
-     getActiveEvent()
-     {
-       const httpOptions={
-         headers:new HttpHeaders({
-           token:sessionStorage['token']
-         })
-       }
-   return this.httpClient.get(this.url+'/getActiveEventCount',httpOptions)
-     }
+  getActiveEvent()
+  {
+    const httpOptions={
+        headers:new HttpHeaders({
+        token:sessionStorage['token']
+      })
+    }
+    return this.httpClient.get(this.url+'/getActiveEventCount',httpOptions)
+  }
 
-     getSponser()
-     {
-       const httpOptions={
-         headers:new HttpHeaders({
-           token:sessionStorage['token']
-         })
-       }
-   return this.httpClient.get(this.url+'/getSponserCount',httpOptions)
-     }
+  getSponser()
+  {
+    const httpOptions={
+        headers:new HttpHeaders({
+        token:sessionStorage['token']
+      })
+    }
+    return this.httpClient.get(this.url+'/getSponserCount',httpOptions)
+  }
 
-     getUser()
-     {
-       const httpOptions={
-         headers:new HttpHeaders({
-           token:sessionStorage['token']
-         })
-       }
-   return this.httpClient.get(this.url+'/getUserCount',httpOptions)
-     }
+  getUser()
+  {
+    const httpOptions={
+        headers:new HttpHeaders({
+        token:sessionStorage['token']
+      })
+    }
+    return this.httpClient.get(this.url+'/getUserCount',httpOptions)
+  }
 }

@@ -8,10 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
+  //isPresent = sessionStorage['token'];
+
   constructor(
     private router:Router)
     { }
   
+  ngOnInit() {
+    
+  }
+
   onLogout()
   {
     sessionStorage.removeItem('token')
