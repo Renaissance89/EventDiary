@@ -48,7 +48,7 @@ export class CartComponent implements OnInit {
         .deleteCartItem(item['registrationId'])
         .subscribe(response => {
           if (response['status'] == 'success') {
-            this.toastr.success('deleted cart item')
+            this.toastr.warning('deleted cart item')
             this.loadCartItems()
           }
         })
