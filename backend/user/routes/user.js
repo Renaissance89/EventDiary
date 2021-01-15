@@ -90,7 +90,7 @@ router.post('/signup', (request, response) => {
 
 router.post('/signin', (request, response) => {
   const {email, password} = request.body
-  const statement = `select userId, firstName, lastName, active from user where email = '${email}' 
+  const statement = `select userId, firstName, lastName,role, active from user where email = '${email}' 
                     and password = '${crypto.SHA256(password)}'`
 
   db.query(statement, (error, users) => {
@@ -106,7 +106,8 @@ router.post('/signin', (request, response) => {
         response.send(utils.createResult(error, {
           firstName: user['firstName'],
           lastName: user['lastName'],
-          token: token
+          token: token,
+          role:user['role']
         }))
       } else {
         // user is a suspended user

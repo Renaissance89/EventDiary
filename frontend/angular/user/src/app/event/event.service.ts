@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class EventService {
 
-  url='http://localhost:4000/event'
+  url='http://localhost:4000/user/event'
   constructor(private httpclient:HttpClient) { }
 
 

@@ -21,7 +21,7 @@
         <td>{{item['eventName']}}</td>
         <td>{{item['paymentAmount']}}</td>
         <th>
-          <button (click)="updateQuantity(0, item)" class="btn btn-warning btn-sm">-</button>
+          <button (click)="updateQuantity(-1, item)" class="btn btn-warning btn-sm">-</button>
           {{item['quantity']}}
           <button (click)="updateQuantity(1, item)" class="btn btn-warning btn-sm">+</button>
         </th>

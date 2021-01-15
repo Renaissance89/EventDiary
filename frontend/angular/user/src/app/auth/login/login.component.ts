@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
           sessionStorage['token'] = data['token']
           sessionStorage['firstName'] = data['firstName']
           sessionStorage['lastName'] = data['lastName']
+          sessionStorage['role'] = data['role']
       
           this.router.navigate(['/home'])
           this.toastr.success('Welcome ' + data['firstName'])
@@ -46,8 +47,9 @@ export class LoginComponent implements OnInit {
           sessionStorage['token'] = data['token']
           sessionStorage['firstName'] = data['firstName']
           sessionStorage['lastName'] = data['lastName']
+          sessionStorage['role'] = data['role']
       
-          this.router.navigate(['/home'])
+          this.router.navigate(['/organizer-dashboard'])
           this.toastr.success('Welcome ' + data['firstName'])
       } 
       else {

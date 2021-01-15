@@ -1,6 +1,7 @@
 const express = require('express')
 const db = require('../../db')
 const utils = require('../../utils')
+const fs = require('fs')
 
 // multer: used for uploading document
 const multer = require('multer')
@@ -18,7 +19,7 @@ router.get('/image/:filename', (request, response) => {
 })
 // Show all User Only
 router.get('/all', (request, response) => {
-    const statement = `select eventId,eventName,eventDescription,eventLocation,eventDate,eventTime,eventDuration,eventFee,active from event `
+    const statement = `select eventId,eventImage,eventName,eventDescription,eventLocation,eventDate,eventTime,eventDuration,eventFee,active from event `
     db.query(statement, (error, users) => {
       if (error) {
         response.send({status: 'error', error: error})

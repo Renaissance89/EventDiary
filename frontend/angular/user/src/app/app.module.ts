@@ -10,6 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {OragnizerGuard} from './oragnizer.guard'
+import { from } from 'rxjs';
+//import {DashboardComponent} from './odashboard/dashboard/dashboard.component'
+//import { DashboardComponent } from './dashboard/dashboard.component';
+//import { OrgnizerDashboardComponent } from './orgnizer-dashboard/orgnizer-dashboard.component';
+
 //import { EventListComponent } from './event-list/event-list.component';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -17,6 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     HomeComponent,
+  //  DashboardComponent,
+ //   OrgnizerDashboardComponent,
    // EventListComponent
   ],
   imports: [
@@ -28,7 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [OragnizerGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
