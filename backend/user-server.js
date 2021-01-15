@@ -53,6 +53,7 @@ function getUserId(request, response, next) {
       || request.url == '/organizer/signup'
       || request.url == '/organizer/event/getAllEvent'
       || request.url == '/logo.png'
+      || request.url.startsWith('/user/event/image/')
       || request.url.startsWith('/user/forgot-password')) {
     // do not check for token 
     next()
@@ -81,8 +82,8 @@ app.use(express.static('images/'))
 
 // add the user routes
 app.use('/user', userRouter)
-app.use('/registerevent', registerRouter)
-app.use('/event',eventRouter1)
+app.use('/user/registerevent', registerRouter)
+app.use('/user/event',eventRouter1)
 
 // add the organizer routes
 app.use('/organizer', organizerRouter)

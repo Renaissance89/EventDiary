@@ -27,7 +27,9 @@
             <tr *ngFor="let event of events; let i= index ">
                 <td>{{i+1}}</td>
                 <!-- <td>{{event['eventId']}}</td> -->
-                <td>{{event['eventImage']}}"</td>
+                   <td><img class="product-image" src="http://localhost:4000/user/event/image/{{event['eventImage']}}" alt=""></td>       
+
+                <!-- <td>{{event['eventImage']}}</td> -->
                 <td>{{event['eventName']}}</td>
                 <td>{{event['eventDescription']}}</td>
                 <td> {{event['eventLocation']}}</td>
