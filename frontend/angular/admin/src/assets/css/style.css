@@ -91,15 +91,15 @@ aside {
       padding-bottom: 30px;
       border-bottom: 1px solid #efefef; }
       aside .side-inner .profile img {
-        width: 80px;
-        margin: 0 auto 20px auto;
-        border-radius: 50%; }
+        width: 150px;
+        margin: 0 auto 10px auto;
+        border-radius: 40%; }
       aside .side-inner .profile .name {
         font-size: 18px;
         margin-bottom: 0; }
-      aside .side-inner .profile .country {
+      aside .side-inner .profile .role {
         font-size: 14px;
-        color: #cfcfcf; }
+        color: #424242; }
     aside .side-inner .counter {
       margin-bottom: 30px;
       padding-bottom: 30px;
