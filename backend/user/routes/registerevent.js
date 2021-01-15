@@ -17,6 +17,16 @@ router.get('/user', (request, response) => {
     response.send(utils.createResult(error, data))
   })
 })
+router.get('/', (request, response) => {
+  const statement = `
+  select sum(totalAmount) from register where userId =12;
+  where userId = ${request.userId}
+  `
+ // console.log(statement)
+  db.query(statement, (error, data) => {
+    response.send(utils.createResult(error, data))
+  })
+})
 
 // ------------------------------------------------------------
 //                            POST
@@ -25,10 +35,11 @@ router.get('/user', (request, response) => {
 router.post('/user', (request, response) => {
   //const {uId} = request.params
   const {eventId,quantity, paymentAmount} = request.body
+  const totalAmount = paymentAmount * quantity
 
   const statement = `INSERT INTO register
-                    (userId, eventId, quantity, paymentAmount)
-                     values ( ${request.userId}, ${eventId}, ${quantity}, ${paymentAmount}
+                    (userId, eventId, quantity, paymentAmount,totalAmount)
+                     values ( ${request.userId}, ${eventId}, ${quantity}, ${paymentAmount}, ${totalAmount}
                    )`
                    console.log(statement)
 //${request.userId}

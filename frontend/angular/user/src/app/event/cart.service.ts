@@ -10,6 +10,15 @@ export class CartService {
 
   constructor(
     private httpClient: HttpClient) { }
+
+    amount(){
+      const httpOption = {
+      headers :new HttpHeaders ({
+        token : sessionStorage['token']
+      })
+    };
+    return this.httpClient.get(this.url + "/",httpOption)
+    }
   
   getCartItems() {
      // add the token in the request header
@@ -37,6 +46,8 @@ export class CartService {
         }
         return this.httpClient.post(this.url + "/user", body, httpOptions)
   }
+
+ 
 
   deleteCartItem(registrationId) {
     // add the token in the request header

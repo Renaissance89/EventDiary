@@ -20,6 +20,18 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.loadCartItems()
   }
+  amount(){
+    this.cartService
+    .amount()
+    .subscribe(response => {
+      if (response['status'] == 'success') {
+       // this.toastr.warning('Deleted cart item')
+       this.items=response['data']
+        this.loadCartItems()
+      }
+    })
+
+  }
   
   loadCartItems()
   {
