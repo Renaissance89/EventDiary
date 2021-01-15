@@ -12,6 +12,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
+  {path:'', redirectTo: '/login', pathMatch: "full"},
   {path:'dashboard',component:DashboardComponent,canActivate:[AdminService]},
   {path:'user-list',component:UserListComponent,canActivate:[AdminService]},
   {path:'organizer-list',component:OrganizerListComponent,canActivate:[AdminService]},
