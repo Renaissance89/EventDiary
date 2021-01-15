@@ -1,11 +1,9 @@
-/* .product-image {
-    height: 130px;
-    width: 330px;
-    transition: 0.5s;
-  } */
-  /* .product-image:hover {
-    transform: scale(1.2);
-  } */
-  .card:hover{
-    transform: scale(1.2);
-  }
+.card {
+  width: 250px;
+  height: 350px; 
+  z-index: 1
+}
+
+.card:hover{
+  transform: scale(1.1);
+}
