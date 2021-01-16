@@ -96,18 +96,17 @@ router.post('/addSponser/:eventOrganizerId', (request, response) => {
   })
 })
 
-router.post('/addEvent/:eventOrganizerId', (request, response) => {
-  const { eventOrganizerId } = request.params
+router.post('/addEvent', (request, response) => {
   const { eventName, eventDescription, eventVenue, eventLocation, eventDate, eventTime, eventDuration, 
           eventCategoryId, eventFee, eventImage } = request.body
 
   const statement = `INSERT INTO event(eventName, eventDescription, eventVenue, eventLocation, eventDate,
     eventTime, eventDuration, eventCategoryId, eventOrganizerId, eventFee, eventImage) 
     values ('${eventName}','${eventDescription}','${eventVenue}','${eventLocation}', '${eventDate}', 
-    '${eventTime}', '${eventDuration}', '${eventCategoryId}', '${eventOrganizerId}', '${eventFee}',
+    '${eventTime}', '${eventDuration}', '${eventCategoryId}', '${request.userId}', '${eventFee}',
     '${eventImage}')`
-
- db.query(statement, (error, event) => {
+  
+  db.query(statement, (error, event) => {
     if (error) {
       response.send({status: 'error', error: error})
     } else {
