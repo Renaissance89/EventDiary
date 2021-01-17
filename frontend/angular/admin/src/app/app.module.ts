@@ -1,4 +1,5 @@
 import { FeedbackService } from './feedback.service';
+import { ToastrModule } from 'ngx-toastr';
 import { EventCategoryService } from './event-category.service';
 import { SponserService } from './sponser.service';
 import { OrganizerService } from './organizer.service';
@@ -8,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http'
 import {FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +44,9 @@ import { CategoryAddComponent } from './category-add/category-add.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AdminService,

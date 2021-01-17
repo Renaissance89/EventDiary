@@ -1,6 +1,7 @@
 import { AdminService } from './../admin.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   password=''
 
   constructor(private router:Router,
+    private toastr: ToastrService,
     private adminService:AdminService) { }
 
   ngOnInit(): void {
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
       if(response['status']=='success')
       {
         const data = response['data']
-          console.log(data)
+         // console.log(data)
 
           sessionStorage['token'] = data['token']
           sessionStorage['firstName'] = data['firstName']
@@ -34,9 +36,10 @@ export class LoginComponent implements OnInit {
       
 
           this.router.navigate(['/dashboard'])
+          this.toastr.success("welcome "+sessionStorage['firstName'])
       }else
       {
-        alert('invalid email or password')
+        this.toastr.error('invalid email or password')
       }
     })
 

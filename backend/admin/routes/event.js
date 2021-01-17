@@ -1,16 +1,21 @@
 const express = require('express')
 const db = require('../../db')
 const utils = require('../../utils')
+const fs = require('fs')
 
 const router = express.Router()
 
 // ------------------------------------------------------------
 //                            GET
 // ------------------------------------------------------------
-
+router.get('/image/:filename', (request, response) => {
+  const {filename} = request.params
+  const file = fs.readFileSync(__dirname + '/../../images/' + filename)
+  response.send(file)
+})
 // Show All Events
 router.get('/getAllEvent', (request, response) => {
-  const statement = `SELECT e.eventId , e.eventName as Event_Name, e.eventDescription as Description, 
+  const statement = `SELECT e.eventId , e.eventName as Event_Name,e.eventImage ,e.eventDescription as Description, 
       e.eventVenue as Venue, e.eventLocation as Location, e.eventDate as Date, e.eventTime as Time, 
       e.eventDuration as Duration, c.categoryName as Category,
       u.firstName as Organizer_FirstName, u.lastName as Organizer_LastName, u.phone as OrganizerPhone, 

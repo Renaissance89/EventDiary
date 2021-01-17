@@ -1,4 +1,4 @@
-<h1>ist of Events</h1>
+<h1>List of Events</h1>
 <div class="table-responsive">
     <table class="table table-striped table-bordered">
         <thead>
@@ -6,6 +6,7 @@
                 <th>No</th>
                 <th>E_Id</th>
                 <th>E_Name</th>
+                <th>image</th>
                 <th>Description</th>
                 <th>Venue</th>
                 <th>Date</th>
@@ -25,6 +26,7 @@
                 <td>{{i+1}}</td>
                 <td>{{event['eventId']}}</td>
                 <td>{{event['Event_Name']}}</td>
+                <td><img class="event-image" src="http://localhost:3000/event/image/{{event['eventImage']}}" alt=""></td>
                 <td>{{event['Description']}}</td>
                 <td>{{event['Venue']}} {{event['Location']}}</td>
                 <td>{{event['Date']}}</td>
