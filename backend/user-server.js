@@ -45,16 +45,17 @@ function getUserId(request, response, next) {
   if (request.url == '/user/signin' 
       || request.url == '/user/signup'
       || request.url == '/registerevent/register'
- //     || request.url == '/registerevent/registerEvent'
-//      || request.url == '/event/all'
-     // || request.url.startsWith('/organizer/event/upload-image/')
+    //  || request.url == '/registerevent/registerEvent'
+    //  || request.url == '/event/all'
+    //  || request.url.startsWith('/organizer/event/upload-image/')
       || request.url.startsWith('/user/activate')
       || request.url == '/organizer/signin' 
       || request.url == '/organizer/signup'
       || request.url == '/organizer/event/getAllEvent'
       || request.url == '/logo.png'
       || request.url.startsWith('/user/event/image/')
-      || request.url.startsWith('/user/forgot-password')) {
+      || request.url.startsWith('/user/forgot-password')
+      || request.url.startsWith('/user/reset-password')) {
     // do not check for token 
     next()
   } else {

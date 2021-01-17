@@ -12,13 +12,13 @@
     <div class="col-md-3">
       <div class="form-group">
         <label for="firstname">First Name</label>
-        <input required [(ngModel)]="firstName" type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter First Name">
+        <input required [(ngModel)]="firstName" type="text" class="form-control text-capitalize" name="firstname" id="firstname" placeholder="Enter First Name">
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="lastname">Last Name</label>
-        <input required [(ngModel)]="lastName" type="text" class="form-control" name="lastname" id="lastname" placeholder="Enter Last Name">
+        <input required [(ngModel)]="lastName" type="text" class="form-control text-capitalize" name="lastname" id="lastname" placeholder="Enter Last Name">
       </div>
     </div>
   </div>
@@ -53,10 +53,10 @@
           <label for="gender">Gender</label>
         </div>
         <div class="form-check form-check-inline">
-          <input [(ngModel)]="gender" class="form-check-input" type="radio" name="gender" id="gender" value="Male" checked>
+          <input [(ngModel)]="gender" class="form-check-input text-capitalize" type="radio" name="gender" id="gender" value="Male" checked>
           <label class="form-check-label">Male</label>
           
-          <input [(ngModel)]="gender" class="form-check-input" type="radio" name="gender" id="gender" value="Female" style="margin-left: 10px;">
+          <input [(ngModel)]="gender" class="form-check-input text-capitalize" type="radio" name="gender" id="gender" value="Female" style="margin-left: 10px;">
           <label class="form-check-label">Female</label>
         </div>
       </div>
@@ -96,10 +96,10 @@
     <div class="col-md-6"></div>
     <div class="col-md-6">
       <div class="form-group">
-        <p>By sign up, you accept all the terms and privacy policy</p>
-        <button (click)="onSignup()" type="submit" class="btn btn-dark">SignUp</button>   
+        <p>By Signing Up, you accept all the Terms and Privacy Policy</p>
+        <button (click)="onSignup()" type="submit" class="btn btn-dark text-uppercase">Sign Up</button>   
       </div>
-      <span>Already have an account ?<a href="../auth/login/"> Signin Here</a> </span>
+      <span>Already have an account ?<a href="../auth/login/"> SignIn Here</a> </span>
     </div>
   </div>
 </form>

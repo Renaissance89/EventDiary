@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           this.toastr.success('Welcome ' + data['firstName'])
       } 
       else {
-      this.toastr.error('Invalid Email or Password')
+        this.toastr.error('Invalid Email or Password')
       }
     })
   }

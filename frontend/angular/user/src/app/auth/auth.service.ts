@@ -56,4 +56,23 @@ export class AuthService {
 
     return this.httpClient.post(this.url + '/signup', body)
   }
+
+  getOtp(email: string /*role: string*/) {
+    const body = {
+      email: email,
+      //role: role
+    }
+
+    return this.httpClient.post(this.url + '/forgot-password', body)
+  }
+
+  resetPassword(password: string, otp) {
+    const body = {
+      email: sessionStorage['email'],
+      password: password,
+      otp: otp
+    }
+
+    return this.httpClient.put(this.url + '/reset-password', body)
+  }
 }

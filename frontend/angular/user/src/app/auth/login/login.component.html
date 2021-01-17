@@ -24,11 +24,11 @@
 
 
 <div class="row">
-  <div class="col-md 4"></div>
+  <div class="col-md-4"></div>
   <div class="col-md-4">
       <br>
-      <h1>Login</h1>
       <br>
+      <h1>Login</h1>
       <form>
         <div class="form-group">
             <label for="email">Email</label>
@@ -41,16 +41,26 @@
 
         <div class="form-group">
             <label for="role">Role</label>
-            <select [(ngModel)]="role" name="role" class="form-control">
+            <select required="" [(ngModel)]="role" name="role" class="form-control">
                 <option selected value="user">User</option>
                 <option value="organizer">Organizer</option>
             </select>
         </div>
         <br>
         <div class="form-group">
-            <button (click)="onLogin()" type="submit" name="login" class="btn btn-dark text-uppercase">Login</button>
+          <button (click)="onLogin()" type="submit" name="login" class="btn btn-dark text-uppercase">Login</button>
+          <a href="/auth/forgot-password" class="float-right" style="padding: 5px;">Forgot Password ?</a>
         </div>
       </form>
   </div>
-  <div class="col-md 4"></div>
+  <div class="col-md-4"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <hr>
+    <p style="text-align: center;">Don't have an account ? <a href="/auth/signup">Sign Up Here</a></p>
+  </div>
+  <div class="col-md-4"></div>
 </div>

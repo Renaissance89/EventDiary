@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../auth.service';
 import { Router } from '@angular/router';
@@ -21,7 +22,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -36,11 +38,10 @@ export class SignupComponent implements OnInit {
           {
             const data = response['data']
               console.log(data)
-              alert('Account Created Successfully')
+              this.toastr.success('Account Created Successfully. Please check email')
               this.router.navigate(['/login'])
-          }else
-          {
-            alert('Account Creation Failed')
+          } else {
+            this.toastr.error('Account Creation Failed')
           }
         })
   }
