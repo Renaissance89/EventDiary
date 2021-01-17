@@ -19,8 +19,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
- onLogin()
- {
+
+  onLogin()
+  {
    this.adminService
    .login(this.email,this.password)
    .subscribe(response=>
@@ -28,20 +29,15 @@ export class LoginComponent implements OnInit {
       if(response['status']=='success')
       {
         const data = response['data']
-         // console.log(data)
-
           sessionStorage['token'] = data['token']
           sessionStorage['firstName'] = data['firstName']
           sessionStorage['lastName'] = data['lastName']
       
-
           this.router.navigate(['/dashboard'])
-          this.toastr.success("welcome "+sessionStorage['firstName'])
-      }else
-      {
-        this.toastr.error('invalid email or password')
+          this.toastr.success("Welcome " + sessionStorage['firstName'] + " " + sessionStorage['lastName'])
+      } else {
+        this.toastr.error('Invalid Email or Password')
       }
     })
-
- }
+  }
 }

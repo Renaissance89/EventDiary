@@ -8,17 +8,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  isPresent = sessionStorage['token'];
+  isPresent = false;
 
   constructor(
     private router:Router)
     { }
-  
-  ngOnInit() {
-    if(sessionStorage['token'])
-      this.router.navigate['/dashboard']
-    else
-      this.router.navigate['/login']
+
+  ngDoCheck() {
+      if(sessionStorage['token']) {
+        this.isPresent = true;
+        this.router.navigate['/dashboard']
+      } else {
+        this.isPresent = false;
+        this.router.navigate['/login']
+      }    
   }
 
   onLogout()

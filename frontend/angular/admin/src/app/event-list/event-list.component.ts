@@ -10,11 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class EventListComponent implements OnInit {
 
   events=[]
+
   constructor(private eventservice:EventService) { }
 
   ngOnInit(): void {
     this.loadevents()
-   
   }
 
   loadevents()
@@ -32,6 +32,7 @@ export class EventListComponent implements OnInit {
         }
       })
   }
+
   toggleActive(event)
   {
     this.eventservice
@@ -45,8 +46,6 @@ export class EventListComponent implements OnInit {
         else{
           console.log(response['error'])
         }
-        
       })
-
   }
 }
