@@ -30,36 +30,6 @@ router.get('/activate/:token', (request, response) => {
   })
 })
 
-router.get('/forgot-password/:email', (request, response) => {
-  const {email} = request.params
-  const statement = `select id, firstName, lastName from user where email = '${email}' and role = 'user'`
-  db.query(statement, (error, users) => {
-    if (error) {
-      response.send(utils.createError(error))
-    } else if (users.length == 0) {
-      response.send(utils.createError('User does not exist'))
-    } else {
-      const user = users[0]
-      const otp = utils.generateOTP()
-      const body = `Your OTP = ${otp}` 
-
-      const otpStatement = `update user set activationToken = '${otp}' where email = '${email}' and role = 'user'`
-
-      db.query(otpStatement, (error, data) => {
-          if (error) {
-              response.send(utils.createError(error))
-          } else {
-            mailer.sendEmail(email, 'Reset your password', body, (error, info) => {
-                console.log(error)
-                console.log(info)
-                response.send(utils.createResult(error, { otp: otp, email: email, data: data }))
-            })
-          }
-      })
-    }
-  })
-})
-
 // ------------------------------------------------------------
 //                            POST
 // ------------------------------------------------------------
@@ -90,7 +60,7 @@ router.post('/signup', (request, response) => {
 
 router.post('/signin', (request, response) => {
   const {email, password} = request.body
-  const statement = `select userId, firstName, lastName,role, active from user where email = '${email}' 
+  const statement = `select userId, firstName, lastName, role, active from user where email = '${email}' 
                     and password = '${crypto.SHA256(password)}'`
 
   db.query(statement, (error, users) => {
@@ -113,6 +83,36 @@ router.post('/signin', (request, response) => {
         // user is a suspended user
         response.send({status: 'error', error: 'Your account is not active. Please contact administrator'})
       }
+    }
+  })
+})
+
+router.post('/forgot-password', (request, response) => {
+  const {email} = request.body
+  const statement = `select userId, firstName, lastName from user where email = '${email}' and role = 'user'`
+  db.query(statement, (error, users) => {
+    if (error) {
+      response.send(utils.createError(error))
+    } else if (users.length == 0) {
+      response.send(utils.createError('User does not exist'))
+    } else {
+      const user = users[0]
+      const otp = utils.generateOTP()
+      const body = `Your OTP = ${otp}` 
+
+      const otpStatement = `update user set activationToken = '${otp}' where email = '${email}' and role = 'user'`
+
+      db.query(otpStatement, (error, data) => {
+          if (error) {
+              response.send(utils.createError(error))
+          } else {
+            mailer.sendEmail(email, 'Reset your password', body, (error, info) => {
+                console.log(error)
+                console.log(info)
+                response.send(utils.createResult(error, { otp: otp, email: email, data: data }))
+            })
+          }
+      })
     }
   })
 })
