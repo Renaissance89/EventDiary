@@ -1,0 +1,99 @@
+<h1>Add Event</h1>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="eventname">Event Name</label>
+        <input required="" [(ngModel)]="eventName"  autofocus="" type="text" class="form-control" id="eventname" placeholder="Enter Event Name">
+      </div>
+    </div>
+    <!-- <div class="col-md-4">
+      <div class="form-group">
+        automatic yenar login kelay tya account ni ani disabled asnar 
+        <label for="eventorganizer">Organizer</label>
+        <input type="text" class="form-control" id="eventorganizer" placeholder="Enter Event Organizer">
+      </div>
+    </div> -->
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select required="" [(ngModel)]="eventCategoryId" class="form-control" name="category" id="category">
+          <option selected value="1">Comedy</option>
+          <option value="2">Education</option>
+          <option value="3">Music</option>
+          <option value="4">Tech Expo</option>
+          <option value="5">Social</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="fee">Registration Fee</label>
+        <input required="" [(ngModel)]="eventFee" type="number" class="form-control" id="fee" placeholder="Enter Event Fee" min="0">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="venue">Venue</label>
+        <input required="" [(ngModel)]="eventVenue" type="text" class="form-control" id="venue" placeholder="e.g. Balewadi Stadium">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input required="" [(ngModel)]="eventLocation" type="text" class="form-control" id="location" placeholder="e.g. Mumbai">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="image">Event Image</label>
+        <br>
+        <input type="file" required="" [(ngModel)]="eventImage"  name="image" id="image">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="eventdate">Date</label>
+        <input required="" [(ngModel)]="eventDate" type="date" class="form-control" id="eventdate" placeholder="Enter Event Date">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="eventtime">Start Time</label>
+        <input required="" [(ngModel)]="eventTime" type="time" class="form-control" id="eventtime" placeholder="Enter Event Time" >
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="duration">Duration</label>
+        <input required="" [(ngModel)]="eventDuration" type="time" class="form-control" id="duration" placeholder="Enter Event Duration">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea required="" [(ngModel)]="eventDescription" class="form-control" name="description" id="description" rows="5"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div style="text-align: center;" class="col-md-4">
+      <div class="form-group">
+        <button (click)="onAddEvent()" type="submit" class="btn btn-success">Submit</button>
+        <a href="/dashboard"><button type="reset" class="btn btn-danger" style="margin-left: 10px;">Cancel</button></a>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+

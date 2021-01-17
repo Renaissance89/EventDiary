@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h2>Cart Items</h2>
+  <button class="btn btn-success float-right">Place Order</button>
+</div>
+
+<div class="modal-body">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total Amount</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of items; let index = index">
+      <td>{{index + 1}}</td>
+      <td>{{item['eventName']}}</td>
+      <td>{{item['paymentAmount']}}</td>
+      <th>
+        <button (click)="updateQuantity(-1, item)" class="btn btn-warning btn-sm">-</button>
+        {{item['quantity']}}
+        <button (click)="updateQuantity(1, item)" class="btn btn-warning btn-sm">+</button>
+      </th>
+      <td>{{item['totalAmount']}}</td> 
+      <td>
+        <button (click)="onDelete(item)" class="btn btn-danger btn-sm">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <br>
+    <br>
+    <tr>
+      <th colspan="5">Total Amount</th>
+      <th colspan="2" >{{totalAmount}}</th>
+    </tr>
+  </tfoot>
+</table>
+</div>

@@ -1,0 +1,105 @@
+<!-- <img src="images.jpeg" alt=""> -->
+<br>
+<form>
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-4" style="font-weight: bold; font-size: 40px;">Create an account</div>
+    <div class="col-md-2"></div>
+  </div>
+
+  <div class="row">
+  <div class="col-md 6"></div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input required [(ngModel)]="firstName" type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter First Name">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input required [(ngModel)]="lastName" type="text" class="form-control" name="lastname" id="lastname" placeholder="Enter Last Name">
+      </div>
+    </div>
+  </div>
+    
+  <div class="row">
+    <div class="col-md 6"></div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input required [(ngModel)]="email" type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input required [(ngModel)]="password" type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md 6"></div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="phone">Mobile</label>
+        <input required [(ngModel)]="phone" type="tel" class="form-control" id="phone" placeholder="Enter Mobile">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <div>
+          <label for="gender">Gender</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input [(ngModel)]="gender" class="form-check-input" type="radio" name="gender" id="gender" value="Male" checked>
+          <label class="form-check-label">Male</label>
+          
+          <input [(ngModel)]="gender" class="form-check-input" type="radio" name="gender" id="gender" value="Female" style="margin-left: 10px;">
+          <label class="form-check-label">Female</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md 6"></div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="city">City</label>
+        <input required [(ngModel)]="city" type="text" class="form-control" id="city" placeholder="Enter City">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="state">State</label>
+        <input required [(ngModel)]="state" type="text" class="form-control" id="state" placeholder="Enter State">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select [(ngModel)]="role" class="form-control">
+          <option selected value="user">User</option>
+          <option value="organizer">Organizer</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">  
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <p>By sign up, you accept all the terms and privacy policy</p>
+        <button (click)="onSignup()" type="submit" class="btn btn-dark">SignUp</button>   
+      </div>
+      <span>Already have an account ?<a href="../auth/login/"> Signin Here</a> </span>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+textarea {
+  resize:none;
+}
+
+label {
+  font-weight: bold;
+}

@@ -1,0 +1,36 @@
+<div class="row" style="margin-bottom: 40px; margin-top: 10px;">
+  <div class="col-md-12">
+    <button (click)="loadCart()" class="btn btn-success float-right">Cart</button>
+    <h2>Events</h2>
+  </div>
+</div>
+  
+<div class="row">
+  <div class="col-md-3">
+    <!-- <div class="form-group">
+      <label for="">Category</label>
+      <select class="form-control" (change)="filterProducts($event)">
+        <option [value]="category['id']" *ngFor="let category of categories">{{category['title']}}</option>
+      </select>
+    </div> -->
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let event of events">
+        <div class="card">
+          <img src="http://localhost:4000/user/event/image/{{event['eventImage']}}" alt="">
+          <div class="card-body">
+            <div class="price"><strong>Event Name: </strong>{{event['eventName']}}</div>
+            <div class="description"><strong>Description: </strong> {{event['eventDescription']}}</div>
+            <div class="location"><strong>Location: </strong> {{event['eventLocation']}}</div>
+            <div class="date"><strong>Date: </strong> {{event['eventDate']}}</div>
+            <div class="time"><strong>Time: </strong> {{event['eventTime']}}</div>
+            <div class="duration"><strong>Duration: </strong> {{event['eventDuration']}}</div>
+            <div class="fee"><strong>Fee: </strong> {{event['eventFee']}}</div>  
+            <button style="margin-top: 10px;" (click)="addToCart(event)"class="btn btn-success btn-sm">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
