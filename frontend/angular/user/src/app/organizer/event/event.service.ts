@@ -38,4 +38,17 @@ export class EventService {
 
     return this.httpClient.post(this.url + '/addEvent/' + eventOrganizerId , body, httpOptions)
   }
+  uploadImage(id, file) {
+    // add the token in the request header
+    const httpOptions = {
+      headers: new HttpHeaders({
+        token: sessionStorage['token']
+      })
+    };
+
+    const body = new FormData()
+    body.append('eventImage', file)
+
+    return this.httpClient.post(this.url + `/upload-image/${id}`, body, httpOptions)
+  }
 }
