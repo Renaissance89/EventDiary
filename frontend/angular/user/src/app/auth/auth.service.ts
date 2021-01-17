@@ -32,7 +32,8 @@ export class AuthService {
     }
 
     // force user to login
-    this.router.navigate(['/login'])
+    else
+    this.router.navigate(['/auth/login'])
 
     // user has not logged in yet
     // stop launching the component

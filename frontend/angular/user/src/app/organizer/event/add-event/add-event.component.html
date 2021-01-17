@@ -51,7 +51,7 @@
       <div class="form-group">
         <label for="image">Event Image</label>
         <br>
-        <input type="file" required="" [(ngModel)]="eventImage"  name="image" id="image">
+        <button *ngIf="event" (click)="onUploadImage()" class="btn btn-info float-right">Upload Image</button>
       </div>
     </div>
   </div>
@@ -85,6 +85,17 @@
       </div>
     </div>
   </div>
+  <!-- <div class="row">
+    <div class="col.md-4"></div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="image">Event Image</label>
+        <input (change)="onImageSelect($event)" type="file" class="form-control">
+        <button (click)="onUploadImage()" class="btn btn-success">Upload</button>
+        <!-- <button *ngIf="event" (click)="onUploadImage()" class="btn btn-info float-right">Upload Image</button> 
+      </div>
+    </div>
+  </div> -->
 
   <div class="row">
     <div class="col-md-4"></div>

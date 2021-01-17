@@ -54,10 +54,11 @@ router.post('/upload-image/:eventId', upload.single('eventImage'), (request, res
   const {eventId} = request.params
   const fileName = request.file.filename
 
-  const statement = `update event set eventImage = '${fileName}' where eventId = ${eventId}`
+  const statement = `update event set eventImage = '${fileName}' where eventId = ${eventId}`//
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
+console.log(statement)
 })
 
 // router.post('/addEvent/:eventOrganizerId', (request, response) => {

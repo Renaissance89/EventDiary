@@ -1,7 +1,7 @@
 import { ToastrService } from 'ngx-toastr';
 import { EventService } from './../../../organizer/event/event.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-event',
@@ -21,16 +21,36 @@ export class AddEventComponent implements OnInit {
   eventOrganizerId = ''
   eventImage = ''
   eventFee = ''
+  events = [] 
+  selectedFile = null
+  event = 1;
 
   constructor(
     private router:Router,
+    private activatedRoute: ActivatedRoute,
     private eventService: EventService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
   }
+  onImageSelect(event) {
+    this.selectedFile = event.target.files[0]
+  }
+  // onUploadImage() {
+  //   const id = this.activatedRoute.snapshot.queryParams['id']
+  //   this.eventService
+  //     .uploadImage(id, this.selectedFile)
+  //     .subscribe(response => {
+  //       if (response['status'] == 'success') {
 
+  //        this.toastr.success("added image")
+  //        // this.router.navigate(['/dashboard/event/add-event'])
+  //       } else {
+  //         console.log(response['error'])
+  //       }
+  //     })
+  // }
   onAddEvent() {
     this.eventService
       .addEvent(this.eventName, this.eventDescription, this.eventVenue, this.eventLocation, this.eventDate, this.eventTime,
@@ -49,5 +69,8 @@ export class AddEventComponent implements OnInit {
             this.toastr.error('Event Creation Failed')
           }
         })
+  }
+  onUploadImage() {
+    this.router.navigate(['/dashboard/event/upload-image'], {queryParams: {id: this.event['eventId']}})
   }
 }
