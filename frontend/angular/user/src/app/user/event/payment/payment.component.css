@@ -1,67 +1,16 @@
-*
-{
-    font-family: Arial, Helvetica, sans-serif;
+table {
+    text-align: center;
 }
-span{
+
+p {
     font-size: 20px;
-}
-img {
-
-    width: 50px;
-    height: 50px;
-    border: black 1px solid;
-    padding: 2px;
-
-}
-img:hover{
-    transform: scale(1.2);
-}
-
-
-.form {
-    width: 700px;
-    height: 630px;
-    border: 2px solid black;
-    margin: 20px;
-    padding: 20px;
-    background-color: honeydew;
-    font-size: 20px;
-
-}
-
-#details {
-    position: absolute;
-    width: 380px;
-    height: 150px;
-    border: black solid 2px;
-    border-radius: 5px;
-    top: 450px;
-    margin-left: 260px;
-    font-size: 18px;
-    padding: 10px;
-    color: black;
-    box-shadow: 0 0 7px black;
-    background-color: white;
-
-}
-.div:hover{
-    transform: scale(1.1);
-}
-#cvv{
-    width: 100px;
-}
-#expire{
-    width: 200px;
-}
-#name{
-    width: 400px;
-}
-#num{
-    width: 400px;
-}
-
-h2
-{
-    
     font-weight: bold;
+}
+
+img {
+    width: 65px;
+    height: 40px;
+    border: 1px solid;
+    padding: 2px;
+    margin-left: 15px;
 }

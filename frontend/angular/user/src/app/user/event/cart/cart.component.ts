@@ -1,3 +1,5 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PaymentComponent } from './../payment/payment.component';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from './../cart.service';
 import { ToastrService } from 'ngx-toastr';
@@ -14,9 +16,9 @@ export class CartComponent implements OnInit {
   totalAmount = 0
 
   constructor(
-    private router:Router,
     private toastr: ToastrService,
-    private cartService: CartService
+    private cartService: CartService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +30,6 @@ export class CartComponent implements OnInit {
     .amount()
     .subscribe(response => {
       if (response['status'] == 'success') {
-        // this.toastr.warning('Deleted cart item')
         this.items=response['data']
         this.loadCartItems()
       }
@@ -81,7 +82,8 @@ export class CartComponent implements OnInit {
         })
     }
   }
-  payment(){
-    this.router.navigate(['/home/event/payment'])
+
+  payment() {
+    this.modalService.open(PaymentComponent, {size : 'lg'})
   }
 }

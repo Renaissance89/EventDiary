@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
         
 
     <div class="form">
@@ -48,5 +48,77 @@
 
    
 
-</div>
+</div> -->
 
+<div class="modal-header">
+    <h2>Payment</h2>
+  </div>
+  
+<div class="modal-body">
+    <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Amount</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr *ngFor="let item of items; let index = index">
+            <td>{{index + 1}}</td>
+            <td>{{item['eventName']}}</td>
+            <td>{{item['paymentAmount']}}</td>
+            <td>{{item['quantity']}}</td>
+            <td>{{item['totalAmount']}}</td> 
+          </tr>
+        </tbody>
+      
+        <tfoot>
+            <tr>
+              <th colspan="4">Total Amount</th>
+              <th>{{totalAmount}}</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <!-- <img src="../../../../assets/payment card icons/visa-debit-card.jpg" alt="visa-logo">
+            <img src="../../../../assets/payment card icons/mastercard-debit-card.png" alt="master-logo">
+            <img src="../../../../assets/payment card icons/rupay-debit-card.png" alt="rupay-logo">
+            <img src="../../../../assets/payment card icons/maestro-debit-card.png" alt="maestro-logo"> -->
+            <p>Enter Card Details</p>
+            <div class="form-group">
+                <label for="card-name">Name On Card</label>
+                <input class="form-control" type="text" id="card-name" placeholder="Name on card">
+            </div>
+
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input class="form-control" type="text" id="card-number" placeholder="Enter 16-digit card number">
+            </div>
+
+            <div class="form-group">
+                <label for="expiry-date">Expiry Date</label>
+                <input class="form-control" type="date" id="expiry-date" placeholder="Enter expiry date">
+            </div>
+
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input class="form-control" type="password" id="cvv" placeholder="Enter CVV">
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+  
+</div>
+  
+<div class="modal-footer">
+    <button (click)="placeOrder()" class="btn btn-success">Make Payment</button>
+</div>
