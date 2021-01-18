@@ -37,10 +37,10 @@ export class AddEventComponent implements OnInit {
   onImageSelect(event) {
     this.selectedFile = event.target.files[0]
   }
-  // onUploadImage() {
+  // onUploadImage(event) {
   //   const id = this.activatedRoute.snapshot.queryParams['id']
   //   this.eventService
-  //     .uploadImage(id, this.selectedFile)
+  //     .uploadImage( id,this.selectedFile)
   //     .subscribe(response => {
   //       if (response['status'] == 'success') {
 
@@ -70,7 +70,7 @@ export class AddEventComponent implements OnInit {
           }
         })
   }
-  onUploadImage() {
-    this.router.navigate(['/dashboard/event/upload-image'], {queryParams: {id: this.event['eventId']}})
-  }
+  // onUploadImage() {
+  //   this.router.navigate(['/dashboard/event/upload-image'], {queryParams: {id: this.event['eventId']}})
+  // }
 }
