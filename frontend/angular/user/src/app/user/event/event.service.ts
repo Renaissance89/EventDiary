@@ -37,4 +37,17 @@ export class EventService {
     }
     return this.httpclient.post(this.url + "/register", body, httpOptions)
   }
+
+  url1 = 'http://localhost:4000/category'
+
+  getCategories() {
+    // add the token in the request header
+    const httpOptions = {
+     headers: new HttpHeaders({
+       token: sessionStorage['token']
+     })
+   };
+   
+   return this.httpclient.get(this.url1, httpOptions)
+ }
 }

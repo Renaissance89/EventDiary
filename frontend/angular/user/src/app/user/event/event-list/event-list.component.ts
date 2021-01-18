@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class EventListComponent implements OnInit {
 
   events =[]
+  allEvents = []
+  categories = []
 
   constructor(
     private eventservice:EventService,
@@ -23,8 +25,30 @@ export class EventListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadevents()
+    this.loadCategories()
   }
-
+  filterProducts(event) {
+    const categoryId1 = event.target.value
+    this.events = []
+    if (categoryId1 == -1) {
+      this.events = this.allEvents
+    } else {
+      this.events = this.allEvents.filter(event => {
+        return event.category['categoryId'] == categoryId1
+      })
+    }
+  }
+  loadCategories() {
+    this.eventservice
+      .getCategories()
+      .subscribe(response => {
+        if (response['status'] == 'success') {
+          this.categories = response['data']
+          this.categories.push({id: -1, title: 'All Categories'})
+          console.log(this.categories)
+        }
+      })
+  }
   loadCart() {
     this.modalService.open(CartComponent, { size: 'lg'})
   }

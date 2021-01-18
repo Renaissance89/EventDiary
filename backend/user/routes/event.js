@@ -19,7 +19,10 @@ router.get('/image/:filename', (request, response) => {
 })
 // Show all User Only
 router.get('/all', (request, response) => {
-    const statement = `select eventId,eventImage,eventName,eventDescription,eventLocation,eventDate,eventTime,eventDuration,eventFee,active from event `
+    const statement = `select e.eventId,e.eventImage,e.eventName,e.eventDescription,e.eventLocation,e.eventDate,e.eventTime,e.eventDuration,
+    e.eventFee,e.active,e.eventCategoryId,c.categoryName as categoryName from event e inner join category c 
+    on e.eventCategoryId=c.categoryId`
+    console.log(statement)
     db.query(statement, (error, users) => {
       if (error) {
         response.send({status: 'error', error: error})

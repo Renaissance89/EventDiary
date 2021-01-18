@@ -13,6 +13,10 @@
         <option [value]="category['id']" *ngFor="let category of categories">{{category['title']}}</option>
       </select>
     </div> -->
+    <label for="">Category</label>
+    <select class="form-control" (change)="filterProducts($event)">
+      <option [value]="category['categoryId']" *ngFor="let category of categories">{{category['categoryName']}}</option>
+    </select>
   </div>
   <div class="col-md-9">
     <div class="row">
@@ -21,6 +25,7 @@
           <img src="http://localhost:4000/user/event/image/{{event['eventImage']}}" alt="">
           <div class="card-body">
             <div class="price"><strong>Event Name: </strong>{{event['eventName']}}</div>
+            <div class="price"><strong>Category Name: </strong>{{event['categoryName']}}</div>
             <div class="description"><strong>Description: </strong> {{event['eventDescription']}}</div>
             <div class="location"><strong>Location: </strong> {{event['eventLocation']}}</div>
             <div class="date"><strong>Date: </strong> {{event['eventDate']}}</div>
