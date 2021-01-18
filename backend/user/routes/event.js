@@ -79,9 +79,9 @@ router.get('/all', (request, response) => {
           eventName: tmpEvent['eventName'],
           eventDescription: tmpEvent['eventDescription'],
           eventFee: tmpEvent['eventFee'],
-          active: tmpEvent['eventDate'],
-          active: tmpEvent['eventTime'],
-          active: tmpEvent['eventDuration'],
+          eventDate: tmpEvent['eventDate'],
+          eventTime: tmpEvent['eventTime'],
+          eventDuration: tmpEvent['eventDuration'],
           active: tmpEvent['active'],
           categoryName: tmpEvent['categoryName'],
 
