@@ -1,13 +1,15 @@
-.info-orange { background: linear-gradient(135deg, rgb(251, 192, 45) 0%,rgb(245, 127, 23) 100%); }
-.info-green { background: linear-gradient(135deg, #1bb31b 0%,#118511 100%) }
-.info-brown { background: linear-gradient(135deg, rgb(211, 47, 47) 0%,rgb(183, 28, 28) 100%) }
-.info-blue { background: linear-gradient(135deg, rgb(25, 118, 210) 0%,rgb(13, 71, 161) 100%) }
+.info-orange { background-image: linear-gradient(45deg,#843cf7,#38b8f2); }
+.info-green { background-image: linear-gradient(45deg,#004b91,#78cc37); }
+.info-brown { background-image: linear-gradient(45deg,#ee0979,#ff6a00); }
+.info-blue { background-image: linear-gradient(45deg,#9b3cb7,#ff396f); }
 
 .info {
   position: relative;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+  margin: 5px;
+  box-shadow: 0 6px 0 0 rgba(0,0,0,.01), 0 15px 32px 0 rgba(0,0,0,.06);
+  background-clip: border-box;
 }
 
 .info .header {
@@ -20,4 +22,9 @@
   color: white;
   font-size: 20px;
   font-weight: 700;
+}
+
+div > img {
+  width: max-content;
+  height: 500px
 }

@@ -1,3 +1,4 @@
+import { EventDetailComponent } from './event-detail/event-detail.component';
 import { CategoryAddComponent } from './category-add/category-add.component';
 import { AdminService } from './admin.service';
 import { EventCategoryComponent } from './event-category/event-category.component';
@@ -12,16 +13,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path:'', redirectTo: '/login', pathMatch: "full"},
-  {path:'dashboard',component:DashboardComponent,canActivate:[AdminService]},
-  {path:'user-list',component:UserListComponent,canActivate:[AdminService]},
-  {path:'organizer-list',component:OrganizerListComponent,canActivate:[AdminService]},
-  {path:'sponser-list',component:SponserListComponent,canActivate:[AdminService]},
-  {path:'event-list',component:EventListComponent,canActivate:[AdminService]},
-  {path:'feedback-list',component:FeedbackListComponent,canActivate:[AdminService]},
-  {path:'login',component:LoginComponent},
-  {path:'event-category',component:EventCategoryComponent,canActivate:[AdminService]},
-  {path:'category-add',component:CategoryAddComponent,canActivate:[AdminService]}
+  { path:'', redirectTo: '/login', pathMatch: "full" },
+  { path:'dashboard', component:DashboardComponent, canActivate:[AdminService] }, 
+  { path:'user-list', component:UserListComponent, canActivate:[AdminService] },
+  { path:'organizer-list', component:OrganizerListComponent, canActivate:[AdminService] },
+  { path:'sponser-list', component:SponserListComponent, canActivate:[AdminService] },
+  { path:'event-list', component:EventListComponent, canActivate:[AdminService] },
+  { path:'feedback-list', component:FeedbackListComponent, canActivate:[AdminService] },
+  { path:'login', component:LoginComponent },
+  { path:'event-category', component:EventCategoryComponent, canActivate:[AdminService] },
+  { path:'category-add', component:CategoryAddComponent, canActivate:[AdminService] },
+  { path:'event-detail', component: EventDetailComponent, canActivate:[AdminService] },
  
 ];
 

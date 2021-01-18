@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  eventCount=[]
-  userCount=[]
-  organizerCount=[];
-  sponserCount=[]
+  eventCount = ''
+  userCount = ''
+  organizerCount = ''
+  sponserCount = ''
 
   constructor(
     private dashboardService: DashboardService) 
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
     {
       if(response['status']=='success')
       {
-        this.eventCount = response['data']
+        this.eventCount = response['data'][0]['Event_Count']
         console.log(this.eventCount);
       }
       else{
@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
     {
       if(response['status']=='success')
       {
-        this.userCount = response['data']
+        this.userCount = response['data'][0]['User_Count']
         console.log(this.userCount);
       }
       else{
@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
     {
       if(response['status']=='success')
       {
-        this.organizerCount = response['data']
+        this.organizerCount = response['data'][0]['Organizer_Count']
         console.log(this.organizerCount);
       }
       else{
@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
     {
       if(response['status']=='success')
       {
-        this.sponserCount = response['data']
+        this.sponserCount = response['data'][0]['Sponser_Count']
         console.log(this.sponserCount);
       }
       else{

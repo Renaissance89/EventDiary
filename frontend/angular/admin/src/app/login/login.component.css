@@ -1,7 +1,32 @@
-h1 {
+h1, h3, p {
     text-align: center;
 }
 
-.btn {
+p {
+    color: black;
+    font-size: 25px;
+}
+
+/* .btn {
     width: 100%;
+} */
+
+button {
+    width: 100%;
+    border: 0;
+    background: #0087cc;
+    border-radius: 4px;
+    box-shadow: 0 5px 0 #006599;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 12px 20px;
+    transition: all .1s linear;
+}
+
+button:active {
+    box-shadow: 0 2px 0 #006599;
+    transform: translateY(3px);
 }
