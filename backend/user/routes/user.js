@@ -61,7 +61,8 @@ router.post('/signup', (request, response) => {
 router.post('/signin', (request, response) => {
   const {email, password} = request.body
   const statement = `select userId, firstName, lastName, role, active from user where email = '${email}' 
-                    and password = '${crypto.SHA256(password)}'`
+                    and password = '${crypto.SHA256(password)}' and active=1`
+                    console.log(statement)
 
   db.query(statement, (error, users) => {
     if (error) {

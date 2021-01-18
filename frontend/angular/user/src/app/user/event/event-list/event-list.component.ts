@@ -28,13 +28,17 @@ export class EventListComponent implements OnInit {
     this.loadCategories()
   }
   filterProducts(event) {
+    console.log("inside event")
     const categoryId1 = event.target.value
+    console.log(categoryId1)
     this.events = []
     if (categoryId1 == -1) {
       this.events = this.allEvents
     } else {
+      console.log("inside else")
+      console.log(categoryId1)
       this.events = this.allEvents.filter(event => {
-        return event.category['categoryId'] == categoryId1
+        return event.category['eventcategoryId'] == categoryId1
       })
     }
   }
@@ -45,7 +49,7 @@ export class EventListComponent implements OnInit {
         if (response['status'] == 'success') {
           this.categories = response['data']
           this.categories.push({id: -1, title: 'All Categories'})
-          console.log(this.categories)
+         // console.log(this.categories)
         }
       })
   }

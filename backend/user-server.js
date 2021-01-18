@@ -13,6 +13,7 @@ const swaggerUi = require('swagger-ui-express')
 const userRouter = require('./user/routes/user')
 const registerRouter = require('./user/routes/registerevent')
 const eventRouter1 = require('./user/routes/event')
+const categoryRouter = require('./user/routes/category')
 
 // organizer routers  -------------------------
 const organizerRouter = require('./organizer/routes/organizer')
@@ -85,6 +86,7 @@ app.use(express.static('images/'))
 app.use('/user', userRouter)
 app.use('/user/registerevent', registerRouter)
 app.use('/user/event',eventRouter1)
+app.use('/category', categoryRouter)
 
 // add the organizer routes
 app.use('/organizer', organizerRouter)
