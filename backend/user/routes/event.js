@@ -62,7 +62,7 @@ router.get('/image/:filename', (request, response) => {
 router.get('/all', (request, response) => {
     const statement = `select e.eventId,c.categoryId,e.eventImage,e.eventName,e.eventDescription,e.eventLocation,e.eventDate,e.eventTime,e.eventDuration,
     e.eventFee,e.active,e.eventCategoryId,c.categoryName as categoryName from event e inner join category c 
-    on e.eventCategoryId=c.categoryId where active =0`
+    on e.eventCategoryId=c.categoryId where active = 1`
     console.log(statement)
     db.query(statement, (error, data) => {
       if (error) {
@@ -85,11 +85,6 @@ router.get('/all', (request, response) => {
           active: tmpEvent['active'],
           categoryName: tmpEvent['categoryName'],
 
-          
-          // brand: {
-          //   id: tmpEvent['brandId'],
-          //   title: tmpEvent['brandTitle']
-          // },
           category: {
             categoryId: tmpEvent['categoryId'],
             categoryName: tmpEvent['categoryName']
