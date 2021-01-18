@@ -1,14 +1,12 @@
-<!-- <img src="images.jpeg" alt=""> -->
-<br>
 <form>
   <div class="row">
-    <div class="col-md-6"></div>
-    <div class="col-md-4" style="font-weight: bold; font-size: 40px;">Create an account</div>
-    <div class="col-md-2"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="font-weight: bold; font-size: 40px; text-align: center;">Create an account</div>
+    <div class="col-md-3"></div>
   </div>
 
   <div class="row">
-  <div class="col-md 6"></div>
+  <div class="col-md-3"></div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="firstname">First Name</label>
@@ -21,10 +19,11 @@
         <input required [(ngModel)]="lastName" type="text" class="form-control text-capitalize" name="lastname" id="lastname" placeholder="Enter Last Name">
       </div>
     </div>
+    <div class="col-md-3"></div>
   </div>
     
   <div class="row">
-    <div class="col-md 6"></div>
+    <div class="col-md-3"></div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="email">Email</label>
@@ -37,10 +36,11 @@
         <input required [(ngModel)]="password" type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
       </div>
     </div>
+    <div class="col-md-3"></div>
   </div>
 
   <div class="row">
-    <div class="col-md 6"></div>
+    <div class="col-md-3"></div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="phone">Mobile</label>
@@ -61,10 +61,11 @@
         </div>
       </div>
     </div>
+    <div class="col-md-3"></div>
   </div>
 
   <div class="row">
-    <div class="col-md 6"></div>
+    <div class="col-md-3"></div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="city">City</label>
@@ -77,10 +78,11 @@
         <input required [(ngModel)]="state" type="text" class="form-control" id="state" placeholder="Enter State">
       </div>
     </div>
+    <div class="col-md-3"></div>
   </div>
 
   <div class="row">
-    <div class="col-md-6"></div>
+    <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="role">Role</label>
@@ -90,16 +92,18 @@
         </select>
       </div>
     </div>
+    <div class="col-md-3"></div>
   </div>
 
   <div class="row">  
-    <div class="col-md-6"></div>
+    <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="form-group">
-        <p>By Signing Up, you accept all the Terms and Privacy Policy</p>
+        <input type="checkbox" checked><span>By Signing Up, you accept all the Terms and Privacy Policy</span>
         <button (click)="onSignup()" type="submit" class="btn btn-dark text-uppercase">Sign Up</button>   
       </div>
-      <span>Already have an account ?<a href="../auth/login/"> SignIn Here</a> </span>
+      <hr>
+      <p style="text-align: center;">Already have an account ? <a href="../auth/login/"> SignIn Here</a></p>
     </div>
   </div>
 </form>
