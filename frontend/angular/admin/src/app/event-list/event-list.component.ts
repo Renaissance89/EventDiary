@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class EventListComponent implements OnInit {
 
   events=[]
-
+  
   constructor(private eventservice:EventService) { }
 
   ngOnInit(): void {
@@ -26,6 +26,18 @@ export class EventListComponent implements OnInit {
         if(response['status']=='success')
         {
           this.events=response['data']
+
+          // for (let index = 0; index < this.events.length; index++) {
+          //   let date = new Date(response['data'][index]['Date'])
+          //     console.log(date)
+          //     var day = date.getDate();
+          //     var month = date.getMonth() + 1;
+          //     var year = date.getFullYear();
+                        
+          //     console.log(day)
+          //     console.log(month)
+          //     console.log(year)
+          // }
         }
         else{
           console.log(response['error'])

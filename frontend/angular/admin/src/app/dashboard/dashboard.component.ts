@@ -32,9 +32,7 @@ export class DashboardComponent implements OnInit {
       if(response['status']=='success')
       {
         this.eventCount = response['data'][0]['Event_Count']
-        console.log(this.eventCount);
-      }
-      else{
+      } else {
         console.log(response['error'])
       }
     })
@@ -48,9 +46,7 @@ export class DashboardComponent implements OnInit {
       if(response['status']=='success')
       {
         this.userCount = response['data'][0]['User_Count']
-        console.log(this.userCount);
-      }
-      else{
+      } else {
         console.log(response['error'])
       }
     })
@@ -64,9 +60,7 @@ export class DashboardComponent implements OnInit {
       if(response['status']=='success')
       {
         this.organizerCount = response['data'][0]['Organizer_Count']
-        console.log(this.organizerCount);
-      }
-      else{
+      } else {
         console.log(response['error'])
       }
     })
@@ -80,9 +74,7 @@ export class DashboardComponent implements OnInit {
       if(response['status']=='success')
       {
         this.sponserCount = response['data'][0]['Sponser_Count']
-        console.log(this.sponserCount);
-      }
-      else{
+      } else {
         console.log(response['error'])
       }
     })
