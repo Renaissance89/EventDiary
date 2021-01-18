@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthService } from './auth/auth.service';
 import { DashboardComponent } from './organizer/dashboard/dashboard.component';
+import { AboutUsComponent } from './shared/about-us/about-us.component';
+import { ContactUsComponent } from './shared/contact-us/contact-us.component';
 import { HomeComponent } from './user/home/home.component';
 
 const routes: Routes = [
@@ -15,6 +17,8 @@ const routes: Routes = [
     canActivate: [AuthService],
     children: [
       { path: 'event', loadChildren: () => import('./user/event/event.module').then(m => m.EventModule)}, 
+      { path: 'about-us', component: AboutUsComponent},
+      { path: 'contact-us', component: ContactUsComponent},
     ]
   },
   //Organizer
@@ -24,6 +28,8 @@ const routes: Routes = [
     canActivate: [AuthService],
     children: [
       { path: 'event', loadChildren: () => import('./organizer/event/event.module').then(m => m.EventModule)}, 
+      { path: 'about-us', component: AboutUsComponent},
+      { path: 'contact-us', component: ContactUsComponent},
     ]
   }
 ];
