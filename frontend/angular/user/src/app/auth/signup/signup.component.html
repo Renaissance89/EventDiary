@@ -44,7 +44,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <label for="phone">Mobile</label>
-        <input required [(ngModel)]="phone" type="tel" class="form-control" id="phone" placeholder="Enter Mobile">
+        <input required [(ngModel)]="phone" type="tel" class="form-control" name="phone" id="phone" placeholder="Enter Mobile">
       </div>
     </div>
     <div class="col-md-3">
@@ -69,13 +69,13 @@
     <div class="col-md-3">
       <div class="form-group">
         <label for="city">City</label>
-        <input required [(ngModel)]="city" type="text" class="form-control" id="city" placeholder="Enter City">
+        <input required [(ngModel)]="city" type="text" class="form-control text-capitalize" name="city" id="city" placeholder="Enter City">
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label for="state">State</label>
-        <input required [(ngModel)]="state" type="text" class="form-control" id="state" placeholder="Enter State">
+        <input required [(ngModel)]="state" type="text" class="form-control text-capitalize" name="state" id="state" placeholder="Enter State">
       </div>
     </div>
     <div class="col-md-3"></div>
@@ -86,7 +86,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="role">Role</label>
-        <select [(ngModel)]="role" class="form-control">
+        <select [(ngModel)]="role" class="form-control" name="role">
           <option selected value="user">User</option>
           <option value="organizer">Organizer</option>
         </select>

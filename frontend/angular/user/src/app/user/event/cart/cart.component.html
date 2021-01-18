@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h2>Cart Items</h2>
-  <button class="btn btn-success float-right">Place Order</button>
+  <button (click)="payment()" class="btn btn-success float-right">Place Order</button>
 </div>
 
 <div class="modal-body">
@@ -37,8 +37,12 @@
     <br>
     <br>
     <tr>
-      <th colspan="5">Total Amount</th>
-      <th colspan="2" >{{totalAmount}}</th>
+      <th>Total Amount</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>{{totalAmount}}</th>
+      <th></th>
     </tr>
   </tfoot>
 </table>
