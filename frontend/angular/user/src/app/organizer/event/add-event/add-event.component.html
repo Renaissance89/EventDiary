@@ -48,11 +48,11 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="image">Event Image</label>
         <br>
         <button *ngIf="event" (click)="onUploadImage()" class="btn btn-info float-right">Upload Image</button>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -91,11 +91,12 @@
       <div class="form-group">
         <label for="image">Event Image</label>
         <input (change)="onImageSelect($event)" type="file" class="form-control">
-        <button (click)="onUploadImage()" class="btn btn-success">Upload</button>
-        <!-- <button *ngIf="event" (click)="onUploadImage()" class="btn btn-info float-right">Upload Image</button> 
+        <button (click)="onUploadImage(event)" class="btn btn-success">Upload</button>
+
       </div>
     </div>
   </div> -->
+          <!-- <button *ngIf="event" (click)="onUploadImage()" class="btn btn-info float-right">Upload Image</button> -->
 
   <div class="row">
     <div class="col-md-4"></div>

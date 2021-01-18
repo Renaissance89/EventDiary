@@ -14,6 +14,16 @@ export class EventService {
     private httpClient: HttpClient
   ) { }
 
+  getAllevents()
+  {
+    const httpOptions={
+      headers:new HttpHeaders({
+        token:sessionStorage['token']
+      })
+    }
+    return this.httpClient.get(this.url+'/all',httpOptions)
+  }
+
   addEvent(eventName: string, eventDescription: string , eventVenue: string, eventLocation: string, eventDate: string, 
     eventTime: string, eventDuration: string, eventCategoryId, eventOrganizerId, eventImage: string, eventFee: string) {
       // add the token in the request header
@@ -38,7 +48,20 @@ export class EventService {
 
     return this.httpClient.post(this.url + '/addEvent/' + eventOrganizerId , body, httpOptions)
   }
-  uploadImage(id, file) {
+  // uploadImage( file) {
+  //   // add the token in the request header
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       token: sessionStorage['token']
+  //     })
+  //   };
+
+  //   const body = new FormData()
+  //   body.append('eventImage', file)
+
+  //   return this.httpClient.post(this.url + `/upload-image`, body, httpOptions)
+  // }
+  uploadImage( id,file) {
     // add the token in the request header
     const httpOptions = {
       headers: new HttpHeaders({

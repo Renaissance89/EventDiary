@@ -24,14 +24,14 @@ export class UploadImageComponent implements OnInit {
     this.selectedFile = event.target.files[0]
   }
   onUploadImage() {
-    const id = this.activatedRoute.snapshot.queryParams['id']
+    const id = this.activatedRoute.snapshot.queryParams['eventId']
     this.eventService
       .uploadImage(id, this.selectedFile)
       .subscribe(response => {
         if (response['status'] == 'success') {
 
          this.toastr.success("added image")
-          this.router.navigate(['/dashboard/event/add-event'])
+          this.router.navigate(['/dashboard/event/event-list'])
         } else {
           console.log(response['error'])
         }

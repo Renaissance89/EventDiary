@@ -46,6 +46,16 @@ router.get('/getMySponsers/:eventOrganizerId', (request, response) => {
     }
   })
 })
+router.get('/all', (request, response) => {
+  const statement = `select eventId,eventImage,eventName,eventDescription,eventLocation,eventDate,eventTime,eventDuration,eventFee,active from event `
+  db.query(statement, (error, users) => {
+    if (error) {
+      response.send({status: 'error', error: error})
+    } else {
+      response.send(utils.createResult(error, users))
+    }
+  })
+})
 
 // ------------------------------------------------------------
 //                            POST
@@ -55,10 +65,11 @@ router.post('/upload-image/:eventId', upload.single('eventImage'), (request, res
   const fileName = request.file.filename
 
   const statement = `update event set eventImage = '${fileName}' where eventId = ${eventId}`//
+  console.log(statement)
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
-console.log(statement)
+
 })
 
 // router.post('/addEvent/:eventOrganizerId', (request, response) => {
