@@ -47,7 +47,7 @@ router.get('/getMySponsers/:eventOrganizerId', (request, response) => {
   })
 })
 router.get('/all', (request, response) => {
-  const statement = `select eventId,eventImage,eventName,eventDescription,eventLocation,eventDate,eventTime,eventDuration,eventFee,active from event `
+  const statement = `select eventId,eventImage,eventName,eventDescription,eventLocation,eventDate,eventTime,eventDuration,eventFee,active from event where eventOrganizerId = ${request.userId} `
   db.query(statement, (error, users) => {
     if (error) {
       response.send({status: 'error', error: error})
