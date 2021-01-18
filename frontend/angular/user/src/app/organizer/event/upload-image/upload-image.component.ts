@@ -30,7 +30,7 @@ export class UploadImageComponent implements OnInit {
       .subscribe(response => {
         if (response['status'] == 'success') {
 
-         this.toastr.success("added image")
+         this.toastr.success("Image Uploaded Succesfully")
           this.router.navigate(['/dashboard/event/event-list'])
         } else {
           console.log(response['error'])
