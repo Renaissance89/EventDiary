@@ -6,10 +6,11 @@ import { EventRoutingModule } from './event-routing.module';
 import { AddEventComponent } from './add-event/add-event.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
+import { OdashboardComponent } from './odashboard/odashboard.component';
 
 
 @NgModule({
-  declarations: [AddEventComponent, EventListComponent, UploadImageComponent],
+  declarations: [AddEventComponent, EventListComponent, UploadImageComponent, OdashboardComponent],
   imports: [
     CommonModule,
     EventRoutingModule,

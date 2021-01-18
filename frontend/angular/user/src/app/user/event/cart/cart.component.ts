@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from './../cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +14,7 @@ export class CartComponent implements OnInit {
   totalAmount = 0
 
   constructor(
+    private router:Router,
     private toastr: ToastrService,
     private cartService: CartService
   ) { }
@@ -78,5 +80,8 @@ export class CartComponent implements OnInit {
           }
         })
     }
+  }
+  payment(){
+    this.router.navigate(['/home/event/payment'])
   }
 }
