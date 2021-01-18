@@ -49,6 +49,7 @@ router.post('/signup', (request, response) => {
     values ('${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}', '${phone}', '${city}', '${state}', 
     '${role}', '${gender}', '${activationToken}')`
     
+    console.log(statement)
   db.query(statement, (error, data) => {
     mailer.sendEmail(email, 'Welcome to Eventdiary', body,  (error, info) => {
       console.log(error)
