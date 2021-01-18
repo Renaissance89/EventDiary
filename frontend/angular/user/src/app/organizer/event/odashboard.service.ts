@@ -20,5 +20,13 @@ export class OdashboardService {
     }
     return this.httpClient.get(this.url+'/getActiveEventCount',httpOptions)
   }
-
+  getTotalEvent()
+  {
+    const httpOptions={
+        headers:new HttpHeaders({
+        token:sessionStorage['token']
+      })
+    }
+    return this.httpClient.get(this.url+'/getAllEventCount',httpOptions)
+  }
 }

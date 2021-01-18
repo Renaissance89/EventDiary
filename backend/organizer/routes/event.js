@@ -22,7 +22,7 @@ router.get('/getAllEvent/:id', (request, response) => {
 
   const statement = `select eventName, eventDescription, eventVenue, eventLocation, eventDate, 
             eventTime, eventDuration, eventCategoryId, eventFee, eventOrganizerId, eventSponserId 
-            from event where eventOrganizerId = '${id}'` 
+            from event where eventOrganizerId = '${request.userId}'` 
 
   db.query(statement, (error, event) => {
     if (error) {

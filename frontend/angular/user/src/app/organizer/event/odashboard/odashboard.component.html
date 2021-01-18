@@ -7,3 +7,12 @@
         </div>
       </a>
     </div>
+
+    <div routerLink="/getUserCount" class="col-md-3">
+      <a href="../user-list/">
+        <div class="info info-green">
+          <div class="header"># Total Event</div>
+          <span (onload)="getTotalEvents()">{{eventCountTotal}}</span>
+        </div>
+      </a>
+    </div>

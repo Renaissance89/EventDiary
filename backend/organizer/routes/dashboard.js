@@ -36,9 +36,9 @@ router.get('/getActiveEventCount', (request, response) => {
 })
 
 //show all active/inactive (both) event count
-router.get('/getAllEventCount/:id', (request, response) => {
+router.get('/getAllEventCount', (request, response) => {
   const {id} = request.params;
-  const statement = `select count(eventId) as Event_Count from event where eventOrganizerId = '${id}'`
+  const statement = `select count(eventId) as Event_Count from event where eventOrganizerId = ${request.userId}`
   db.query(statement, (error, data) => {
     if (error) {
       response.send({status: 'error', error: error})
