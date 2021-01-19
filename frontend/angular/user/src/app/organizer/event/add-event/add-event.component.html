@@ -20,18 +20,18 @@
       <div class="form-group">
         <label for="category">Category</label>
         <select required="" [(ngModel)]="eventCategoryId" class="form-control" name="category" id="category">
-          <option selected value="1">Comedy</option>
-          <option value="2">Education</option>
+          <option [value]="category['categoryId']" *ngFor="let category of categories">{{category['categoryName']}}</option>
+          <!-- <option value="2">Education</option>
           <option value="3">Music</option>
           <option value="4">Tech Expo</option>
-          <option value="5">Social</option>
+          <option value="5">Social</option> -->
         </select>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="fee">Registration Fee</label>
-        <input required="" [(ngModel)]="eventFee" type="number" class="form-control" id="fee" placeholder="Enter Event Fee" min="0">
+        <input required="" [(ngModel)]="eventFee" type="number" class="form-control" name="fee" id="fee" placeholder="Enter Event Fee" min="0">
       </div>
     </div>
   </div>
@@ -40,13 +40,13 @@
     <div class="col-md-4">
       <div class="form-group">
         <label for="venue">Venue</label>
-        <input required="" [(ngModel)]="eventVenue" type="text" class="form-control" id="venue" placeholder="e.g. Balewadi Stadium">
+        <input required="" [(ngModel)]="eventVenue" type="text" class="form-control" name="venue" id="venue" placeholder="e.g. Balewadi Stadium">
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="location">Location</label>
-        <input required="" [(ngModel)]="eventLocation" type="text" class="form-control" id="location" placeholder="e.g. Mumbai">
+        <input required="" [(ngModel)]="eventLocation" type="text" class="form-control" name="location" id="location" placeholder="e.g. Mumbai">
       </div>
     </div>
     <div class="col-md-4">
@@ -62,19 +62,19 @@
     <div class="col-md-4">
       <div class="form-group">
         <label for="eventdate">Date</label>
-        <input required="" [(ngModel)]="eventDate" type="date" class="form-control" id="eventdate" placeholder="Enter Event Date">
+        <input required="" [(ngModel)]="eventDate" type="date" class="form-control" name="eventdate" id="eventdate" placeholder="Enter Event Date">
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="eventtime">Start Time</label>
-        <input required="" [(ngModel)]="eventTime" type="time" class="form-control" id="eventtime" placeholder="Enter Event Time" >
+        <input required="" [(ngModel)]="eventTime" type="time" class="form-control" name="eventtime" id="eventtime" placeholder="Enter Event Time" >
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="duration">Duration</label>
-        <input required="" [(ngModel)]="eventDuration" type="time" class="form-control" id="duration" placeholder="Enter Event Duration">
+        <input required="" [(ngModel)]="eventDuration" type="time" class="form-control" name="duration" id="duration" placeholder="Enter Event Duration">
       </div>
     </div>
   </div>

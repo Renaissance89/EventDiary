@@ -24,6 +24,7 @@ export class AddEventComponent implements OnInit {
   events = [] 
   selectedFile = null
   event = 1;
+  categories = [] 
 
   constructor(
     private router:Router,
@@ -32,6 +33,7 @@ export class AddEventComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadCategories()
   }
 
   onImageSelect(event) {
@@ -62,10 +64,9 @@ export class AddEventComponent implements OnInit {
         if(response['status']=='success')
         {
           const data = response['data']
-            console.log(data)
 
             this.toastr.success('Event Created Successfully')
-            this.router.navigate(['/dashboard'])
+            this.router.navigate(['/dashboard/event/event-list'])
         }else
         {
           this.toastr.error('Event Creation Failed')
@@ -76,4 +77,15 @@ export class AddEventComponent implements OnInit {
   // onUploadImage() {
   //   this.router.navigate(['/dashboard/event/upload-image'], {queryParams: {id: this.event['eventId']}})
   // }
+
+  loadCategories() {
+    this.eventService
+      .getCategories()
+      .subscribe(response => {
+        if (response['status'] == 'success') {
+          this.categories = response['data']
+          this.categories.push({id: -1, title: 'All Categories'})
+        }
+      })
+  }
 }

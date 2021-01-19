@@ -34,4 +34,8 @@ export class EventListComponent implements OnInit {
   uploadImage(event) {
     this.router.navigate(['/dashboard/event/upload-image'], {queryParams: {eventId: event['eventId']}})
   }
+
+  onAddEvent() {
+    this.router.navigate(['/dashboard/event/add-event'])
+  }
 }

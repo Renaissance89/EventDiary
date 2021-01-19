@@ -60,4 +60,16 @@ export class EventService {
 
     return this.httpClient.post(this.url + `/upload-image/${id}`, body, httpOptions)
   }
+
+  url1 = 'http://localhost:4000/category'
+
+  getCategories() {
+    const httpOptions = {
+     headers: new HttpHeaders({
+       token: sessionStorage['token']
+     })
+   };
+   
+    return this.httpClient.get(this.url1, httpOptions)
+  }
 }

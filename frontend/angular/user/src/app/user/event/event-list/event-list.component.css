@@ -2,18 +2,19 @@
   width: 275px;
   height: 500px;
   margin-top: 20px;
+  border-radius: 10px;
 }
 
 .card:hover {
   transform: scale(1.1);
   box-shadow: 0 0 5px 1px #7D7D7D;
-  border-radius: 5px;
 }
 
 img {
   padding: 10px;
   width: 275px;
   height: 150px;
+  border-radius: 10px;
 }
 
 .btn btn-success btn-sm{
