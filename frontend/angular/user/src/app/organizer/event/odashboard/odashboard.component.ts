@@ -11,6 +11,7 @@ export class OdashboardComponent implements OnInit {
 
   eventCount = ''
   eventCountTotal = ''
+  userCount = ''
 
   constructor(
     private dashboardService: OdashboardService
@@ -19,6 +20,7 @@ export class OdashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getActiveEvents()
     this.getTotalEvents()
+    this.getTotalUsers()
   }
   getActiveEvents() {
     this.dashboardService
@@ -44,6 +46,22 @@ export class OdashboardComponent implements OnInit {
       {
         this.eventCountTotal = response['data'][0]['Event_Count']
         console.log(this.eventCountTotal);
+      }
+      else{
+        console.log(response['error'])
+      }
+    })
+
+  }
+  getTotalUsers(){
+    this.dashboardService
+    .getTotalUsers()
+    .subscribe(response=>
+    {
+      if(response['status']=='success')
+      {
+        this.userCount = response['data'][0]['User_Count']
+        console.log(this.userCount);
       }
       else{
         console.log(response['error'])

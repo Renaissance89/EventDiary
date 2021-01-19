@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -8,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private toastr : ToastrService
+  ) { }
 
   ngOnInit(): void {
 
+  }
+  submit(){
+    this.toastr.success("thanks for submitting your response")
   }
 
 }

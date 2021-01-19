@@ -29,4 +29,13 @@ export class OdashboardService {
     }
     return this.httpClient.get(this.url+'/getAllEventCount',httpOptions)
   }
+  getTotalUsers(){
+    const httpOptions={
+      headers:new HttpHeaders({
+      token:sessionStorage['token']
+    })
+  }
+  return this.httpClient.get(this.url+'/getUserCount',httpOptions)
+
+  }
 }

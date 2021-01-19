@@ -48,4 +48,19 @@ router.get('/getAllEventCount', (request, response) => {
   })
 })
 
+router.get('/getUserCount', (request, response) => {
+  // const {id} = request.params;
+  const statement = `select count(userId) as User_Count from register r inner join event e  
+  on e.eventId=r.eventId where e.eventOrganizerId= ${request.userId}
+                    `
+                    console.log(statement)
+  db.query(statement, (error, data) => {
+    if (error) {
+      response.send({status: 'error', error: error})
+    } else {
+      response.send(utils.createResult(error, data))
+    }
+  })
+})
+
 module.exports = router
