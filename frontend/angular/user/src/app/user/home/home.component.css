@@ -1,33 +1,13 @@
-/* a {
-  text-decoration: none;
-} */
-
-/* This class is added on scroll */
-/* .fixed {
-	position: fixed;
-	top: 0;
-	height: 70px;
-	z-index: 1;
-}
-
-body {
-	color: #fff;
-	font-family: 'open-sans-bold', AvenirNext-Medium, sans-serif;
-	font-size: 18px;
-	text-align: center;
-} */
-
 /* Navigation Settings */
 /*nav {
-  text-align: center;
-	/* position: fixed;
+    text-align: center;
 	top: 0;
 	width: 100%;
 	height: 70px;
 	background: #fff;
-}*/
+}
 
-/* nav li {
+nav li {
 	display: inline-block;
 	padding: 24px 50px;
 }
@@ -35,20 +15,20 @@ body {
 nav li a {
 	color: #757575;
 	text-transform: uppercase;
-} */
+}*/
 
-img
-{
-	width:max-width;
-	height: 60vh;
-
-
+nav > a {
+    padding: 10px;
 }
 
+a {
+    margin-left: 20px;
+}
 
-
-
-
+.mybtn {
+    background-color: #ff771a;
+    color: white;
+}
 
 a {
     color: #1f1f1f;
@@ -76,7 +56,6 @@ h6 {
     color: #1f1f1f;
     margin: 0
 }
-
 
 
 h1 a,
@@ -132,7 +111,6 @@ a,
     padding: 0;
 }
 
-
 ul,
 li,
 ol {
@@ -166,7 +144,6 @@ p {
 .bootstrap-select .dropdown-toggle:focus {
     box-shadow: none !important
 }
-
 
 /*------------------------------------------------------------------ LOADER -------------------------------------------------------------------*/
 
@@ -211,10 +188,10 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,211,1) 86%
 }
 
 .footer-top-box h3::before {
-    border-bottom: 2px solid green;
+    border-bottom: 2px solid #ff771a;
     content: "";
     height: 3px;
-    width: 50%;
+    width: 100%;
     position: absolute;
     bottom: 3px;
     left: 0px;
@@ -306,7 +283,7 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,211,1) 86%
 }
 
 .footer-widget h4::before {
-    border-bottom: 3px solid green;
+    border-bottom: 3px solid #ff771a;
     content: "";
     height: 3px;
     width: 100%;
@@ -333,7 +310,7 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,211,1) 86%
 }
 
 .footer-link h4::before {
-    border-bottom: 3px solid green;
+    border-bottom: 3px solid #ff771a;
     content: "";
     height: 3px;
     width: 100%;
@@ -379,14 +356,14 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,211,1) 86%
 }
 
 .footer-link ul li a:hover {
-    color: green;
-    border-color: green;
+    color: #ff771a;
+    border-color: #ff771a;
     padding-left: 20px;
 }
 
 .footer-link-contact h4 {
     color:white;
-    font-size: 18px;
+    font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 20px;
@@ -395,7 +372,7 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,211,1) 86%
 }
 
 .footer-link-contact h4::before {
-    border-bottom: 3px solid green;
+    border-bottom: 3px solid #ff771a;
     content: "";
     height: 3px;
     width: 100%;
@@ -443,44 +420,4 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,211,1) 86%
 	margin-right: 15px;
 	margin-top: 5px;
 	margin-bottom: 5px;
-	
-	
-  }
-
-
-/*------------------------------------------------------------------ Copyright -------------------------------------------------------------------*/
-
-.footer-copyright {
-    background: #cccccc;
-    padding: 20px 0px;
-    position: relative;
-}
-
-.footer-copyright p {
-    text-align: center;
-    color:#cccccc;
-    font-size: 16px;
-}
-
-.footer-copyright p a {
-    color:#cccccc;
-}
-
-.footer-copyright p a:hover {
-    color: green;
-}
-
-.logo {
-    font-weight: bolder;
-    font-size: bolder;
-    color:#cccccc;
-}
-
-.nav-bg {
-    background: #215f00;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #e4e4d9, #215f00);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #e4e4d9, #215f00);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

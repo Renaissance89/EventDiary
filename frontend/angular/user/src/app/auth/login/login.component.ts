@@ -39,8 +39,8 @@ export class LoginComponent implements OnInit {
           sessionStorage['lastName'] = data['lastName']
           sessionStorage['role'] = data['role']
       
-          this.router.navigate(['/home'])
-          this.toastr.success('Welcome ' + data['firstName'])
+          this.router.navigate(['/home/home-carousel'])
+          this.toastr.success('Welcome ' + data['firstName'] + " " + data['lastName'])
       } 
       else if(response['status']=='success' && this.role === 'organizer') {
         const data = response['data']
@@ -51,8 +51,8 @@ export class LoginComponent implements OnInit {
           sessionStorage['lastName'] = data['lastName']
           sessionStorage['role'] = data['role']
       
-          this.router.navigate(['/dashboard'])
-          this.toastr.success('Welcome ' + data['firstName'])
+          this.router.navigate(['dashboard/event/odashboard'])
+          this.toastr.success('Welcome ' + data['firstName'] + " " + data['lastName'])
       } 
       else {
         this.toastr.error('Invalid Email or Password')

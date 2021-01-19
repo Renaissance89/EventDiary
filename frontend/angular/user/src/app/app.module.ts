@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { AboutUsComponent } from './shared/about-us/about-us.component';
 import { ContactUsComponent } from './shared/contact-us/contact-us.component';
+import { HomeCarouselComponent } from './user/home-carousel/home-carousel.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ContactUsComponent } from './shared/contact-us/contact-us.component';
     DashboardComponent,
     AboutUsComponent,
     ContactUsComponent,
+    HomeCarouselComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { HomeCarouselComponent } from './user/home-carousel/home-carousel.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthService } from './auth/auth.service';
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'event', loadChildren: () => import('./user/event/event.module').then(m => m.EventModule)}, 
       { path: 'about-us', component: AboutUsComponent},
       { path: 'contact-us', component: ContactUsComponent},
+      { path: 'home-carousel', component: HomeCarouselComponent},
     ]
   },
   //Organizer
