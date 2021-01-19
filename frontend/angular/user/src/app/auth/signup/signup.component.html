@@ -1,109 +1,86 @@
 <form>
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6" style="font-weight: bold; font-size: 40px; text-align: center;">Create an account</div>
-    <div class="col-md-3"></div>
-  </div>
+<div class="d-md-flex half">
+  <div class="bg" style="background-image: url('../../../assets/images/bg_1.jpg');"></div>
+  <div class="contents">
 
-  <div class="row">
-  <div class="col-md-3"></div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="firstname">First Name</label>
-        <input required [(ngModel)]="firstName" type="text" class="form-control text-capitalize" name="firstname" id="firstname" placeholder="Enter First Name">
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="lastname">Last Name</label>
-        <input required [(ngModel)]="lastName" type="text" class="form-control text-capitalize" name="lastname" id="lastname" placeholder="Enter Last Name">
-      </div>
-    </div>
-    <div class="col-md-3"></div>
-  </div>
-    
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input required [(ngModel)]="email" type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input required [(ngModel)]="password" type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
-      </div>
-    </div>
-    <div class="col-md-3"></div>
-  </div>
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-12">
+          <div class="form-block mx-auto" style="max-width: 800px;">
+            <div class="text-center mb-3">
+              <h3>Sign In to <strong>Event Diary</strong></h3>
+            </div>
 
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="phone">Mobile</label>
-        <input required [(ngModel)]="phone" type="tel" class="form-control" name="phone" id="phone" placeholder="Enter Mobile">
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <div>
-          <label for="gender">Gender</label>
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstname">First Name</label>
+                  <input required [(ngModel)]="firstName" type="text" class="form-control text-capitalize" name="firstname" id="firstname" placeholder="Enter First Name">
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input required [(ngModel)]="email" type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Mobile</label>
+                  <input required [(ngModel)]="phone" type="tel" class="form-control" name="phone" id="phone" placeholder="Enter Mobile">
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input required [(ngModel)]="city" type="text" class="form-control text-capitalize" name="city" id="city" placeholder="Enter City">
+                </div>
+              </div> 
+              <div class="col-md-6">
+                <!-- <div class="form-group first mb-2"> -->
+
+                <div class="form-group">
+                  <label for="lastname">Last Name</label>
+                  <input required [(ngModel)]="lastName" type="text" class="form-control text-capitalize" name="lastname" id="lastname" placeholder="Enter Last Name">
+                </div>
+                
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input required [(ngModel)]="password" type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <select [(ngModel)]="gender" class="form-control" name="gender">
+                    <option selected value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input required [(ngModel)]="state" type="text" class="form-control text-capitalize" name="state" id="state" placeholder="Enter State">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select [(ngModel)]="role" class="form-control" name="role">
+                <option selected value="user">User</option>
+                <option value="organizer">Organizer</option>
+              </select>
+            </div>
+            
+            <div class="d-sm-flex mb-3 align-items-center">
+              <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">By Signing Up, you accept all the Terms and Privacy Policy</span>
+                <input type="checkbox" checked="checked"/>
+                <div class="control__indicator"></div>
+              </label>
+            </div>
+
+            <input (click)="onSignup()" type="submit" value="Sign Up" class="mybtn btn btn-block">
+            <hr>
+            <p>Already have an account ? <a routerLink="/auth/login" style="color: black;">Login</a></p>
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input [(ngModel)]="gender" class="form-check-input text-capitalize" type="radio" name="gender" id="gender" value="Male" checked>
-          <label class="form-check-label">Male</label>
-          
-          <input [(ngModel)]="gender" class="form-check-input text-capitalize" type="radio" name="gender" id="gender" value="Female" style="margin-left: 10px;">
-          <label class="form-check-label">Female</label>
-        </div>
       </div>
-    </div>
-    <div class="col-md-3"></div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="city">City</label>
-        <input required [(ngModel)]="city" type="text" class="form-control text-capitalize" name="city" id="city" placeholder="Enter City">
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <label for="state">State</label>
-        <input required [(ngModel)]="state" type="text" class="form-control text-capitalize" name="state" id="state" placeholder="Enter State">
-      </div>
-    </div>
-    <div class="col-md-3"></div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="role">Role</label>
-        <select [(ngModel)]="role" class="form-control" name="role">
-          <option selected value="user">User</option>
-          <option value="organizer">Organizer</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-3"></div>
-  </div>
-
-  <div class="row">  
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <input type="checkbox" checked><span>By Signing Up, you accept all the Terms and Privacy Policy</span>
-        <button (click)="onSignup()" type="submit" class="btn btn-dark text-uppercase">Sign Up</button>   
-      </div>
-      <hr>
-      <p style="text-align: center;">Already have an account ? <a href="../auth/login/"> SignIn Here</a></p>
     </div>
   </div>
+</div>
 </form>

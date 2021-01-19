@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
             const data = response['data']
               console.log(data)
               this.toastr.success('Account Created Successfully. Please check email')
-              this.router.navigate(['/login'])
+              this.router.navigate(['/auth/login'])
           } else {
             this.toastr.error('Account Creation Failed')
           }

@@ -1,29 +1,4 @@
-<!-- 
-<div class="login align-items-center">
-  <div class="row">
-    <div class="col-xl-4 mx-auto">
-      <p class="display-4">Login</p>
-      <form>
-        <div class="form-group">
-            <input id="email" type="email" placeholder="Email" required="" autofocus="" class="form-control rounded-pill shadow-sm px-4">
-        </div>
-        <div class="form-group">
-            <input id="password" type="password" placeholder="Password" required="" class="form-control rounded-pill shadow-sm px-4">
-        </div>
-        <div class="custom-control custom-checkbox mb-3">
-            <input id="customCheck1" type="checkbox" checked class="custom-control-input">
-            <label for="customCheck1" class="custom-control-label">Remember password</label>
-        </div>
-        <br>
-        <button type="submit" class="btn btn-primary btn-block text-uppercase rounded-pill">Sign in</button>
-      </form>
-    </div>
-  </div>
-</div> 
--->
-
-
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-4">
       <br>
@@ -63,4 +38,53 @@
     <p style="text-align: center;">Don't have an account ? <a href="/auth/signup">Sign Up Here</a></p>
   </div>
   <div class="col-md-4"></div>
+</div> -->
+
+
+<div class="d-md-flex half">
+  <div class="bg" style="background-image: url('../../../assets/images/bg_1.jpg');"></div>
+  <div class="contents">
+
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-12">
+          <div class="form-block mx-auto">
+            <div class="text-center mb-3">
+            <h3>Login to <strong>Event Diary</strong></h3>
+            </div>
+              <div class="form-group first mb-2">
+                <label for="username">Email</label>
+                <input required="" autofocus="" [(ngModel)]="email" type="text" class="form-control" placeholder="Your-email@gmail.com" id="username">
+              </div>
+
+              <div class="form-group last mb-3">
+                <label for="password">Password</label>
+                <input required="" [(ngModel)]="password" type="password" class="form-control" placeholder="Your Password" id="password">
+              </div>
+              
+              <div class="form-group last mb-3">
+                <label for="role">Role</label>
+                <select required="" [(ngModel)]="role" name="role" type="password" class="form-control" placeholder="Your Role" id="role">
+                  <option selected value="user">User</option>
+                  <option value="organizer">Organizer</option>
+                </select>
+              </div>
+
+              <div class="d-sm-flex mb-3 align-items-center">
+                <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+                <span class="ml-auto"><a href="/auth/forgot-password" class="forgot-pass">Forgot Password</a></span> 
+              </div>
+
+              <input (click)="onLogin()" type="submit" name="login" value="Log In" class="mybtn btn btn-block">
+              <hr>
+              <p>Don't have an account ?</p>
+              <input routerLink="/auth/signup" type="submit" value="Sign Up" class="mybtn btn btn-block">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
