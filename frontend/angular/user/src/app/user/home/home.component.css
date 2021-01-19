@@ -16,6 +16,13 @@ nav li a {
 	color: #757575;
 	text-transform: uppercase;
 }*/
+.navbar-nav > a 
+{
+  color:white;
+  font-size: 20px;
+  padding: 10px;
+
+}
 
 nav > a {
     padding: 10px;

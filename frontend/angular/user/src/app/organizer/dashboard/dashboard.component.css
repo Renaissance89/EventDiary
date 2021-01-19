@@ -5,6 +5,14 @@ nav > a {
 a {
     margin-left: 20px;
 }
+.navbar-nav > a 
+{
+  color:white;
+  font-size: 20px;
+  padding: 10px;
+
+}
+
 
 .mybtn {
   background-color: #ff771a;
