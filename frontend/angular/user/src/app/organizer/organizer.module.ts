@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { OrganizerRoutingModule } from './organizer-routing.module';
 import { EventComponent } from './event/event.component';
-import { UploadImageComponent } from './upload-image/upload-image.component';
+import { UploadImageComponent } from './event/upload-image/upload-image.component';
 
 
 @NgModule({

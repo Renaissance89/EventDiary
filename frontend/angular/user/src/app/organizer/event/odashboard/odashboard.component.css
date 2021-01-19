@@ -28,3 +28,7 @@ div > img {
   width: max-content;
   height: 500px
 }
+
+a {
+  text-decoration: none;
+}

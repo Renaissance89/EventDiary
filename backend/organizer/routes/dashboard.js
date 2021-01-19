@@ -24,7 +24,7 @@ router.get('/getSponserCount/:id', (request, response) => {
 router.get('/getActiveEventCount', (request, response) => {
   // const {id} = request.params;
   const statement = `select count(eventId) as Event_Count from event where eventOrganizerId = ${request.userId}
-                    and active = 0`
+                    and active = 1`
                     console.log(statement)
   db.query(statement, (error, data) => {
     if (error) {
