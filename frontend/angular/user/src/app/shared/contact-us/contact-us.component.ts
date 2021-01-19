@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
@@ -16,8 +15,7 @@ export class ContactUsComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  submit(){
-    this.toastr.success("thanks for submitting your response")
+  submit() {
+    this.toastr.success("Thank You for your response")
   }
-
 }

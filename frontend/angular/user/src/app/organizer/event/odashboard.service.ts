@@ -7,35 +7,35 @@ import { Injectable } from '@angular/core';
 export class OdashboardService {
 
   url='http://localhost:4000/organizer/dashboard'
+
   constructor(
     private httpClient:HttpClient)
   { }
 
-  getActiveEvent()
-  {
+  getActiveEvent() {
     const httpOptions={
         headers:new HttpHeaders({
         token:sessionStorage['token']
       })
     }
-    return this.httpClient.get(this.url+'/getActiveEventCount',httpOptions)
+    return this.httpClient.get(this.url+'/getActiveEventCount', httpOptions)
   }
-  getTotalEvent()
-  {
+
+  getTotalEvent() {
     const httpOptions={
         headers:new HttpHeaders({
         token:sessionStorage['token']
       })
     }
-    return this.httpClient.get(this.url+'/getAllEventCount',httpOptions)
+    return this.httpClient.get(this.url+'/getAllEventCount', httpOptions)
   }
-  getTotalUsers(){
+
+  getTotalUsers() {
     const httpOptions={
       headers:new HttpHeaders({
-      token:sessionStorage['token']
-    })
-  }
-  return this.httpClient.get(this.url+'/getUserCount',httpOptions)
-
+        token:sessionStorage['token']
+      })
+    }
+    return this.httpClient.get(this.url+'/getUserCount', httpOptions)
   }
 }

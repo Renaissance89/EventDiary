@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EventListComponent implements OnInit {
 
-  events =[]
+  events = []
   allEvents = []
   categories = []
 
@@ -27,12 +27,11 @@ export class EventListComponent implements OnInit {
     this.loadevents()
     this.loadCategories()
   }
+
   filterEvents(event) {
     console.log("inside event")
     const Id = event.target.value
-    // console.log(categoryId)
     this.events = []
-    // console.log(this.events)
     if (Id == -1) {
       this.events = this.allEvents
     } else {
@@ -42,6 +41,7 @@ export class EventListComponent implements OnInit {
       })
     }
   }
+
   loadCategories() {
     this.eventservice
       .getCategories()
@@ -49,39 +49,33 @@ export class EventListComponent implements OnInit {
         if (response['status'] == 'success') {
           this.categories = response['data']
           this.categories.push({id: -1, title: 'All Categories'})
-         // console.log(this.categories)
         }
       })
   }
+
   loadCart() {
     this.modalService.open(CartComponent, { size: 'lg'})
   }
 
   loadevents() {
     this.eventservice
-      .getAllevents()
-      .subscribe(response=> {
-        if(response['status']=='success')
-        {
-          this.allEvents = response['data']
-          this.events = this.allEvents
-         // this.events=response['data']
-        }
-        else{
-          console.log(response['error'])
-        }
-      })
+    .getAllevents()
+    .subscribe(response=> {
+      if(response['status']=='success')
+      {
+        this.allEvents = response['data']
+        this.events = this.allEvents
+      }
+    })
   }
 
   addToCart(event) {
     this.cartService
-      .addCartItems(event['eventId'], event['eventFee'], 1)
-      .subscribe(Response => {
-        if (Response['status'] == 'success') {
-          console.log('success')
-          console.log('fail')
-          this.toastr.success(event['eventName'] + ' added to cart')
-        }
-      })
+    .addCartItems(event['eventId'], event['eventFee'], 1)
+    .subscribe(Response => {
+      if (Response['status'] == 'success') {
+        this.toastr.success(event['eventName'] + ' added to cart')
+      }
+    })
   }
 }

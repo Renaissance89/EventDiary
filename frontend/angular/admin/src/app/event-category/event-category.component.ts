@@ -1,7 +1,6 @@
 import { EventCategoryService } from './../event-category.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-event-category',
@@ -52,12 +51,9 @@ export class EventCategoryComponent implements OnInit {
       .subscribe(response => {
         if(response['status']=='success')
         {
-          this.categories=response['data']
+          this.categories = response['data']
           this.loadCategory()
         }
-        // else {
-        //   console.log(response['error'])
-        // }
       })
   }
 }

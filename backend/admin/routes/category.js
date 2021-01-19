@@ -33,7 +33,7 @@ router.get('/getCategorybyId/:id', (request, response) => {
 // Add New Category
 router.post('/addCategory', (request, response) => {
   const { categoryName, categoryDescription } = request.body
-  const statement = `insert into category (categoryName,categoryDescription) 
+  const statement = `insert into category (categoryName, categoryDescription) 
                     values ('${categoryName}', '${categoryDescription}')`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
@@ -44,7 +44,7 @@ router.post('/addCategory', (request, response) => {
 //                            PUT
 // ------------------------------------------------------------
 
-// Update Category Name
+// Update Category Name and Description
 router.put('/updateCategory/:id', (request, response) => {
   const { id } = request.params
   const { categoryName, categoryDescription } = request.body

@@ -1,4 +1,3 @@
-import { EventDetailComponent } from './event-detail/event-detail.component';
 import { CategoryAddComponent } from './category-add/category-add.component';
 import { AdminService } from './admin.service';
 import { EventCategoryComponent } from './event-category/event-category.component';
@@ -23,7 +22,6 @@ const routes: Routes = [
   { path:'login', component:LoginComponent },
   { path:'event-category', component:EventCategoryComponent, canActivate:[AdminService] },
   { path:'category-add', component:CategoryAddComponent, canActivate:[AdminService] },
-  { path:'event-detail', component: EventDetailComponent, canActivate:[AdminService] },
  
 ];
 

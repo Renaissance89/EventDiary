@@ -1,10 +1,9 @@
 <h1>List of Events</h1>
 <div  class="table-responsive">
-    <table class="table table-striped table-bordered   ">
+    <table class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th>No</th>
-                <!-- <th>E_Id</th> -->
                 <th>E_Name</th>
                 <th>Image</th>
                 <th>Description</th>
@@ -14,9 +13,7 @@
                 <th>Duration</th>
                 <th>Category</th>
                 <th>O_Name</th>
-                <!-- <th>S_Name</th> -->
                 <th>Fee</th>
-                <!-- <th>Active</th> -->
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,7 +21,6 @@
         <tbody >
             <tr *ngFor="let event of events; let i= index ">
                 <td>{{i+1}}</td>
-                <!-- <td>{{event['eventId']}}</td> -->
                 <td>{{event['Event_Name']}}</td>
                 <td><img class="event-image" src="http://localhost:3000/event/image/{{event['eventImage']}}" alt=""></td>
                 <td>{{event['Description']}}</td>
@@ -34,9 +30,7 @@
                 <td>{{event['Duration']}}</td>
                 <td>{{event['Category']}}</td>
                 <td>{{event['Organizer_FirstName']}} {{event['Organizer_LastName']}}</td>
-                <!-- <td>{{event['Event_Sponser_FirstName']}} {{event['Event_Sponser_LastName']}}</td> -->
                 <td>{{event['Registration_Fee']}}</td>
-                <!-- <td>{{event['active']}}</td> -->
                 <td>
                     <button (click)="toggleActive(event)"
                         [class.btn-success]="event['active']!=1"

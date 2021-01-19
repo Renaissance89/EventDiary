@@ -44,7 +44,6 @@ router.post('/signup', (request, response) => {
   })
 })
 
-
 router.post('/signin', (request, response) => {
   const { email, password, role } = request.body
 
@@ -61,9 +60,9 @@ router.post('/signin', (request, response) => {
       } else {
         // organizer exists
         const organizer = organizers[0]
-        const token = jwt.sign({id: organizer['id']}, config.secret)
+        const token = jwt.sign({id: organizer['userId']}, config.secret)
         response.send(utils.createResult(error, {
-          id: organizer['id'],
+          id: organizer['userId'],
           firstName: organizer['firstName'],
           lastName: organizer['lastName'],
           email: organizer['email'],
@@ -72,6 +71,36 @@ router.post('/signin', (request, response) => {
         }))
       }
     }  
+  })
+})
+
+router.post('/forgot-password', (request, response) => {
+  const {email} = request.body
+  const statement = `select userId, firstName, lastName from user where email = '${email}' and role = 'organizer'`
+  db.query(statement, (error, users) => {
+    if (error) {
+      response.send(utils.createError(error))
+    } else if (users.length == 0) {
+      response.send(utils.createError('Organizer does not exist'))
+    } else {
+      const user = users[0]
+      const otp = utils.generateOTP()
+      const body = `Your OTP = ${otp}` 
+
+      const otpStatement = `update user set activationToken = '${otp}' where email = '${email}' and role = 'organizer'`
+
+      db.query(otpStatement, (error, data) => {
+          if (error) {
+              response.send(utils.createError(error))
+          } else {
+            mailer.sendEmail(email, 'Reset your password', body, (error, info) => {
+                console.log(error)
+                console.log(info)
+                response.send(utils.createResult(error, { otp: otp, email: email, data: data }))
+            })
+          }
+      })
+    }
   })
 })
 
@@ -95,13 +124,35 @@ router.put('/updateProfile/:id', (request, response) => {
   })
 })
 
+router.put('/reset-password', (request, response) => {
+  const { otp, email, password } = request.body
+  const checkStatement = `select userId from user where activationToken = '${otp}' and email = '${email}'`
+  
+  db.query(checkStatement, (error, user) => {
+    if (user.length == 0) {
+      // check if otp is valid or not
+      response.send({ status: 'error', error: 'Invalid OTP' })
+    } else if (error) {
+      response.send({ status: 'error', error: error })
+    } else {
+      // activate the user
+      // reset the activation token
+      const statement = `update user set password = '${crypto.SHA256(password)}', activationToken = '' 
+                        where activationToken = '${otp}' and email = '${email}'`
+      
+      db.query(statement, (error, data) => {
+          response.send(utils.createResult(error, data))
+      })
+    }
+  })
+})
+
 // ------------------------------------------------------------
 //                            DELETE
 // ------------------------------------------------------------
 
-router.delete('/deleteAccount/:id', (request, response) => {
-  const { id } = request.params
-  const statement = `update user set active = 0 where userId = '${id}' and role = "organizer"`
+router.delete('/deleteAccount', (request, response) => {
+  const statement = `update user set active = 0 where userId = '${request.userId}' and role = "organizer"`
   db.query(statement, (error, organizer) => {
     if (error) {
       response.send({status: 'error', error: error})

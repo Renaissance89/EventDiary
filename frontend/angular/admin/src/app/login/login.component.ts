@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onLogin()
-  {
+  onLogin() {
    this.adminService
    .login(this.email,this.password)
    .subscribe(response=>

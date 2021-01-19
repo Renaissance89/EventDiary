@@ -12,18 +12,16 @@ export class EventService {
     private httpclient:HttpClient
   ) { }
 
-  getAllevents()
-  {
+  getAllevents() {
     const httpOptions={
       headers:new HttpHeaders({
         token:sessionStorage['token']
       })
     }
-    return this.httpclient.get(this.url+'/all',httpOptions)
+    return this.httpclient.get(this.url+'/all', httpOptions)
   }
 
   addCartItems(eventId, eventFee, quantity){
-    // add the token in the request header
     const httpOptions = {
       headers: new HttpHeaders({
         token: sessionStorage['token']
@@ -41,13 +39,12 @@ export class EventService {
   url1 = 'http://localhost:4000/category'
 
   getCategories() {
-    // add the token in the request header
     const httpOptions = {
      headers: new HttpHeaders({
        token: sessionStorage['token']
      })
    };
    
-   return this.httpclient.get(this.url1, httpOptions)
- }
+    return this.httpclient.get(this.url1, httpOptions)
+  }
 }

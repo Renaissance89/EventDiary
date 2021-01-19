@@ -7,12 +7,6 @@
   
 <div class="row">
   <div class="col-md-2">
-    <!-- <div class="form-group">
-      <label for="">Category</label>
-      <select class="form-control" (change)="filterProducts($event)">
-        <option [value]="category['id']" *ngFor="let category of categories">{{category['title']}}</option>
-      </select>
-    </div> -->
     <label for="">Category</label>
     <select class="form-control" (change)="filterEvents($event)">
       <option [value]="category['categoryId']" *ngFor="let category of categories">{{category['categoryName']}}</option>
@@ -35,7 +29,6 @@
           </div>
           <div class="card-footer">
             <button style="margin-top: 10px;" (click)="addToCart(event)"class="btn btn-success btn-sm">Add to cart</button>
-            <!-- <button class="btn btn-success btn-sm" > feedback </button>           -->
         </div>
       </div>
     </div>

@@ -11,8 +11,6 @@ const routes: Routes = [
   { path: 'event-list', component: EventListComponent},
   { path: 'upload-image', component: UploadImageComponent},
   { path: 'odashboard', component: OdashboardComponent}
-
-
 ];
 
 @NgModule({

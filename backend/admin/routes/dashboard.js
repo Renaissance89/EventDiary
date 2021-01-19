@@ -56,5 +56,4 @@ router.get('/getActiveEventCount', (request, response) => {
   })
 })
 
-
 module.exports = router

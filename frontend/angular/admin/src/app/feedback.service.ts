@@ -7,15 +7,15 @@ import { Injectable } from '@angular/core';
 export class FeedbackService {
 
   url='http://localhost:3000/feedback'
+
   constructor(private httpclient:HttpClient) { }
 
-  getAllfeedbacks()
-  {
+  getAllfeedbacks() {
     const httpOptions={
       headers:new HttpHeaders({
         token:sessionStorage['token']
       })
         }
-      return this.httpclient.get(this.url+'/getAllFeedback',httpOptions)
+      return this.httpclient.get(this.url + '/getAllFeedback', httpOptions)
   }
 }

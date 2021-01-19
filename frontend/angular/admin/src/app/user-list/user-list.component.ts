@@ -9,18 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  users=[]
-  constructor(private userservice:UserService) {
+  users = []
 
-   }
+  constructor(private userservice:UserService) { }
 
   ngOnInit(): void {
     this.loadUsers()
-  
   }
 
-  loadUsers()
-  {
+  loadUsers() {
     this.userservice
     .getAllusers()
     .subscribe(response=>
@@ -29,13 +26,10 @@ export class UserListComponent implements OnInit {
         {
           this.users=response['data']
         }
-        else{
-          console.log(response['error'])
-        }
       })
   }
-  toggleActive(user)
-  {
+
+  toggleActive(user) {
     this.userservice
     .toggleActiveStatus(user)
     .subscribe(response=>
@@ -44,12 +38,6 @@ export class UserListComponent implements OnInit {
         {
           this.loadUsers()
         }
-        else{
-          console.log(response['error'])
-        }
-        
       })
-
   }
-
 }

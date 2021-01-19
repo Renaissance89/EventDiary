@@ -49,9 +49,6 @@ export class PaymentComponent implements OnInit {
             this.totalAmount += parseFloat(item['totalAmount'])
           }
         }
-        else{
-          console.log(response['error'])
-        }
       })
   }
 

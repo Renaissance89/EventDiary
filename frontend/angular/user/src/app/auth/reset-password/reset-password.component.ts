@@ -33,12 +33,11 @@ export class ResetPasswordComponent implements OnInit {
       if(response['status']=='success')
       {
         const data = response['data']
-          console.log(data)
 
-          this.router.navigate(['/auth/login'])
-          this.toastr.success('Reset Password Successful')
-          sessionStorage.removeItem('email')
-          this.modalService.dismissAll()
+        this.router.navigate(['/auth/login'])
+        this.toastr.success('Reset Password Successful')
+        sessionStorage.removeItem('email')
+        this.modalService.dismissAll()
       }  
       else {
         this.toastr.error('Invalid OTP')

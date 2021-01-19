@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRouteSnapshot, CanActivate,Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate,Router, RouterStateSnapshot } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService implements CanActivate {
 
   url = 'http://localhost:3000/admin'
+
   constructor(
     private router:Router,
-    private httpClient: HttpClient) 
-    { }
+    private httpClient: HttpClient
+  ) { }
 
   login(email: string, password: string) {
     const body = {
@@ -24,7 +25,8 @@ export class AdminService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) 
   {
     if(sessionStorage['token'])
-    { return true
+    { 
+      return true
     }
     this.router.navigate(['/login'])
     return false

@@ -1,5 +1,4 @@
 import { OrganizerService } from './../organizer.service';
-import { AdminService } from './../admin.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,32 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizerListComponent implements OnInit {
 
-  organizers=[]
-  constructor(private organizerservice:OrganizerService) {
+  organizers = []
 
-   }
+  constructor(private organizerservice: OrganizerService) { }
 
   ngOnInit(): void {
     this.loadorganizers()
   }
 
-  loadorganizers()
-  {
+  loadorganizers() {
     this.organizerservice
     .getAllorganizers()
-    .subscribe(response=>
+    .subscribe(response =>
       {
         if(response['status']=='success')
         {
           this.organizers=response['data']
         }
-        else{
-          console.log(response['error'])
-        }
       })
   }
-  toggleActive(organizer)
-  {
+
+  toggleActive(organizer) {
     this.organizerservice
     .toggleActiveStatus(organizer)
     .subscribe(response=>
@@ -43,12 +37,6 @@ export class OrganizerListComponent implements OnInit {
         {
           this.loadorganizers()
         }
-        else{
-          console.log(response['error'])
-        }
-        
       })
-
   }
-
 }

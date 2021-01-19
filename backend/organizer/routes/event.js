@@ -12,11 +12,13 @@ const router = express.Router()
 // ------------------------------------------------------------
 //                            GET
 // ------------------------------------------------------------
+
 router.get('/image/:filename', (request, response) => {
   const {filename} = request.params
   const file = fs.readFileSync(__dirname + '/../../images/' + filename)
   response.send(file)
 })
+
 router.get('/getAllEvent/:id', (request, response) => {
   const { id } = request.params
 
@@ -35,7 +37,6 @@ router.get('/getAllEvent/:id', (request, response) => {
 
 router.get('/getMySponsers/:eventOrganizerId', (request, response) => {
   const { eventOrganizerId } = request.params
-  
   const statement = `SELECT * FROM sponser WHERE userId = '${eventOrganizerId}'`
 
   db.query(statement, (error, event) => {
@@ -46,8 +47,10 @@ router.get('/getMySponsers/:eventOrganizerId', (request, response) => {
     }
   })
 })
+
 router.get('/all', (request, response) => {
-  const statement = `select eventId,eventImage,eventName,eventDescription,eventLocation,eventDate,eventTime,eventDuration,eventFee,active from event where eventOrganizerId = ${request.userId} `
+  const statement = `select eventId,eventImage,eventName,eventDescription,eventLocation,eventDate,
+      eventTime,eventDuration,eventFee,active from event where eventOrganizerId = ${request.userId} `
   db.query(statement, (error, users) => {
     if (error) {
       response.send({status: 'error', error: error})
@@ -60,12 +63,12 @@ router.get('/all', (request, response) => {
 // ------------------------------------------------------------
 //                            POST
 // ------------------------------------------------------------
+
 router.post('/upload-image/:eventId', upload.single('eventImage'), (request, response) => {
   const {eventId} = request.params
   const fileName = request.file.filename
+  const statement = `update event set eventImage = '${fileName}' where eventId = ${eventId}`
 
-  const statement = `update event set eventImage = '${fileName}' where eventId = ${eventId}`//
-  console.log(statement)
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
@@ -158,12 +161,12 @@ router.put('/updateEvent/:id', (request, response) => {
 router.delete('/deleteEvent/:id', (request, response) => {
   const { id } = request.params
   const { eventOrganizerId } = request.body
-  const active = 0
+  const active = 1
 
-  if(active == 0) {
+  if(active == 1) {
     response.send('You cannot delete this event because it is already active. Please contact administrator!!!')
   } else {
-    const statement = `delete from event where eventId = '${id}' and active = '${active}' 
+    const statement = `delete from event where eventId = '${id}' and active = 0 
                       and eventOrganizerId = '${eventOrganizerId}'`
 
     db.query(statement, (error, event) => {

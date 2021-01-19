@@ -10,12 +10,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UploadImageComponent implements OnInit {
 
-  selectedFile= null;
+  selectedFile = null;
 
-  constructor(    private router: Router,
+  constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private eventService: EventService,
-    private toastr: ToastrService,) { }
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +23,7 @@ export class UploadImageComponent implements OnInit {
   onImageSelect(event) {
     this.selectedFile = event.target.files[0]
   }
+
   onUploadImage() {
     const id = this.activatedRoute.snapshot.queryParams['eventId']
     this.eventService
@@ -37,5 +38,4 @@ export class UploadImageComponent implements OnInit {
         }
       })
   }
-
 }

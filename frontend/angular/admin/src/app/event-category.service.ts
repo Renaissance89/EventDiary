@@ -12,19 +12,16 @@ export class EventCategoryService {
     private httpClient:HttpClient
   ) { }
 
-  getAllCategory()
-  {
+  getAllCategory() {
     const httpOptions={
       headers:new HttpHeaders({
         token:sessionStorage['token']
       })
     }
-    return this.httpClient.get(this.url+'/getAllCategory',httpOptions)
+    return this.httpClient.get(this.url + '/getAllCategory', httpOptions)
   }
   
-  updateCategory(categoryId, categoryName: string, categoryDescription: string)
-  {
-    // add the token in the request header
+  updateCategory(categoryId, categoryName: string, categoryDescription: string) {
     const httpOptions = {
         headers: new HttpHeaders({
         token: sessionStorage['token']
@@ -39,9 +36,7 @@ export class EventCategoryService {
     return this.httpClient.put(this.url + "/updateCategory/" + categoryId, body, httpOptions)
   }
 
-  insertCategory(categoryName: string, categoryDescription: string) 
-  {
-    // add the token in the request header
+  insertCategory(categoryName: string, categoryDescription: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         token: sessionStorage['token']
@@ -57,7 +52,6 @@ export class EventCategoryService {
   }
 
   getCategoryDetails(categoryId) {
-    // add the token in the request header
     const httpOptions = {
      headers: new HttpHeaders({
        token: sessionStorage['token']
@@ -67,9 +61,7 @@ export class EventCategoryService {
    return this.httpClient.get(this.url + "/getCategorybyId/" + categoryId, httpOptions)
   }
 
-  removeCategory(categoryId) 
-  {
-    // add the token in the request header
+  removeCategory(categoryId) {
     const httpOptions = {
       headers: new HttpHeaders({
         token: sessionStorage['token']

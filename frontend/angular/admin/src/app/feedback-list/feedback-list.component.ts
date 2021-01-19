@@ -1,6 +1,5 @@
 import { FeedbackService } from './../feedback.service';
 import { Component, OnInit } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-feedback-list',
@@ -9,7 +8,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class FeedbackListComponent implements OnInit {
 
-  feedbacks=[]
+  feedbacks = []
+
   constructor(
     private feedbackservice:FeedbackService
   ) { }
@@ -18,20 +18,15 @@ export class FeedbackListComponent implements OnInit {
     this.loadfeedback()
   }
 
-  loadfeedback()
-  {
+  loadfeedback() {
     this.feedbackservice
     .getAllfeedbacks()
     .subscribe(response=>
+    {
+      if(response['status']=='success')
       {
-        if(response['status']=='success')
-        {
-          this.feedbacks=response['data']
-        }
-        else{
-          console.log(response['error'])
-        }
-      })
+        this.feedbacks = response['data']
+      }
+    })
   }
-
 }

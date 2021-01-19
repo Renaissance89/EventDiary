@@ -5,10 +5,6 @@ const morgan = require('morgan')
 const cors = require('cors')
 const config = require('./config')
 
-// swagger: for api documentation
-const swaggerJSDoc = require('swagger-jsdoc')
-const swaggerUi = require('swagger-ui-express')
-
 // user routers   -------------------------
 const userRouter = require('./user/routes/user')
 const registerRouter = require('./user/routes/registerevent')
@@ -23,22 +19,8 @@ const dashboardRouter = require('./organizer/routes/dashboard')
 const app = express()
 app.use(cors('*'))
 app.use(bodyParser.json())
-app.use(morgan('combined'))
+app.use(morgan('tiny'))
 
-// swagger init
-const swaggerOptions = {
-  definition: {
-    info: {
-      title: 'Event Diary (User Front)',
-      version: '1.0.0',
-      description: 'This is a Express server for Event Diary application'
-    }
-  },
-  apis: ['./user/routes/*.js']
-}
-
-const swaggerSpec = swaggerJSDoc(swaggerOptions)
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // add a middleware for getting the id from token
 function getUserId(request, response, next) {
@@ -46,8 +28,6 @@ function getUserId(request, response, next) {
   if (request.url == '/user/signin' 
       || request.url == '/user/signup'
       || request.url == '/registerevent/register'
-    //  || request.url == '/registerevent/registerEvent'
-    //  || request.url == '/event/all'
     //  || request.url.startsWith('/organizer/event/upload-image/')
       || request.url.startsWith('/user/activate')
       || request.url == '/organizer/signin' 
@@ -56,7 +36,9 @@ function getUserId(request, response, next) {
       || request.url == '/logo.png'
       || request.url.startsWith('/user/event/image/')
       || request.url.startsWith('/user/forgot-password')
-      || request.url.startsWith('/user/reset-password')) {
+      || request.url.startsWith('/user/reset-password')
+      || request.url.startsWith('/organizer/forgot-password')
+      || request.url.startsWith('/organizer/reset-password')) {
     // do not check for token 
     next()
   } else {
@@ -73,7 +55,6 @@ function getUserId(request, response, next) {
       response.status(401)
       response.send({status: 'error', error: 'protected api'})
     }
-
   }
 }
 

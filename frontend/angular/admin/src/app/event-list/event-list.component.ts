@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventListComponent implements OnInit {
 
-  events=[]
+  events = []
   
   constructor(private eventservice:EventService) { }
 
@@ -17,8 +17,7 @@ export class EventListComponent implements OnInit {
     this.loadevents()
   }
 
-  loadevents()
-  {
+  loadevents() {
     this.eventservice
     .getAllevents()
     .subscribe(response=>
@@ -39,14 +38,10 @@ export class EventListComponent implements OnInit {
           //     console.log(year)
           // }
         }
-        else{
-          console.log(response['error'])
-        }
       })
   }
 
-  toggleActive(event)
-  {
+  toggleActive(event) {
     this.eventservice
     .toggleActiveStatus(event)
     .subscribe(response=>
@@ -54,9 +49,6 @@ export class EventListComponent implements OnInit {
         if(response['status']=='success')
         {
           this.loadevents()
-        }
-        else{
-          console.log(response['error'])
         }
       })
   }

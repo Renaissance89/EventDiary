@@ -12,28 +12,25 @@ export class CartService {
     private httpClient: HttpClient
   ) { }
 
-  amount(){
+  amount() {
     const httpOption = {
       headers :new HttpHeaders ({
         token : sessionStorage['token']
       })
     };
-    return this.httpClient.get(this.url + "/",httpOption)
+    return this.httpClient.get(this.url + "/", httpOption)
   }
 
   getCartItems() {
-    // add the token in the request header
     const httpOptions = {
       headers: new HttpHeaders ({
         token: sessionStorage['token']
      })
     };
-   
     return this.httpClient.get(this.url + "/user", httpOptions)
   }
 
   addCartItems(eventId, eventFee, quantity) {
-    // add the token in the request header
     const httpOptions = {
       headers: new HttpHeaders({
         token: sessionStorage['token']
@@ -50,7 +47,6 @@ export class CartService {
   }
 
   deleteCartItem(registrationId) {
-    // add the token in the request header
     const httpOptions = {
       headers: new HttpHeaders({
         token: sessionStorage['token']
@@ -61,7 +57,6 @@ export class CartService {
   }
 
   updateCartItem(id, quantity, paymentAmount) {
-    // add the token in the request header
     const httpOptions = {
       headers: new HttpHeaders({
         token: sessionStorage['token']

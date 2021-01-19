@@ -1,7 +1,7 @@
 import { ToastrService } from 'ngx-toastr';
 import { EventService } from './../../../organizer/event/event.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-event',
@@ -27,16 +27,17 @@ export class AddEventComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private activatedRoute: ActivatedRoute,
     private eventService: EventService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
   }
+
   onImageSelect(event) {
     this.selectedFile = event.target.files[0]
   }
+
   // onUploadImage(event) {
   //   const id = this.activatedRoute.snapshot.queryParams['id']
   //   this.eventService
@@ -51,25 +52,27 @@ export class AddEventComponent implements OnInit {
   //       }
   //     })
   // }
+
   onAddEvent() {
     this.eventService
       .addEvent(this.eventName, this.eventDescription, this.eventVenue, this.eventLocation, this.eventDate, this.eventTime,
                 this.eventDuration, this.eventCategoryId, this.eventOrganizerId, this.eventImage, this.eventFee)
       .subscribe(response=>
+      {
+        if(response['status']=='success')
         {
-          if(response['status']=='success')
-          {
-            const data = response['data']
-              console.log(data)
+          const data = response['data']
+            console.log(data)
 
-              this.toastr.success('Event Created Successfully')
-              this.router.navigate(['/dashboard'])
-          }else
-          {
-            this.toastr.error('Event Creation Failed')
-          }
-        })
+            this.toastr.success('Event Created Successfully')
+            this.router.navigate(['/dashboard'])
+        }else
+        {
+          this.toastr.error('Event Creation Failed')
+        }
+      })
   }
+
   // onUploadImage() {
   //   this.router.navigate(['/dashboard/event/upload-image'], {queryParams: {id: this.event['eventId']}})
   // }

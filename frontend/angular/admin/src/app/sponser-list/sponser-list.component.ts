@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SponserListComponent implements OnInit {
 
-  sponsers=[]
+  sponsers = []
+
   constructor(
     private sponserservice:SponserService)
    { }
@@ -27,10 +28,6 @@ export class SponserListComponent implements OnInit {
         {
           this.sponsers=response['data']
         }
-        else{
-          console.log(response['error'])
-        }
       })
-
   }
 }

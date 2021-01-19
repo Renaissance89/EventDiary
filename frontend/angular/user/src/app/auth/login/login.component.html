@@ -50,8 +50,9 @@
         <div class="col-md-12">
           <div class="form-block mx-auto">
             <div class="text-center mb-3">
-            <h3>Login to <strong>Event Diary</strong></h3>
+              <h3>Login to <strong>Event Diary</strong></h3>
             </div>
+            <form>
               <div class="form-group first mb-2">
                 <label for="username">Email</label>
                 <input required="" autofocus="" [(ngModel)]="email" type="text" class="form-control" placeholder="Your-email@gmail.com" id="username">
@@ -82,6 +83,7 @@
               <hr>
               <p>Don't have an account ?</p>
               <input routerLink="/auth/signup" type="submit" value="Sign Up" class="mybtn btn btn-block">
+            </form>
           </div>
         </div>
       </div>

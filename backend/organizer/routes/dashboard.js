@@ -22,10 +22,8 @@ router.get('/getSponserCount/:id', (request, response) => {
 
 //show all active event count
 router.get('/getActiveEventCount', (request, response) => {
-  // const {id} = request.params;
   const statement = `select count(eventId) as Event_Count from event where eventOrganizerId = ${request.userId}
                     and active = 1`
-                    console.log(statement)
   db.query(statement, (error, data) => {
     if (error) {
       response.send({status: 'error', error: error})
@@ -49,11 +47,9 @@ router.get('/getAllEventCount', (request, response) => {
 })
 
 router.get('/getUserCount', (request, response) => {
-  // const {id} = request.params;
   const statement = `select count(userId) as User_Count from register r inner join event e  
-  on e.eventId=r.eventId where e.eventOrganizerId= ${request.userId}
-                    `
-                    console.log(statement)
+          on e.eventId=r.eventId where e.eventOrganizerId= ${request.userId}`
+                    
   db.query(statement, (error, data) => {
     if (error) {
       response.send({status: 'error', error: error})

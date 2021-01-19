@@ -24,7 +24,6 @@ import { LoginComponent } from './login/login.component';
 import { EventCategoryComponent } from './event-category/event-category.component';
 import { EventService } from './event.service';
 import { CategoryAddComponent } from './category-add/category-add.component';
-import { EventDetailComponent } from './event-detail/event-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -40,7 +39,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     EventCategoryComponent,
     CategoryAddComponent,
-    EventDetailComponent,
     
   ],
   imports: [

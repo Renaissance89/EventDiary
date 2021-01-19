@@ -8,6 +8,7 @@ const router = express.Router()
 // ------------------------------------------------------------
 //                            GET
 // ------------------------------------------------------------
+
 router.get('/image/:filename', (request, response) => {
   const {filename} = request.params
   const file = fs.readFileSync(__dirname + '/../../images/' + filename)
@@ -48,22 +49,17 @@ router.get('/getAllEvent', (request, response) => {
 router.get('/getEventById/:id', (request, response) => {
   const { id } = request.params
   const statement = `SELECT e.eventId , e.eventName as Event_Name, e.eventImage , e.eventDescription as Description, 
-          e.eventVenue as Venue, e.eventLocation as Location, e.eventDate as Date, e.eventTime as Time, 
-          e.eventDuration as Duration, c.categoryName as Category,
-          u.firstName as Organizer_FirstName, u.lastName as Organizer_LastName, u.phone as OrganizerPhone, 
-          e.eventFee as Registration_Fee, e.active FROM event e
-          INNER JOIN user u ON e.eventOrganizerId = u.UserId
-          INNER JOIN category c ON e.eventCategoryId = c.categoryId 
-          WHERE eventId = '${id}'`
+      e.eventVenue as Venue, e.eventLocation as Location, e.eventDate as Date, e.eventTime as Time, 
+      e.eventDuration as Duration, c.categoryName as Category,
+      u.firstName as Organizer_FirstName, u.lastName as Organizer_LastName, u.phone as OrganizerPhone, 
+      e.eventFee as Registration_Fee, e.active FROM event e
+      INNER JOIN user u ON e.eventOrganizerId = u.UserId
+      INNER JOIN category c ON e.eventCategoryId = c.categoryId 
+      WHERE eventId = '${id}'`
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))
   })
 })
-
-// ------------------------------------------------------------
-//                            POST
-// ------------------------------------------------------------
-
 
 // ------------------------------------------------------------
 //                            PUT
@@ -79,8 +75,5 @@ router.put('/toggle-active/:eventId', (request, response) => {
   })
 })
 
-// ------------------------------------------------------------
-//                            DELETE
-// ------------------------------------------------------------
 
 module.exports = router

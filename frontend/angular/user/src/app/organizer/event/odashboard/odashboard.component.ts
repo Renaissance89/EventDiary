@@ -8,7 +8,6 @@ import { OdashboardService } from './../odashboard.service';
 })
 export class OdashboardComponent implements OnInit {
 
-
   eventCount = ''
   eventCountTotal = ''
   userCount = ''
@@ -22,6 +21,7 @@ export class OdashboardComponent implements OnInit {
     this.getTotalEvents()
     this.getTotalUsers()
   }
+
   getActiveEvents() {
     this.dashboardService
     .getActiveEvent()
@@ -30,13 +30,10 @@ export class OdashboardComponent implements OnInit {
       if(response['status']=='success')
       {
         this.eventCount = response['data'][0]['Event_Count']
-        console.log(this.eventCount);
-      }
-      else{
-        console.log(response['error'])
       }
     })
   }
+
   getTotalEvents(){
     this.dashboardService
     .getTotalEvent()
@@ -45,14 +42,10 @@ export class OdashboardComponent implements OnInit {
       if(response['status']=='success')
       {
         this.eventCountTotal = response['data'][0]['Event_Count']
-        console.log(this.eventCountTotal);
-      }
-      else{
-        console.log(response['error'])
       }
     })
-
   }
+
   getTotalUsers(){
     this.dashboardService
     .getTotalUsers()
@@ -61,12 +54,7 @@ export class OdashboardComponent implements OnInit {
       if(response['status']=='success')
       {
         this.userCount = response['data'][0]['User_Count']
-        console.log(this.userCount);
-      }
-      else{
-        console.log(response['error'])
       }
     })
-
   }
 }

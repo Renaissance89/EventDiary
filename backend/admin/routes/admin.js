@@ -17,7 +17,7 @@ router.get('/profile', (request, response) => {
       response.send({status: 'error', error: error})
     } else {
       if (admins.length == 0) {
-        response.send({status: 'error', error: 'admin does not exist'})
+        response.send({status: 'error', error: 'Admin does not exist'})
       } else {
         const admin = admins[0]
         response.send(utils.createResult(error, admin))
@@ -32,20 +32,21 @@ router.get('/profile', (request, response) => {
 
 router.post('/signin', (request, response) => {
   const { email, password } = request.body
-  const statement = `select userId, firstName, lastName, email, role from user where email = '${email}' and password = '${password}';`
+  const statement = `select userId, firstName, lastName, email, role from user 
+                    where email = '${email}' and password = '${password}';`
   db.query(statement, (error, admins) => {
     if(error) {
       response.send({status: 'error', error: error})
     } else {
       if (admins.length == 0) {
         // admin does not exists
-        response.send({status: 'error', error: 'admin does not exist'})
+        response.send({status: 'error', error: 'Admin does not exist'})
       } else {
         // admin exists
         const admin = admins[0]
-        const token = jwt.sign({id: admin['id']}, config.secret)
+        const token = jwt.sign({id: admin['userId']}, config.secret)
         response.send(utils.createResult(error, {
-          id: admin['id'],
+          id: admin['userId'],
           firstName: admin['firstName'],
           lastName: admin['lastName'],
           email: admin['email'],
@@ -56,21 +57,5 @@ router.post('/signin', (request, response) => {
     }  
   })
 })
-
-// ------------------------------------------------------------
-//                            PUT
-// ------------------------------------------------------------
-
-// router.put('/', (request, response) => {
-//   response.send()
-// })
-
-// ------------------------------------------------------------
-//                            DELETE
-// ------------------------------------------------------------
-
-// router.delete('/', (request, response) => {
-//   response.send()
-// })
 
 module.exports = router

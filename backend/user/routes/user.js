@@ -49,11 +49,8 @@ router.post('/signup', (request, response) => {
     values ('${firstName}', '${lastName}', '${email}', '${crypto.SHA256(password)}', '${phone}', '${city}', '${state}', 
     '${role}', '${gender}', '${activationToken}')`
     
-    console.log(statement)
   db.query(statement, (error, data) => {
-    mailer.sendEmail(email, 'Welcome to Eventdiary', body,  (error, info) => {
-      console.log(error)
-      console.log(info)
+    mailer.sendEmail(email, 'Welcome to Eventdiary', body, (error, info) => {
       response.send(utils.createResult(error, data))
     })
   })
@@ -62,8 +59,7 @@ router.post('/signup', (request, response) => {
 router.post('/signin', (request, response) => {
   const {email, password} = request.body
   const statement = `select userId, firstName, lastName, role, active from user where email = '${email}' 
-                    and password = '${crypto.SHA256(password)}' and active=1`
-                    console.log(statement)
+                    and password = '${crypto.SHA256(password)}' and active = 1`
 
   db.query(statement, (error, users) => {
     if (error) {
@@ -79,7 +75,7 @@ router.post('/signin', (request, response) => {
           firstName: user['firstName'],
           lastName: user['lastName'],
           token: token,
-          role:user['role']
+          role: user['role']
         }))
       } else {
         // user is a suspended user

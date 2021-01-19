@@ -3,9 +3,9 @@ const utils = require('../../utils')
 const db = require('../../db')
 const router = express.Router()
 
-// ----------------------------------------------------
-// GET
-// ----------------------------------------------------
+// ------------------------------------------------------------
+//                            GET
+// ------------------------------------------------------------
 
 router.get('/', (request, response) => {
   const statement = `select categoryId, categoryName, categoryDescription from category`
@@ -13,9 +13,5 @@ router.get('/', (request, response) => {
     response.send(utils.createResult(error, data))
   })
 })
-
-// ----------------------------------------------------
-
-
 
 module.exports = router

@@ -1,18 +1,19 @@
 <div class="container">
-  <h1>Add Event</h1>
 
+  <h1>Add Event</h1>
+  <form>
   <div class="row">
     <div class="col-md-4">
       <div class="form-group">
         <label for="eventname">Event Name</label>
-        <input required="" [(ngModel)]="eventName"  autofocus="" type="text" class="form-control" id="eventname" placeholder="Enter Event Name">
+        <input required="" [(ngModel)]="eventName"  autofocus="" type="text" class="form-control" name="eventname" id="eventname" placeholder="Enter Event Name">
       </div>
     </div>
     <!-- <div class="col-md-4">
       <div class="form-group">
         automatic yenar login kelay tya account ni ani disabled asnar 
         <label for="eventorganizer">Organizer</label>
-        <input type="text" class="form-control" id="eventorganizer" placeholder="Enter Event Organizer">
+        <input type="text" class="form-control" name="eventorganizer" id="eventorganizer" placeholder="Enter Event Organizer">
       </div>
     </div> -->
     <div class="col-md-4">
@@ -109,6 +110,6 @@
     </div>
     <div class="col-md-4"></div>
   </div>
-
+  </form>
 
 </div>

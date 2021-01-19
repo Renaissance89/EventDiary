@@ -7,47 +7,44 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 export class DashboardService {
 
   url='http://localhost:3000/dashboard'
+
   constructor(
     private httpClient:HttpClient)
   { }
 
-  getOrganizer()
-    {
+  getOrganizer() {
       const httpOptions={
         headers:new HttpHeaders({
         token:sessionStorage['token']
       })
     }
-    return this.httpClient.get(this.url+'/getOrganizerCount',httpOptions)
+    return this.httpClient.get(this.url + '/getOrganizerCount', httpOptions)
   }
      
-  getActiveEvent()
-  {
+  getActiveEvent() {
     const httpOptions={
         headers:new HttpHeaders({
         token:sessionStorage['token']
       })
     }
-    return this.httpClient.get(this.url+'/getActiveEventCount',httpOptions)
+    return this.httpClient.get(this.url + '/getActiveEventCount', httpOptions)
   }
 
-  getSponser()
-  {
+  getSponser() {
     const httpOptions={
         headers:new HttpHeaders({
         token:sessionStorage['token']
       })
     }
-    return this.httpClient.get(this.url+'/getSponserCount',httpOptions)
+    return this.httpClient.get(this.url + '/getSponserCount', httpOptions)
   }
 
-  getUser()
-  {
+  getUser() {
     const httpOptions={
         headers:new HttpHeaders({
         token:sessionStorage['token']
       })
     }
-    return this.httpClient.get(this.url+'/getUserCount',httpOptions)
+    return this.httpClient.get(this.url + '/getUserCount', httpOptions)
   }
 }

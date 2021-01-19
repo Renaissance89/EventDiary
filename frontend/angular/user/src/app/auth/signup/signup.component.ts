@@ -33,16 +33,15 @@ export class SignupComponent implements OnInit {
     this.authService
       .signup(this.firstName, this.lastName, this.email, this.password, this.phone, this.city, this.state, this.gender, this.role)
       .subscribe(response=>
+      {
+        if(response['status']=='success')
         {
-          if(response['status']=='success')
-          {
-            const data = response['data']
-              console.log(data)
-              this.toastr.success('Account Created Successfully. Please check email')
-              this.router.navigate(['/auth/login'])
-          } else {
-            this.toastr.error('Account Creation Failed')
-          }
-        })
+          const data = response['data']
+            this.toastr.success('Account Created Successfully. Please check email')
+            this.router.navigate(['/auth/login'])
+        } else {
+          this.toastr.error('Account Creation Failed')
+        }
+      })
   }
 }
