@@ -48,7 +48,8 @@ export class EventListComponent implements OnInit {
       .subscribe(response => {
         if (response['status'] == 'success') {
           this.categories = response['data']
-          this.categories.push({id: -1, title: 'All Categories'})
+          // this.categories.push({categoryId: 0, categoryName: 'All Categories'})
+        
         }
       })
   }

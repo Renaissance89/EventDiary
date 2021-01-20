@@ -9,6 +9,7 @@
   <div class="col-md-2">
     <label for="">Category</label>
     <select class="form-control" (change)="filterEvents($event)">
+      <option value="0">All</option>
       <option [value]="category['categoryId']" *ngFor="let category of categories">{{category['categoryName']}}</option>
     </select>
   </div>
