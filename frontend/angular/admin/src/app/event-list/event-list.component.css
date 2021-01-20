@@ -2,3 +2,7 @@
     width: 100px;
     height: 100px;
 }
+.event-image:hover {
+    transform: scale(1.3);
+    box-shadow: 0 0 5px 1px #7D7D7D;
+  }
