@@ -26,22 +26,28 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onResetPassword() {
-    this.authService
-    .resetPassword(this.password, this.otp)
-    .subscribe(response=>
-    {
-      if(response['status']=='success')
+    if (this.password.length == 0) {
+      this.toastr.warning('Please Enter Password')
+    } else if (this.otp.length == 0) {
+      this.toastr.warning('Please Enter OTP')
+    } else {
+      this.authService
+      .resetPassword(this.password, this.otp)
+      .subscribe(response=>
       {
-        const data = response['data']
+        if(response['status']=='success')
+        {
+          const data = response['data']
 
-        this.router.navigate(['/auth/login'])
-        this.toastr.success('Reset Password Successful')
-        sessionStorage.removeItem('email')
-        this.modalService.dismissAll()
-      }  
-      else {
-        this.toastr.error('Invalid OTP')
-      }
-    })
+          this.router.navigate(['/auth/login'])
+          this.toastr.success('Reset Password Successful')
+          sessionStorage.removeItem('email')
+          this.modalService.dismissAll()
+        }  
+        else {
+          this.toastr.error('Invalid OTP')
+        }
+      })
+    }    
   }
 }

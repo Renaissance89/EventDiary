@@ -56,7 +56,26 @@ export class AddEventComponent implements OnInit {
   // }
 
   onAddEvent() {
-    this.eventService
+    if (this.eventName.length == 0) {
+      this.toastr.warning('Please Enter Event Name')
+    } else if (this.eventCategoryId == null) {
+      this.toastr.warning('Please Enter Event Category')
+    } else if (this.eventFee.length == 0) {
+      this.toastr.warning('Please Enter Event Fee')
+    } else if (this.eventVenue.length == 0) {
+      this.toastr.warning('Please Enter Event Venue')
+    } else if (this.eventLocation.length == 0) {
+      this.toastr.warning('Please Enter Event Location')
+    } else if (this.eventDate.length == 0) {
+      this.toastr.warning('Please Enter Event Date')
+    } else if (this.eventTime.length == 0) {
+      this.toastr.warning('Please Enter Event Time')
+    } else if (this.eventDuration.length == 0) {
+      this.toastr.warning('Please Enter Event Duration')
+    } else if (this.eventDescription.length == 0) {
+      this.toastr.warning('Please Enter Event Description')
+    } else {
+      this.eventService
       .addEvent(this.eventName, this.eventDescription, this.eventVenue, this.eventLocation, this.eventDate, this.eventTime,
                 this.eventDuration, this.eventCategoryId, this.eventOrganizerId, this.eventImage, this.eventFee)
       .subscribe(response=>
@@ -72,6 +91,7 @@ export class AddEventComponent implements OnInit {
           this.toastr.error('Event Creation Failed')
         }
       })
+    }
   }
 
   // onUploadImage() {

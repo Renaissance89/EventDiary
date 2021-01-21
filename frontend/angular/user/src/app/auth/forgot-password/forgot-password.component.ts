@@ -24,22 +24,26 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onGetOtp() {
-    this.authService
-    .getOtp(this.email)
-    .subscribe(response=>
-    {
-      if(response['status']=='success')
+    if (this.email.length == 0) {
+      this.toastr.warning('Please Enter Email')
+    } else {
+      this.authService
+      .getOtp(this.email)
+      .subscribe(response=>
       {
-        const data = response['data']
-      
-          sessionStorage['email'] = data['email']
-          
-          this.modalService.open(ResetPasswordComponent, { size: 'md'})
-          this.toastr.success('OTP sent to ' + data['email'])
-      }  
-      else {
-        this.toastr.error('Invalid Email')
-      }
-    })
+        if(response['status']=='success')
+        {
+          const data = response['data']
+        
+            sessionStorage['email'] = data['email']
+            
+            this.modalService.open(ResetPasswordComponent, { size: 'md'})
+            this.toastr.success('OTP sent to ' + data['email'])
+        }  
+        else {
+          this.toastr.error('Invalid Email')
+        }
+      })
+    }
   }
 }
