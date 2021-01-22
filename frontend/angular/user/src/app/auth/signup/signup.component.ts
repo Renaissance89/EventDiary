@@ -36,8 +36,8 @@ export class SignupComponent implements OnInit {
       this.toastr.warning('Please Enter Last Name')
     } else if (this.email.length == 0) {
       this.toastr.warning('Please Enter Email')
-    } else if (this.password.length == 0) {
-      this.toastr.warning('Please Enter Password')
+    } else if (this.password.length < 8) {
+      this.toastr.warning('Please choose a password with at least 8 \ characters.')
     } else if (this.phone.length == 0) {
       this.toastr.warning('Please Enter Mobile')
     } else if (this.city.length == 0) {

@@ -69,7 +69,8 @@ export class CartComponent implements OnInit {
     if (newQuantity == 0) {
       this.onDelete(item)
     } else {
-      this.cartService
+      if(newQuantity<9){
+        this.cartService
         .updateCartItem(item['registrationId'], newQuantity, item['paymentAmount'])
         .subscribe(response => {
           if (response['status'] == 'success') {
@@ -77,6 +78,9 @@ export class CartComponent implements OnInit {
             this.loadCartItems()
           }
         })
+      }
+      else
+      this.toastr.error("you can register upto 9 seats")
     }
   }
 
