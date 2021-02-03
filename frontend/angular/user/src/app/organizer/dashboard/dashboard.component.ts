@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +10,17 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private toastr : ToastrService
   ) { }
 
   ngOnInit(): void {
   }
+
+  news(){
+    this.toastr.success("thanks for subscribing "+sessionStorage["firstName"])
+  }
+
 
   onLogout() {
     sessionStorage.removeItem('token')

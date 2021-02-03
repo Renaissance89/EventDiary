@@ -14,6 +14,9 @@ export class CartComponent implements OnInit {
 
   items = []
   totalAmount = 0
+  events = []
+
+
 
   constructor(
     private toastr: ToastrService,
@@ -83,6 +86,16 @@ export class CartComponent implements OnInit {
       this.toastr.error("you can register upto 9 seats")
     }
   }
+  // loadevents() {
+  //   this.cartService
+  //     .getAllevents()
+  //     .subscribe(response=> {
+  //       if(response['status']=='success')
+  //       {
+  //         this.events=response['data']
+  //       }
+  //     })
+  // }
 
   payment() {
     this.modalService.open(PaymentComponent, {size : 'lg'})

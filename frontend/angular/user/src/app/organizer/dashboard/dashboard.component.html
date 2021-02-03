@@ -15,10 +15,10 @@
               <a class="heading nav-link" routerLink="/dashboard/contact-us">Contact Us</a>
             </div>
           </div>
-          <div class="form-inline my-2 my-lg-0" style="margin-right: 20px;">
+          <!-- <div class="form-inline my-2 my-lg-0" style="margin-right: 20px;">
             <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-primary rounded-pill my-2 my-sm-0 icon-search" type="submit"></button>
-          </div>
+          </div> -->
           <div class="form-inline my-2 my-lg-0 float-right">
             <button (click)="onLogout()" class="btn btn-warning  my-2 my-sm-0" type="submit">Logout</button>
           </div>
@@ -54,7 +54,7 @@
                           <input class=" " type="email " name="Email " placeholder="Your Email" />
                           <i class="fa fa-envelope "></i>
                       </div>
-                      <button class="mybtn btn hvr-hover" type="submit">Submit</button>
+                      <button (click)="news()" class="mybtn btn hvr-hover" type="submit">Submit</button>
                   </form>
               </div>
           </div>
@@ -86,13 +86,13 @@
               <div class="footer-link ">
                   <h4>Information</h4>
                   <ul>
-                      <li><a href="# ">About Us</a></li>
-                      <li><a href="# ">Customer Service</a></li>
-                      <li><a href="# ">Our Sitemap</a></li>
-                      <li><a href="# ">Terms &amp; Conditions</a></li>
-                      <li><a href="# ">Privacy Policy</a></li>
-                      <li><a href="# ">Delivery Information</a></li>
-                  </ul>
+                    <li>About Us</li>
+                    <li>Customer Service</li>
+                    <li>Our Sitemap</li>
+                    <li>Terms &amp; Conditions</li>
+                    <li>Privacy Policy</li>
+                    <li>Delivery Information</li>
+                </ul>
               </div>
           </div>
           <div class="col-lg-4 col-md-12 col-sm-12 ">

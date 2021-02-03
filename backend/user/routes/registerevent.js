@@ -9,8 +9,10 @@ const router = express.Router()
 // ------------------------------------------------------------
 
 router.get('/user', (request, response) => {
-  const statement = `select  c.registrationId, e.eventName, c.quantity, c.paymentAmount, c.totalAmount
+  const statement = `select  c.registrationId, e.eventName,e.eventImage,c.quantity, c.paymentAmount, c.totalAmount
                   from register c, event e where c.eventId = e.eventId and c.userId = ${request.userId}`
+
+console.log(statement);
 
   db.query(statement, (error, data) => {
     response.send(utils.createResult(error, data))

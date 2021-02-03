@@ -7,6 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class CartService {
 
   url = 'http://localhost:4000/user/registerevent'
+  url1='http://localhost:4000/user/event'
+
 
   constructor(
     private httpClient: HttpClient
@@ -18,8 +20,18 @@ export class CartService {
         token : sessionStorage['token']
       })
     };
-    return this.httpClient.get(this.url + "/", httpOption)
+    return this.httpClient.get(this.url1 + "/", httpOption)
   }
+
+  // getAllevents() {
+    
+  //   const httpOptions={
+  //     headers:new HttpHeaders({
+  //       token:sessionStorage['token']
+  //     })
+  //   }
+  //   return this.httpClient.get(this.url+'/all', httpOptions)
+  // }
 
   getCartItems() {
     const httpOptions = {
